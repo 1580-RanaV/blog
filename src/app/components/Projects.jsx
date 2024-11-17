@@ -13,7 +13,7 @@ const Projects = () => {
                 </p>
                 <img src="/puretext.png" alt="PureText" className="mb-2 border rounded-xl" />
                 <span className='font-mono mb-1.5 block'>
-                An application where users can convert regular text to plagiarism-free text with the help of an LLM API
+                An application where users can convert regular text to plagiarism-free text with the help of a LLM
                  — smooth, responsive, <i>blazing fast</i> and at the least 80% effective from tools like TurnItIn, Grammarly.
                 </span>
                 <a 
@@ -50,7 +50,7 @@ const Projects = () => {
                 <a 
                 className='text-blue-500 font-sans'
                 href='https://puretextbydatco.vercel.app'>
-                [ Deployment on hold, check back later ]
+                [On hold, pls check later]
                 </a>
               </div>
             </div>

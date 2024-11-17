@@ -32,7 +32,7 @@ const Participations = () => {
   </div>
   <span className="font-mono block mb-5">
   Reached the final round of a competitive Catalog hackathon, ranking among the top participants in a hiring process that tested skills in prompt 
-  engineering and problem-solving. Tackled a challenging problem statement based on an MIT paper on Cryptography.
+  engineering and problem-solving. Problem statement based on an MIT paper on Cryptography.
   </span>
   </div>
   </div>
