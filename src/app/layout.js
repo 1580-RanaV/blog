@@ -13,7 +13,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "V Rana | Blog",
+  title: "V Rana | self boast page",
   description: "my personal blog :) V Ranadheer.",
 };
 

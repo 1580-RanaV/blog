@@ -15,48 +15,32 @@ import { supabase } from '../utils/supabaseClient';
 const Page = () => {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="bg-white rounded-lg p-8">
+      {/* Main container with responsive padding */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 lg:py-24">
+        {/* Content wrapper with responsive padding and spacing */}
+        <div className="bg-white rounded-lg p-4 sm:p-6 lg:p-8">
+          {/* Header section */}
+          <div className="mb-8 sm:mb-12">
+            <ProfileHeader />
+          </div>
 
-          {/* header */}
-          <ProfileHeader />
+          {/* Intro section */}
+          <div className="mb-8 sm:mb-12">
+            <SelfIntro />
+          </div>
 
-          {/* intro*/}
-          <SelfIntro/>
-
-          {/* different parts are kept into sections from here */}
-          <div className="space-y-12">
-            
-          <CurrentlyBuilding/>
-
-            {/* projects section */}
-            <Projects/>
-
-
-            {/* work experience */}
-            <WorkExp/>
-
-
-            {/* clubs */}
-            <Clubs/>
-
-
-          {/* participations */}
-          <Participations/>
-
-
-          {/* education */}
-          <Education/>
-
-
-
-          {/* reach me out */}
-          <Contact/>
-
-
-          {/* end thank u note */}
-          <Thankyou/>
-
+          {/* Main content sections with responsive spacing */}
+          <div className="space-y-8 sm:space-y-12 lg:space-y-16">
+            <CurrentlyBuilding />
+            <Projects />
+            <WorkExp />
+            <Clubs />
+            <Participations />
+            <Education />
+            <Contact />
+            <div className="pt-4 sm:pt-8">
+              <Thankyou />
+            </div>
           </div>
         </div>
       </div>

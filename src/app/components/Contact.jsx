@@ -73,7 +73,7 @@ const Contact = () => {
                 onClick={handleSubmit}
                 disabled={isSubmitting}
                 className={`w-1/2 border text-white ${
-                  isSubmitting ? 'bg-gray-400' : 'bg-green-300'
+                  isSubmitting ? 'bg-gray-400' : 'bg-red-300'
                 } border-1 p-4 rounded-2xl shadow-lg mb-5 relative`}
               >
                 {showTick ? (

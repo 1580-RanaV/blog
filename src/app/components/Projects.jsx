@@ -14,7 +14,7 @@ const Projects = () => {
                 <img src="/puretext.png" alt="PureText" className="mb-2 border rounded-xl" />
                 <span className='font-mono mb-1.5 block'>
                 An application where users can convert regular text to plagiarism-free text with the help of an LLM API
-                 — smooth, responsive, <i>blazing fast</i> and at the least 80% effective from tools like TurnItIn, Grammarly. Deployed on Vercel.
+                 — smooth, responsive, <i>blazing fast</i> and at the least 80% effective from tools like TurnItIn, Grammarly.
                 </span>
                 <a 
                 className='text-blue-500 font-sans'
@@ -63,7 +63,7 @@ const Projects = () => {
                 <img src="/portfolio.png" alt="PureText" className="mb-2 border rounded-xl" />
                 <span className='font-mono mb-1.5 block'>
                 A modern portfolio for a client using bare HTML, CSS and JavaScript. With consistent typography, buttery smooth transitions using GSAP
-                and simple to use and navigate UI. Gained 300+ site visits.<br/>
+                and simple to use and navigate UI. Got 300+ site visits.<br/>
                 </span>
                 <a 
                 className='text-blue-500 font-sans'
