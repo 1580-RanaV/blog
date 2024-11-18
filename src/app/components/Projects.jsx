@@ -48,7 +48,7 @@ const Projects = () => {
                 Two goals in one place — choose an algorithm, type it out, and track your progress<br/>
                 </span>
                 <a 
-                className='text-blue-500 font-sans'
+                className='text-blue-500 font-sans flex'
                 href='https://speedcode.vercel.app'>
                 SpeedCode<svg 
                   className="feather feather-arrow-up-right" 
