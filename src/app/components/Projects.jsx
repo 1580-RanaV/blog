@@ -49,8 +49,19 @@ const Projects = () => {
                 </span>
                 <a 
                 className='text-blue-500 font-sans'
-                href='https://puretextbydatco.vercel.app'>
-                [On hold, pls check later]
+                href='https://speedcode.vercel.app'>
+                SpeedCode<svg 
+                  className="feather feather-arrow-up-right" 
+                  fill="none" 
+                  height="24" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24" 
+                  width="24" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line x1="7" x2="17" y1="17" y2="7"/>
+                  <polyline points="7 7 17 7 17 17"/>
+                </svg>
                 </a>
               </div>
             </div>
