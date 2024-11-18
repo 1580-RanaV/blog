@@ -78,7 +78,7 @@ const Projects = () => {
                 </span>
                 <a 
                 className='text-blue-500 font-sans'
-                href='https://puretextbydatco.vercel.app'>
+                href='https://1580-ranav.github.io/home-of-js/'>
                 <span className='flex'>
                 Visit Site
                 <svg 
