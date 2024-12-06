@@ -5,7 +5,7 @@ const Thankyou = () => {
     <div>
         <section className='text-center'>
             <span>You've reached the end thank you for your time :)</span>
-            <img src="/favicon-logo.png" alt="my-logo" className='w-full pb-0 mb-0' />
+            {/* <img src="/favicon-logo.png" alt="my-logo" className='w-full pb-0 mb-0' /> */}
           </section>
           <h6 className='text-center font-sans'>
           All rights reserved, 2024 ©
