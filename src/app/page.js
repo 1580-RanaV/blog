@@ -31,7 +31,7 @@ const Page = () => {
 
           {/* Main content sections with responsive spacing */}
           <div className="space-y-8 sm:space-y-12 lg:space-y-16">
-            <CurrentlyBuilding />
+            {/* <CurrentlyBuilding /> */}
             <Projects />
             <WorkExp />
             <Clubs />

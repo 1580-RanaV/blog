@@ -8,7 +8,7 @@ const ProfileHeader = () => {
           V Ranadheer
         </h6>
         <p className="text-sm">
-          <span className="font-mono">Senior Undergrad</span>
+          <span className="font-mono">Graduate</span>
         </p>
         <p className="text-sm">
           <span className="font-mono">Creative Developer</span>
@@ -39,7 +39,7 @@ const ProfileHeader = () => {
           </div>
           <div className="min-w-[40px] min-h-[40px] flex items-center justify-center">
             <a 
-              href="https://www.instagram.com/accordingtorana/" 
+              href="https://www.instagram.com/byvrana/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="rounded-full bg-orange-300 p-2 w-10 h-10 flex items-center justify-center"

@@ -6,7 +6,79 @@ const Projects = () => {
         <section>
             
             <div className='mb-12'>
+
             <h3 className="font-sans text-black mb-5">Few projects</h3>
+
+
+            <div className='mb-12'>
+              <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
+                <p className="mb-2 text-black leading-relaxed font-sans">
+                SGA v1.1: Skills Gap Analyzer
+                </p>
+                <img src="/sga.png" alt="PureText" className="mb-2 border rounded-xl" />
+                <span className='font-mono mb-1.5 block'>
+                Analyzes a candidate’s resume against a job description, gives a score and suggests personalized learning plans,
+                projects, and resume improvements.<br/>
+                <br></br>
+                • Built an AI-powered Skills Gap Analyzer using Next.js and Tailwind CSS, integrating LLaMA 3 API with custom
+                JSON parsing & fallback logic to compare resumes against job descriptions, generate tailored learning plans,
+                project ideas, and resume bullet suggestions.<br/>
+                • Enhanced usability and workflow efficiency by implementing React Hook Form for structured inputs, Headless
+                UI for accessible components, and copy-to-clipboard/export features, delivering a responsive, clean interface
+                optimized for quick insight sharing.
+
+                </span>
+                <br></br>
+                <a 
+                className='text-blue-500 font-sans flex'
+                href='https://sga-sage.vercel.app'>
+                SGA v1.1<svg 
+                  className="feather feather-arrow-up-right" 
+                  fill="none" 
+                  height="24" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24" 
+                  width="24" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line x1="7" x2="17" y1="17" y2="7"/>
+                  <polyline points="7 7 17 7 17 17"/>
+                </svg>
+                </a>
+              </div>
+            </div>
+
+
+            <div className='mb-12'>
+              <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
+                <p className="mb-2 text-black leading-relaxed font-sans">
+                Client Personal Portfolio
+                </p>
+                <img src="/js.png" alt="PureText" className="mb-2 border rounded-xl" />
+                <span className='font-mono mb-1.5 block'>
+                Designed and deployed a single-page portfolio app with a clean UI, perfect typography, lazy loading to reduce
+                server load, database integration for user messages, and CI/CD pipelines using Git. High customer satisfaction.<br/>
+                </span>
+                <a 
+                className='text-blue-500 font-sans flex'
+                href='https://jayasurya.site/'>
+                jayasurya.site<svg 
+                  className="feather feather-arrow-up-right" 
+                  fill="none" 
+                  height="24" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24" 
+                  width="24" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line x1="7" x2="17" y1="17" y2="7"/>
+                  <polyline points="7 7 17 7 17 17"/>
+                </svg>
+                </a>
+              </div>
+            </div>
+
+
               <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
                 <p className="mb-2 text-black leading-relaxed font-sans">
                 PureText
@@ -87,7 +159,7 @@ const Projects = () => {
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
                 <p className="mb-2 text-black leading-relaxed font-sans">
                 Client Personal Portfolio
@@ -117,7 +189,8 @@ const Projects = () => {
               </span>
               </a>
               </div>
-            </div>
+
+            </div> */}
 
             </section>
     </div>
