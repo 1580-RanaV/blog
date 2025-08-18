@@ -13,6 +13,36 @@ const Projects = () => {
             <div className='mb-12'>
               <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
                 <p className="mb-2 text-black leading-relaxed font-sans">
+                BenchMarkIQ: AI-Powered Industry Benchmark Analyzer
+                </p>
+                <img src="/bmiq.png" alt="PureText" className="mb-2 border rounded-xl" />
+                <span className='font-mono mb-1.5 block'>
+                Helps businesses upload their KPIs, compare them against industry standards, and get actionable insights to improve
+                performance.<br/>
+                </span>
+                <a 
+                className='text-blue-500 font-sans flex'
+                href='https://bench-mark-iq.vercel.app'>
+                BenchMarkIQ<svg 
+                  className="feather feather-arrow-up-right" 
+                  fill="none" 
+                  height="24" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24" 
+                  width="24" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line x1="7" x2="17" y1="17" y2="7"/>
+                  <polyline points="7 7 17 7 17 17"/>
+                </svg>
+                </a>
+              </div>
+            </div>
+
+
+            <div className='mb-12'>
+              <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
+                <p className="mb-2 text-black leading-relaxed font-sans">
                 SGA v1.1: Skills Gap Analyzer
                 </p>
                 <img src="/sga.png" alt="PureText" className="mb-2 border rounded-xl" />
