@@ -51,7 +51,7 @@ const ProfileHeader = () => {
       </div>
 
       <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden flex-shrink-0 mt-2">
-        <img src="/myphoto.jpeg" alt="Your Photo" className="w-full h-full object-cover" />
+        <img src="/for-site-compressed.png" alt="Your Photo" className="w-full h-full object-cover" />
       </div>
     </div>
   );
