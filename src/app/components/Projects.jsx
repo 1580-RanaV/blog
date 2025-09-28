@@ -16,6 +16,7 @@ const Projects = () => {
             title="Jobsy: Application Tracker"
             images={["/jobsy-1.png", "/jobsy.png"]}
             description="Local-first application tracker that auto-captures job links, extracts details, flags inactive postings, and reminds you before deadlines."
+            tags={["Next.js", "React", "Tailwind CSS", "IndexedDB", "Shadcn UI", "Vercel","Github","CI/CD Pipelines","Llama API"]}
             links={[{ href: "https://myjobsy.vercel.app", label: "Jobsy" }]}
           />
 
@@ -23,6 +24,7 @@ const Projects = () => {
             title="BenchMarkIQ: AI-Powered Industry Benchmark Analyzer"
             images={["/bmiq.png"]}
             description="Upload KPIs, compare against industry medians, and get actionable insights to improve performance."
+            tags={["Next.js", "React", "Tailwind CSS", "PapaParse", "Chart.js", "CSV", "Github","Vercel"]}
             links={[{ href: "https://bench-mark-iq.vercel.app", label: "BenchMarkIQ" }]}
           />
 
@@ -30,6 +32,7 @@ const Projects = () => {
             title="SGA v1.1: Skills Gap Analyzer"
             images={["/sga.png"]}
             description="Analyzes a candidate’s resume against a job description, scores the match, and suggests personalized learning plans, projects, and resume improvements."
+            tags={["Next.js", "React", "Tailwind CSS", "Figma", "React Hook Form", "Headless UI", "Vercel","Github","CI/CD Pipelines"]}
             links={[{ href: "https://sga-sage.vercel.app", label: "SGA v1.1" }]}
           />
 
@@ -37,6 +40,7 @@ const Projects = () => {
             title="Client Personal Portfolio"
             images={["/js.png"]}
             description="Single-page portfolio with clean UI, tight typography, lazy loading to reduce server load, database integration for messages, and CI/CD via Git. High customer satisfaction."
+            tags={["Next.js", "React", "Tailwind CSS", "Vercel", "CI/CD", "Prisma/Supabase"]}
             links={[{ href: "https://jayasurya.site/", label: "jayasurya.site" }]}
           />
 
@@ -44,6 +48,7 @@ const Projects = () => {
             title="PureText"
             images={["/puretext.png"]}
             description="Convert regular text to plagiarism-free text with an LLM — smooth, responsive, blazing fast, and typically 80%+ effective against tools like Turnitin and Grammarly. Now live on Product Hunt."
+            tags={["Next.js", "React", "Tailwind CSS", "LLM", "Figma", "Featured on Product Hunt"]}
             links={[
               { href: "https://puretextbydatco.vercel.app", label: "PureText" },
               { href: "https://www.producthunt.com/posts/puretext", label: "ProductHunt" },
@@ -54,6 +59,7 @@ const Projects = () => {
             title="SpeedCode"
             images={["/speedcode.png"]}
             description="Practice essential coding algorithms while improving typing speed. Two goals in one — choose an algorithm, type it out, and track progress."
+            tags={["Next.js", "React", "Tailwind CSS", "Github", "CI/CD", "18 Pull Requests","Figma"]}
             links={[{ href: "https://speedcode.vercel.app", label: "SpeedCode" }]}
           />
         </div>
@@ -62,7 +68,7 @@ const Projects = () => {
   );
 };
 
-const ProjectCard = ({ title, images, description, links }) => {
+const ProjectCard = ({ title, images, description, links, tags = [] }) => {
   return (
     <div className="relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-2xl dark:border-neutral-800 dark:bg-neutral-950">
       <div className="px-6 py-6 sm:px-7 sm:py-7">
@@ -92,6 +98,16 @@ const ProjectCard = ({ title, images, description, links }) => {
           {description}
         </p>
 
+        {tags.length > 0 && (
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <li key={tag}>
+                <TagChip label={tag} />
+              </li>
+            ))}
+          </ul>
+        )}
+
         <div className="mt-4 flex flex-wrap gap-4">
           {links.map((link) => (
             <a
@@ -111,13 +127,16 @@ const ProjectCard = ({ title, images, description, links }) => {
   );
 };
 
+const TagChip = ({ label }) => {
+  return (
+    <span className="inline-flex items-center rounded-full bg-emerald-100 text-emerald-900 ring-1 ring-inset ring-emerald-200 px-3 py-1 font-mono text-xs sm:text-sm leading-none dark:bg-emerald-950/40 dark:text-emerald-200 dark:ring-emerald-800">
+      {label}
+    </span>
+  );
+};
+
 const ArrowUpRightIcon = (props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    aria-hidden="true"
-    {...props}
-  >
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
     <path
       d="M7 17L17 7M17 7H7M17 7V17"
       stroke="currentColor"

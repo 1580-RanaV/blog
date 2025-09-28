@@ -36,8 +36,8 @@ const Education = () => {
               <p className="mt-2 text-base sm:text-lg text-neutral-700 dark:text-neutral-300">
                 Bachelor of Technology, Computer Science and Engineering (Class of 2025)
               </p>
-              <p className="mt-3 font-mono text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
-                <strong className="font-sans">CGPA: 8.42</strong>
+              <p className="mt-3 text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
+                <strong className="inline-flex items-center rounded-full bg-emerald-100 text-emerald-900 ring-1 ring-inset ring-emerald-200 px-3 py-1 font-semibold text-xs sm:text-sm leading-none dark:bg-emerald-950/40 dark:text-emerald-200 dark:ring-emerald-800">CGPA: 8.42</strong>
               </p>
             </div>
           </div>
@@ -66,7 +66,7 @@ const Education = () => {
                 MPC (Math, Physics, Chemistry), 2021
               </p>
               <p className="mt-3 font-mono text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
-                <strong className="font-sans">Percentage: 92.7%</strong>
+                <strong className="font-sans inline-flex items-center rounded-full bg-emerald-100 text-emerald-900 ring-1 ring-inset ring-emerald-200 px-3 py-1 text-xs sm:text-sm leading-none dark:bg-emerald-950/40 dark:text-emerald-200 dark:ring-emerald-800">Percentage: 92.7%</strong>
               </p>
             </div>
           </div>
@@ -94,8 +94,8 @@ const Education = () => {
               <p className="mt-2 text-base sm:text-lg text-neutral-700 dark:text-neutral-300">
                 Secondary Education, 2019
               </p>
-              <p className="mt-3 font-mono text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
-                <strong className="font-sans">Percentage: 86.66%</strong>
+              <p className="mt-3 text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
+                <strong className="font-sans inline-flex items-center rounded-full bg-emerald-100 text-emerald-900 ring-1 ring-inset ring-emerald-200 px-3 py-1 text-xs sm:text-sm leading-none dark:bg-emerald-950/40 dark:text-emerald-200 dark:ring-emerald-800">Percentage: 86.66%</strong>
               </p>
             </div>
           </div>

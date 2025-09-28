@@ -9,6 +9,7 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Thankyou from './components/Thankyou';
 import SelfIntro from './components/SelfIntro';
+import ShareProfile from './components/ShareProfile';
 
 import { supabase } from '../utils/supabaseClient';
 
@@ -22,6 +23,14 @@ const Page = () => {
           {/* Header section */}
           <div className="mb-8 sm:mb-12">
             <ProfileHeader />
+          </div>
+
+          <div className='mb-4 sm:mb-12'>
+          <ShareProfile
+            website="https://www.vrana.fun/"
+            imageSrc="/share-view.png"
+            imageAlt="V Ranadheer"
+          />
           </div>
 
           {/* Intro section */}
