@@ -1,254 +1,131 @@
-import React from 'react'
+"use client";
+
+import React from "react";
+import Image from "next/image";
 
 const Projects = () => {
   return (
-    <div>
-        <section>
-            
-            <div className='mb-12'>
+    <section className="w-full py-10 sm:py-12">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
+          Few projects
+        </h2>
 
-            <h3 className="font-sans text-black mb-5">Few projects</h3>
+        <div className="mt-8 space-y-8">
+          <ProjectCard
+            title="Jobsy: Application Tracker"
+            images={["/jobsy-1.png", "/jobsy.png"]}
+            description="Local-first application tracker that auto-captures job links, extracts details, flags inactive postings, and reminds you before deadlines."
+            links={[{ href: "https://myjobsy.vercel.app", label: "Jobsy" }]}
+          />
 
+          <ProjectCard
+            title="BenchMarkIQ: AI-Powered Industry Benchmark Analyzer"
+            images={["/bmiq.png"]}
+            description="Upload KPIs, compare against industry medians, and get actionable insights to improve performance."
+            links={[{ href: "https://bench-mark-iq.vercel.app", label: "BenchMarkIQ" }]}
+          />
 
-            <div className='mb-12'>
-              <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
-                <p className="mb-2 text-black leading-relaxed font-sans">
-                Jobsy: Application Tracker
-                </p>
-                <img src="/jobsy-1.png" alt="PureText" className="mb-2 border rounded-xl shadow" />
-                <br></br>
-                <img src="/jobsy.png" alt="PureText" className="mb-2 border rounded-xl shadow" />
-                <span className='font-mono mb-1.5 block'>
-                Local-first application tracker that auto-captures job links, extracts details, flags inactive postings, and reminds you
-                before deadlines.
-                <br/>
-                </span>
-                <a 
-                className='text-blue-500 font-sans flex'
-                href='https://myjobsy.vercel.app'>
-                Jobsy<svg 
-                  className="feather feather-arrow-up-right" 
-                  fill="none" 
-                  height="24" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24" 
-                  width="24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line x1="7" x2="17" y1="17" y2="7"/>
-                  <polyline points="7 7 17 7 17 17"/>
-                </svg>
-                </a>
-              </div>
+          <ProjectCard
+            title="SGA v1.1: Skills Gap Analyzer"
+            images={["/sga.png"]}
+            description="Analyzes a candidate’s resume against a job description, scores the match, and suggests personalized learning plans, projects, and resume improvements."
+            links={[{ href: "https://sga-sage.vercel.app", label: "SGA v1.1" }]}
+          />
+
+          <ProjectCard
+            title="Client Personal Portfolio"
+            images={["/js.png"]}
+            description="Single-page portfolio with clean UI, tight typography, lazy loading to reduce server load, database integration for messages, and CI/CD via Git. High customer satisfaction."
+            links={[{ href: "https://jayasurya.site/", label: "jayasurya.site" }]}
+          />
+
+          <ProjectCard
+            title="PureText"
+            images={["/puretext.png"]}
+            description="Convert regular text to plagiarism-free text with an LLM — smooth, responsive, blazing fast, and typically 80%+ effective against tools like Turnitin and Grammarly. Now live on Product Hunt."
+            links={[
+              { href: "https://puretextbydatco.vercel.app", label: "PureText" },
+              { href: "https://www.producthunt.com/posts/puretext", label: "ProductHunt" },
+            ]}
+          />
+
+          <ProjectCard
+            title="SpeedCode"
+            images={["/speedcode.png"]}
+            description="Practice essential coding algorithms while improving typing speed. Two goals in one — choose an algorithm, type it out, and track progress."
+            links={[{ href: "https://speedcode.vercel.app", label: "SpeedCode" }]}
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ProjectCard = ({ title, images, description, links }) => {
+  return (
+    <div className="relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-2xl dark:border-neutral-800 dark:bg-neutral-950">
+      <div className="px-6 py-6 sm:px-7 sm:py-7">
+        <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
+          {title}
+        </h3>
+
+        <div className="mt-4 space-y-4">
+          {images.map((src, idx) => (
+            <div
+              key={idx}
+              className="overflow-hidden rounded-xl border border-neutral-200 shadow dark:border-neutral-800"
+            >
+              <Image
+                src={src}
+                alt={title}
+                width={1600}
+                height={900}
+                className="h-auto w-full object-cover"
+                priority={idx === 0}
+              />
             </div>
+          ))}
+        </div>
 
+        <p className="mt-4 font-mono text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
+          {description}
+        </p>
 
-            <div className='mb-12'>
-              <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
-                <p className="mb-2 text-black leading-relaxed font-sans">
-                BenchMarkIQ: AI-Powered Industry Benchmark Analyzer
-                </p>
-                <img src="/bmiq.png" alt="PureText" className="mb-2 border rounded-xl" />
-                <span className='font-mono mb-1.5 block'>
-                Helps businesses upload their KPIs, compare them against industry standards, and get actionable insights to improve
-                performance.<br/>
-                </span>
-                <a 
-                className='text-blue-500 font-sans flex'
-                href='https://bench-mark-iq.vercel.app'>
-                BenchMarkIQ<svg 
-                  className="feather feather-arrow-up-right" 
-                  fill="none" 
-                  height="24" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24" 
-                  width="24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line x1="7" x2="17" y1="17" y2="7"/>
-                  <polyline points="7 7 17 7 17 17"/>
-                </svg>
-                </a>
-              </div>
-            </div>
-
-
-            <div className='mb-12'>
-              <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
-                <p className="mb-2 text-black leading-relaxed font-sans">
-                SGA v1.1: Skills Gap Analyzer
-                </p>
-                <img src="/sga.png" alt="PureText" className="mb-2 border rounded-xl" />
-                <span className='font-mono mb-1.5 block'>
-                Analyzes a candidate’s resume against a job description, gives a score and suggests personalized learning plans,
-                projects, and resume improvements.
-                </span>
-                <a 
-                className='text-blue-500 font-sans flex'
-                href='https://sga-sage.vercel.app'>
-                SGA v1.1<svg 
-                  className="feather feather-arrow-up-right" 
-                  fill="none" 
-                  height="24" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24" 
-                  width="24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line x1="7" x2="17" y1="17" y2="7"/>
-                  <polyline points="7 7 17 7 17 17"/>
-                </svg>
-                </a>
-              </div>
-            </div>
-
-
-            <div className='mb-12'>
-              <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
-                <p className="mb-2 text-black leading-relaxed font-sans">
-                Client Personal Portfolio
-                </p>
-                <img src="/js.png" alt="PureText" className="mb-2 border rounded-xl" />
-                <span className='font-mono mb-1.5 block'>
-                Designed and deployed a single-page portfolio app with a clean UI, perfect typography, lazy loading to reduce
-                server load, database integration for user messages, and CI/CD pipelines using Git. High customer satisfaction.<br/>
-                </span>
-                <a 
-                className='text-blue-500 font-sans flex'
-                href='https://jayasurya.site/'>
-                jayasurya.site<svg 
-                  className="feather feather-arrow-up-right" 
-                  fill="none" 
-                  height="24" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24" 
-                  width="24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line x1="7" x2="17" y1="17" y2="7"/>
-                  <polyline points="7 7 17 7 17 17"/>
-                </svg>
-                </a>
-              </div>
-            </div>
-
-
-              <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
-                <p className="mb-2 text-black leading-relaxed font-sans">
-                PureText
-                </p>
-                <img src="/puretext.png" alt="PureText" className="mb-2 border rounded-xl" />
-                <span className='font-mono mb-1.5 block'>
-                An application where users can convert regular text to plagiarism-free text with the help of a LLM
-                 — smooth, responsive, <i>blazing fast</i> and at the least 80% effective from tools like TurnItIn, Grammarly. It is now live on ProductHunt.
-                </span>
-                <div className='flex'>
-                <a 
-                className='text-blue-500 font-sans'
-                href='https://puretextbydatco.vercel.app'>
-                 <span className='flex'>PureText
-                 <svg 
-                  className="feather feather-arrow-up-right" 
-                  fill="none" 
-                  height="24" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24" 
-                  width="24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line x1="7" x2="17" y1="17" y2="7"/>
-                  <polyline points="7 7 17 7 17 17"/>
-                </svg>
-                </span>
-                </a>
-
-                <a 
-                className='text-blue-500 font-sans'
-                href='https://www.producthunt.com/posts/puretext'>
-                 <span className='flex'>ProductHunt
-                 <svg 
-                  className="feather feather-arrow-up-right" 
-                  fill="none" 
-                  height="24" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24" 
-                  width="24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line x1="7" x2="17" y1="17" y2="7"/>
-                  <polyline points="7 7 17 7 17 17"/>
-                </svg>
-                </span>
-                </a>
-                </div>
-              </div>
-            </div>
-
-            <div className='mb-12'>
-              <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
-                <p className="mb-2 text-black leading-relaxed font-sans">
-                SpeedCode
-                </p>
-                <img src="/speedcode.png" alt="PureText" className="mb-2 border rounded-xl" />
-                <span className='font-mono mb-1.5 block'>
-                A platform where users can practice essential coding algorithms while improving their typing speed. 
-                Two goals in one place — choose an algorithm, type it out, and track your progress<br/>
-                </span>
-                <a 
-                className='text-blue-500 font-sans flex'
-                href='https://speedcode.vercel.app'>
-                SpeedCode<svg 
-                  className="feather feather-arrow-up-right" 
-                  fill="none" 
-                  height="24" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24" 
-                  width="24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line x1="7" x2="17" y1="17" y2="7"/>
-                  <polyline points="7 7 17 7 17 17"/>
-                </svg>
-                </a>
-              </div>
-            </div>
-
-            {/* <div>
-              <div className = "border border-gray-200 border-1 p-5 rounded-2xl shadow-lg">
-                <p className="mb-2 text-black leading-relaxed font-sans">
-                Client Personal Portfolio
-                </p>
-                <img src="/portfolio.png" alt="PureText" className="mb-2 border rounded-xl" />
-                <span className='font-mono mb-1.5 block'>
-                A modern portfolio for a client using bare HTML, CSS and JavaScript. With consistent typography, buttery smooth transitions using GSAP
-                and simple to use and navigate UI. Got 300+ site visits.<br/>
-                </span>
-                <a 
-                className='text-blue-500 font-sans'
-                href='https://1580-ranav.github.io/home-of-js/'>
-                <span className='flex'>
-                Visit Site
-                <svg 
-                  className="feather feather-arrow-up-right" 
-                  fill="none" 
-                  height="24" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24" 
-                  width="24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line x1="7" x2="17" y1="17" y2="7"/>
-                  <polyline points="7 7 17 7 17 17"/>
-                </svg>
-              </span>
-              </a>
-              </div>
-
-            </div> */}
-
-            </section>
+        <div className="mt-4 flex flex-wrap gap-4">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:text-blue-400"
+            >
+              <span className="font-sans">{link.label}</span>
+              <ArrowUpRightIcon className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Projects
+const ArrowUpRightIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+    {...props}
+  >
+    <path
+      d="M7 17L17 7M17 7H7M17 7V17"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export default Projects;

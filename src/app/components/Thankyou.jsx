@@ -1,17 +1,23 @@
-import React from 'react'
+"use client";
+
+import React from "react";
 
 const Thankyou = () => {
   return (
-    <div>
-        <section className='text-center'>
-            <span>You've reached the end thank you for your time :)</span>
-            {/* <img src="/favicon-logo.png" alt="my-logo" className='w-full pb-0 mb-0' /> */}
-          </section>
-          <h6 className='text-center font-sans'>
-          All rights reserved, 2024 ©
-          vrana.fun and www.vrana.fun</h6>
-    </div>
-  )
-}
+    <footer className="w-full py-10 sm:py-12">
+        
+      
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+        <p className="text-lg sm:text-lg font-mono text-neutral-700 dark:text-neutral-300">
+          You’ve reached the end — thanks for stopping by !
+        </p>
+        <p className="mt-6 text-sm sm:text-base text-neutral-800 dark:text-neutral-400 font-sans">
+          © {new Date().getFullYear()} All rights reserved.{" "}
+          <span className="font-medium">vrana.fun</span> · www.vrana.fun
+        </p>
+      </div>
+    </footer>
+  );
+};
 
-export default Thankyou
+export default Thankyou;
