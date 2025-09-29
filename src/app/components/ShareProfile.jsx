@@ -3,14 +3,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-const DEFAULT_WEBSITE = "https://www.vrana.fun/";
-const DEFAULT_IMAGE = "/share-view.png"; // put your image in /public or pass as prop
+const DEFAULT_WEBSITE = "https://www.vrana.fun/share"; // share a page with OG tags
+const DEFAULT_IMAGE = "/share-view.png"; // lives in /public
 
 const ShareProfile = ({
   website = DEFAULT_WEBSITE,
   imageSrc = DEFAULT_IMAGE,
   imageAlt = "V Ranadheer",
-  className = "", // optional extra classes for outer wrapper
+  className = "",
 }) => {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -20,25 +20,32 @@ const ShareProfile = ({
 
   // Prevent body scroll when modal open
   useEffect(() => {
-    if (open) {
-      const original = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = original;
-      };
-    }
+    if (!open) return;
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = original;
+    };
   }, [open]);
 
-  // Focus trap
+  // Focus trap + ESC close
   useEffect(() => {
     const handler = (e) => {
       if (!open) return;
-      if (e.key === "Escape") setOpen(false);
+
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setOpen(false);
+        return;
+      }
+
       if (e.key === "Tab") {
         const focusable = getFocusable(dialogRef.current);
         if (!focusable.length) return;
+
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
+
         if (e.shiftKey && document.activeElement === first) {
           last.focus();
           e.preventDefault();
@@ -48,6 +55,7 @@ const ShareProfile = ({
         }
       }
     };
+
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
   }, [open]);
@@ -63,8 +71,8 @@ const ShareProfile = ({
 
   const onOpen = () => {
     setOpen(true);
+    // focus first control inside modal
     setTimeout(() => {
-      // focus first control inside modal
       const focusable = getFocusable(dialogRef.current);
       if (focusable.length) focusable[0].focus();
     }, 0);
@@ -76,38 +84,34 @@ const ShareProfile = ({
       setCopied(true);
       setTimeout(() => setCopied(false), 1400);
     } catch {
-      // no-op
+      // clipboard could fail (permissions etc.) - no-op
     }
   };
 
-  // Web Share API if available
+  // Web Share API (uses current website prop)
   const tryNativeShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
-            title: "Check out this profile",
-            text: "Check out this profile",
-            url: "https://www.vrana.fun/",
-            });
+          title: "Check out this profile",
+          text: "Check out this profile",
+          url: website, // use the prop, not hardcoded
+        });
       } catch {
         /* user cancelled */
       }
     } else {
-      // fallback: open LinkedIn share
-      window.open(
-        `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-          website
-        )}`,
-        "_blank",
-        "noopener,noreferrer"
-      );
+      // Fallback to LinkedIn if Web Share not available
+      shareLinkedIn();
     }
   };
 
+  // Put the URL FIRST (or only the URL) so WhatsApp reliably generates a preview.
+  // Prefer wa.me; api.whatsapp.com also works.
   const shareWhatsApp = () => {
-    const text = `Check out this profile: ${website}`;
+    const shareUrlOnly = website; // page with OG tags
     window.open(
-      `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`,
+      `https://wa.me/?text=${encodeURIComponent(shareUrlOnly)}`,
       "_blank",
       "noopener,noreferrer"
     );
@@ -125,30 +129,32 @@ const ShareProfile = ({
 
   return (
     <div className={`my-6 flex items-center justify-center ${className}`}>
-      {/* Pill cut-out button */}
+      {/* Trigger button */}
       <button
         onClick={onOpen}
         className="mx-auto my-6 inline-flex items-center gap-2 rounded-full bg-green-500 text-white px-7 py-4 shadow-sm hover:bg-green-600 active:translate-y-[1px] transition-all focus:outline-none"
         aria-haspopup="dialog"
         aria-expanded={open}
-        >
+        aria-controls="share-dialog"
+      >
         <ShareIcon className="h-7 w-7 opacity-80" />
         <span className="font-semibold text-base sm:text-base">Share this profile</span>
-        </button>
-
+      </button>
 
       {/* Modal */}
       {open && (
         <div
+          id="share-dialog"
           className="fixed inset-0 z-50"
           role="dialog"
           aria-modal="true"
           aria-labelledby="share-title"
         >
           {/* Backdrop */}
-          <div
+          <button
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setOpen(false)}
+            aria-label="Close"
           />
 
           {/* Panel */}
@@ -175,7 +181,7 @@ const ShareProfile = ({
                   Share this profile
                 </h3>
 
-                {/* Image */}
+                {/* Image preview (local UI only; sharing uses page OG tags) */}
                 <div className="mt-4 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800">
                   <Image
                     src={imageSrc}
@@ -246,33 +252,18 @@ const ShareProfile = ({
   );
 };
 
-/* --- Icons (inline SVGs; feel free to swap with your icon set) --- */
+/* --- Icons (inline SVGs; swap with your icon set if you like) --- */
 
 const ShareIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-    <path
-      d="M4 12v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-    <path
-      d="M16 8l-4-4-4 4M12 4v12"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
+    <path d="M4 12v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <path d="M16 8l-4-4-4 4M12 4v12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 );
 
 const CloseIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-    <path
-      d="M6 6l12 12M18 6l-12 12"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
+    <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 );
 
@@ -285,17 +276,8 @@ const CopyIcon = (props) => (
 
 const WhatsAppIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-    <path
-      d="M20 11.5a8.5 8.5 0 0 1-12.9 7.2L4 20l1.3-3.1A8.5 8.5 0 1 1 20 11.5Z"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-    />
-    <path
-      d="M8.5 8.8c0 4 3.2 6.7 6 6.7.6 0 1.3-.1 1.8-.3-.4.7-1.1 1.4-2.3 1.4-2.5 0-6.1-3.2-6.1-7.4 0-1 .2-1.6.6-2.2Z"
-      fill="currentColor"
-      opacity="0.2"
-    />
+    <path d="M20 11.5a8.5 8.5 0 0 1-12.9 7.2L4 20l1.3-3.1A8.5 8.5 0 1 1 20 11.5Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    <path d="M8.5 8.8c0 4 3.2 6.7 6 6.7.6 0 1.3-.1 1.8-.3-.4.7-1.1 1.4-2.3 1.4-2.5 0-6.1-3.2-6.1-7.4 0-1 .2-1.6.6-2.2Z" fill="currentColor" opacity="0.2" />
   </svg>
 );
 
