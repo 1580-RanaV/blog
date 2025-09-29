@@ -1,4 +1,4 @@
-// app/layout.tsx (or .jsx with objects the same)
+// src/app/layout.js
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 const siteUrl = "https://www.vrana.fun";
-const ogImage = `${siteUrl}/share-view.png`;
+const ogImage = `${siteUrl}/share-view.png`; // ensure 1200x630 exists
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -29,9 +29,9 @@ export const metadata = {
     description: "V Ranadheer — Creative Developer (Andhra Pradesh, India)",
     images: [
       {
-        url: ogImage,          // absolute URL
+        url: ogImage,
         secureUrl: ogImage,
-        width: 1200,           // good OG size
+        width: 1200,
         height: 630,
         alt: "V Ranadheer — profile preview",
         type: "image/png",
@@ -44,17 +44,17 @@ export const metadata = {
     title: "Check out this profile",
     description: "V Ranadheer — Creative Developer (Andhra Pradesh, India)",
     images: [ogImage],
-    site: "@vrana_fun",       // if you have one, else remove
-    creator: "@vrana_fun",
+    // remove site/creator if you don't own the handle
   },
   icons: {
     icon: [
-      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico" },
+      { url: "/favicon.ico" },              // you have this
+      // add these only if you add the files:
+      // { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      // { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-    other: [{ rel: "manifest", url: "/site.webmanifest" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }], // matches your file
+    other: [{ rel: "manifest", url: "/site.webmanifest" }], // keep this one manifest
   },
   applicationName: "V Rana",
   appleWebApp: { title: "V Rana" },
