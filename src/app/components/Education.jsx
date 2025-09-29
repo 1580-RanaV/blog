@@ -37,7 +37,7 @@ const Education = () => {
                 Bachelor of Technology, Computer Science and Engineering (Class of 2025)
               </p>
               <p className="mt-3 text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
-                <strong className="inline-flex items-center rounded-full bg-emerald-100 text-emerald-900 ring-1 ring-inset ring-emerald-200 px-3 py-1 font-semibold text-xs sm:text-sm leading-none dark:bg-emerald-950/40 dark:text-emerald-200 dark:ring-emerald-800">CGPA: 8.42</strong>
+                <strong className="inline-flex items-center rounded-full bg-emerald-100 text-emerald-900 ring-1 ring-inset ring-emerald-200 px-3 py-1 font-semibold text-xs sm:text-sm leading-none dark:bg-emerald-950/40 dark:text-emerald-200 dark:ring-emerald-800">CGPA: 8.61</strong>
               </p>
             </div>
           </div>
