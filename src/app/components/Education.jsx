@@ -33,7 +33,7 @@ const Education = () => {
                 </div>
               </div>
 
-              <p className="mt-2 text-base sm:text-lg text-neutral-700 dark:text-neutral-300">
+              <p className="mt-2 font-mono text-base sm:text-lg text-neutral-700 dark:text-neutral-300">
                 Bachelor of Technology, Computer Science and Engineering (Class of 2025)
               </p>
               <p className="mt-3 text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
@@ -62,7 +62,7 @@ const Education = () => {
                 </div>
               </div>
 
-              <p className="mt-2 text-base sm:text-lg text-neutral-700 dark:text-neutral-300">
+              <p className="mt-2 font-mono text-base sm:text-lg text-neutral-700 dark:text-neutral-300">
                 MPC (Math, Physics, Chemistry), 2021
               </p>
               <p className="mt-3 font-mono text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
@@ -91,7 +91,7 @@ const Education = () => {
                 </div>
               </div>
 
-              <p className="mt-2 text-base sm:text-lg text-neutral-700 dark:text-neutral-300">
+              <p className="mt-2 font-mono text-base sm:text-lg text-neutral-700 dark:text-neutral-300">
                 Secondary Education, 2019
               </p>
               <p className="mt-3 text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">

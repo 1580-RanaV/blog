@@ -8,10 +8,10 @@ const Thankyou = () => {
         
       
       <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
-        <p className="text-justify mt-4 font-mono text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
-          You’ve reached the end — thanks for stopping by !
+        <p className="text-center mt-4 font-mono text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
+          You’ve reached the end — thank you !
         </p>
-        <p className="mt-6 text-sm sm:text-base text-neutral-800 dark:text-neutral-400 font-sans">
+        <p className="mt-6 text-sm sm:text-base text-neutral-800 dark:text-neutral-400 font-mono">
           © {new Date().getFullYear()} All rights reserved.{" "}
           <span className="font-medium">vrana.fun</span> · www.vrana.fun
         </p>

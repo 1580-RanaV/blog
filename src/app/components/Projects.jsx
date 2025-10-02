@@ -108,7 +108,7 @@ const ProjectCard = ({ title, images, description, links, tags = [] }) => {
           </ul>
         )}
 
-        <div className="mt-4 flex flex-wrap gap-4">
+        <div className="mt-4 font-mono flex flex-wrap gap-4">
           {links.map((link) => (
             <a
               key={link.href}
