@@ -8,7 +8,7 @@ const Thankyou = () => {
         
       
       <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
-        <p className="text-lg sm:text-lg font-mono text-neutral-700 dark:text-neutral-300">
+        <p className="text-justify mt-4 font-mono text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
           You’ve reached the end — thanks for stopping by !
         </p>
         <p className="mt-6 text-sm sm:text-base text-neutral-800 dark:text-neutral-400 font-sans">
