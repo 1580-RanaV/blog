@@ -51,7 +51,7 @@ export default function ProfileIntro() {
         {/* Intro Paragraphs */}
         <div className="mt-6 space-y-5 text-black">
           <p className="leading-relaxed text-black">
-            Hi, I’m <span className="font-semibold">V. Ranadheer</span> — a CS graduate
+            Hi, I’m V. Ranadheer — a CS graduate
             passionate about the intersection of{" "}
             <span className="font-medium">design</span> and{" "}
             <span className="font-medium">development</span>. Every line of code and every pixel

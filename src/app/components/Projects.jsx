@@ -7,17 +7,13 @@ export default function Projects() {
   return (
     <section className="w-full font-regular text-black">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 text-black">
-        {/* Section Title */}
-        <h2 className="font-semibold uppercase tracking-[0.14em] text-black">
-          Projects
-        </h2>
 
         <p className="mt-2 font-semibold leading-tight tracking-tight text-black">
           Selected Work
         </p>
 
         {/* Projects List */}
-        <div className="mt-10 space-y-16 sm:space-y-20 text-black">
+        <div className="mt-8 space-y-16 sm:space-y-20 text-black">
           <ProjectCard
             title="Jobsy: Application Tracker"
             images={["/jobsy-1.png", "/jobsy.png"]}

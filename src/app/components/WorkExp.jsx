@@ -5,10 +5,6 @@ import React from "react";
 export default function WorkExp() {
   return (
     <div className="w-full font-regular text-black">
-      {/* Section Header (micro-label + title for consistency) */}
-      <h2 className="font-semibold uppercase tracking-[0.14em] text-black">
-        Work Experience
-      </h2>
 
       <p className="mt-2 font-semibold leading-tight tracking-tight text-black">
         Roles & Internships

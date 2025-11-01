@@ -54,10 +54,6 @@ export default function Contact() {
 
   return (
     <div className="w-full font-regular text-black">
-      {/* Section heading */}
-      <h2 className="font-regular font-semibold uppercase tracking-[0.14em] text-black">
-        Contact
-      </h2>
       <p className="mt-2 font-regular font-semibold leading-tight tracking-tight text-black">
         Reach out to me
       </p>

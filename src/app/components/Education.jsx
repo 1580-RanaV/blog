@@ -6,10 +6,6 @@ import Image from "next/image";
 export default function Education() {
   return (
     <div className="w-full font-regular text-black">
-      {/* Main header */}
-      <h2 className="font-regular font-semibold uppercase tracking-[0.14em] text-black">
-        Education
-      </h2>
       <p className="mt-2 font-regular font-semibold leading-tight tracking-tight text-black">
         Academics, Participations & Clubs
       </p>
