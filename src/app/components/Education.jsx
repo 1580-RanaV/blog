@@ -158,7 +158,7 @@ function ParticipationItem({ icon, title, description, link }) {
 
 function ClubItem({ icon, title, org, description, link }) {
   return (
-    <article className="group border-l border-neutral-200 pl-6 transition-colors hover:border-neutral-900">
+    <article className="">
       <header className="flex items-start gap-4">
         <LogoBox {...icon} />
         <div className="min-w-0">

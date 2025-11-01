@@ -129,7 +129,7 @@ export default function Projects() {
 
 function ProjectCard({ title, images = [], description, links = [], tags = [] }) {
   return (
-    <article className="group border-l border-neutral-200 pl-6 transition-all hover:border-neutral-900">
+    <article className="">
       <header>
         <h3 className="text-[20px] sm:text-[22px] font-semibold leading-snug text-neutral-900">
           {title}

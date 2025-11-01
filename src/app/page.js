@@ -91,7 +91,7 @@ export default function Page() {
 
   // Open state map — profile open by default; rest closed
   const [openMap, setOpenMap] = useState(() => ({
-    profile: true,
+    profile: false,
     projects: false,
     work: false,
     education: false,

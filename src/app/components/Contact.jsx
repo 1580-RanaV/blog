@@ -64,7 +64,7 @@ export default function Contact() {
       </p>
 
       {/* Left-rule form block */}
-      <article className="mt-8 group border-l border-neutral-200 pl-6 transition-colors hover:border-neutral-900">
+      <article className="">
         <p className="font-mono text-[14px] sm:text-[15px] leading-relaxed text-neutral-700">
           Leave a message below — I check my inbox now and then.
         </p>

@@ -45,7 +45,7 @@ export default function WorkExp() {
 
 function WorkItem({ company, duration, role, description, tags = [] }) {
   return (
-    <article className="group border-l border-neutral-200 pl-6 transition-colors hover:border-neutral-900">
+    <article className="">
       <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <h3 className="text-[20px] sm:text-[22px] font-semibold leading-snug text-neutral-900">
           {company}
