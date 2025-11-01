@@ -132,7 +132,7 @@ export default function Page() {
             <WorkExp />
           </AccordionSection>
 
-          <AccordionSection id="education" title="Education / Academics" isOpen={openMap.education} setOpen={setOpen}>
+          <AccordionSection id="education" title="Education + Academics" isOpen={openMap.education} setOpen={setOpen}>
             <Education />
           </AccordionSection>
 

@@ -53,17 +53,17 @@ export default function Contact() {
   }
 
   return (
-    <div className="w-full font-regular">
+    <div className="w-full font-regular text-black">
       {/* Section heading */}
-      <h2 className="font-regular font-semibold uppercase tracking-[0.14em] text-neutral-500">
+      <h2 className="font-regular font-semibold uppercase tracking-[0.14em] text-black">
         Contact
       </h2>
-      <p className="mt-2 font-regular font-semibold leading-tight tracking-tight text-neutral-900">
+      <p className="mt-2 font-regular font-semibold leading-tight tracking-tight text-black">
         Reach out to me
       </p>
 
-      <article className="font-regular">
-        <p className="font-regular leading-relaxed text-neutral-700 mt-2">
+      <article className="font-regular text-black">
+        <p className="font-regular leading-relaxed mt-2 text-black">
           Leave a message below — I check my inbox now and then.
         </p>
 
@@ -79,12 +79,12 @@ export default function Contact() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="w-full resize-y rounded-lg border border-neutral-300 bg-white p-3 leading-relaxed text-neutral-900 placeholder-neutral-400 outline-none focus:border-neutral-900 focus:ring-0 font-regular"
+            className="w-full resize-y rounded-lg border border-neutral-300 bg-white p-3 leading-relaxed text-black outline-none focus:border-neutral-900 focus:ring-0 font-regular"
           />
         </div>
 
         {/* Email + Submit */}
-        <div className="mt-4 flex flex-col gap-3 sm:flex-row font-regular">
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row font-regular text-black">
           <div className="flex-1">
             <label htmlFor="email" className="sr-only">
               Email
@@ -96,7 +96,7 @@ export default function Contact() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="w-full rounded-lg border border-neutral-300 bg-white p-3 text-neutral-900 placeholder-neutral-400 outline-none focus:border-neutral-900 focus:ring-0 font-regular"
+              className="w-full rounded-lg border border-neutral-300 bg-white p-3 text-black outline-none focus:border-neutral-900 focus:ring-0 font-regular"
             />
           </div>
 
@@ -104,7 +104,7 @@ export default function Contact() {
             type="button"
             onClick={handleSubmit}
             disabled={btnDisabled}
-            className={`flex-1 inline-flex items-center justify-center rounded-lg px-4 py-3 font-regular font-medium text-white transition-all focus:outline-none
+            className={`flex-1 inline-flex items-center justify-center rounded-lg px-4 py-3 font-regular font-medium text-black transition-all focus:outline-none
               ${
                 btnDisabled
                   ? "bg-neutral-400 cursor-not-allowed"
@@ -113,7 +113,7 @@ export default function Contact() {
             aria-live="polite"
           >
             {showTick ? (
-              <span className="inline-flex items-center gap-2 font-regular">
+              <span className="inline-flex items-center gap-2 font-regular text-black">
                 <FaCheck aria-hidden="true" />
                 Sent
               </span>
@@ -128,18 +128,14 @@ export default function Contact() {
         {/* Feedback */}
         {feedback.text && (
           <div className="mt-3" aria-live="polite">
-            <p
-              className={`font-regular leading-relaxed ${
-                feedback.type === "error" ? "text-red-600" : "text-green-600"
-              }`}
-            >
+            <p className="font-regular leading-relaxed text-black">
               {feedback.text}
             </p>
           </div>
         )}
 
         {/* Footnote */}
-        <p className="mt-4 text-neutral-500 font-regular">
+        <p className="mt-4 font-regular text-black">
           Tip: <span className="font-regular">⌘/Ctrl + Enter</span> to send.
         </p>
       </article>

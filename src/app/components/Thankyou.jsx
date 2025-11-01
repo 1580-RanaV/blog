@@ -7,47 +7,79 @@ export default function Thankyou() {
 
   function scrollToTop(e) {
     e.preventDefault();
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    if (typeof window === "undefined") return;
+
+    const prefersReduced =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReduced ? "auto" : "smooth",
+    });
+  }
+
+  function handleEmailError(e) {
+    e.preventDefault();
+    alert("Sorry, email temporarily unavailable 😅");
   }
 
   return (
-    <footer aria-label="Site footer" className="w-full font-regular">
-      {/* Hairline */}
-      <div className="h-px w-full bg-neutral-200" />
-
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-10 font-regular">
-        {/* Signature / closing note */}
-        <p className="font-regular leading-relaxed text-neutral-800">
-          Thanks for reading — see you around. <br className="hidden sm:block" />
-          This space is where I collect my work, ideas, and a bit of myself. <br className="hidden sm:block" />
+    <footer
+      aria-label="Site footer"
+      className="w-full font-regular text-black border-t border-neutral-200"
+    >
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-10">
+        {/* Closing note */}
+        <p className="leading-relaxed">
+          Thanks for reading — see you around.{" "}
+          <br className="hidden sm:block" />
+          This space is where I collect my work, ideas, and a bit of myself.{" "}
+          <br className="hidden sm:block" />
           Always in progress, always becoming.
         </p>
 
-        {/* Meta bar */}
-        <div className="mt-8 grid grid-cols-1 gap-3 text-neutral-600 sm:grid-cols-3 sm:items-center font-regular">
-          <div className="order-2 sm:order-1">
-            <p className="font-regular">
-              © {year} <span className="font-regular font-medium">www.vrana.website</span>
-            </p>
-          </div>
+        {/* Meta + actions */}
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {year} <span className="font-medium">www.vrana.website</span>
+          </p>
 
-          <div className="order-1 sm:order-2 text-neutral-500 sm:text-center">
-            <p className="uppercase font-regular tracking-[0.14em]">
-              V RANA PERSONAL PORTFOLIO
-            </p>
-          </div>
-
-          <div className="order-3 flex items-center justify-start gap-4 sm:justify-end">
+          {/* Footer navigation */}
+          <nav aria-label="Footer navigation" className="flex gap-4">
             <a
-              href="#top"
-              onClick={scrollToTop}
-              className="font-regular underline underline-offset-4 hover:text-neutral-900"
+              href="#"
+              onClick={handleEmailError}
+              className="underline underline-offset-4"
             >
-              Back to top ↑
+              Email
             </a>
-          </div>
+            <a
+              href="https://github.com/1580-RanaV"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://www.instagram.com/byvrana/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://x.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4"
+            >
+              X
+            </a>
+          </nav>
+
         </div>
       </div>
     </footer>

@@ -5,19 +5,19 @@ import Image from "next/image";
 
 export default function Projects() {
   return (
-    <section className="w-full font-regular">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+    <section className="w-full font-regular text-black">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 text-black">
         {/* Section Title */}
-        <h2 className="font-regular font-semibold uppercase tracking-[0.14em] text-neutral-500">
+        <h2 className="font-semibold uppercase tracking-[0.14em] text-black">
           Projects
         </h2>
 
-        <p className="mt-2 font-regular font-semibold leading-tight tracking-tight text-neutral-900">
+        <p className="mt-2 font-semibold leading-tight tracking-tight text-black">
           Selected Work
         </p>
 
         {/* Projects List */}
-        <div className="mt-10 space-y-16 sm:space-y-20">
+        <div className="mt-10 space-y-16 sm:space-y-20 text-black">
           <ProjectCard
             title="Jobsy: Application Tracker"
             images={["/jobsy-1.png", "/jobsy.png"]}
@@ -129,11 +129,9 @@ export default function Projects() {
 
 function ProjectCard({ title, images = [], description, links = [], tags = [] }) {
   return (
-    <article className="font-regular">
+    <article className="font-regular text-black">
       <header>
-        <h3 className="font-regular font-semibold leading-snug text-neutral-900">
-          {title}
-        </h3>
+        <h3 className="font-semibold leading-snug text-black">{title}</h3>
       </header>
 
       {/* Images */}
@@ -153,13 +151,11 @@ function ProjectCard({ title, images = [], description, links = [], tags = [] })
       </div>
 
       {/* Description */}
-      <p className="mt-4 font-regular leading-relaxed text-neutral-700">
-        {description}
-      </p>
+      <p className="mt-4 leading-relaxed text-black">{description}</p>
 
       {/* Tags */}
       {tags.length > 0 && (
-        <ul className="mt-5 flex flex-wrap gap-2 font-regular">
+        <ul className="mt-5 flex flex-wrap gap-2 text-black">
           {tags.map((tag, idx) => (
             <li key={idx}>
               <TagChip label={tag} />
@@ -169,17 +165,17 @@ function ProjectCard({ title, images = [], description, links = [], tags = [] })
       )}
 
       {/* Links */}
-      <div className="mt-5 flex flex-wrap gap-4 font-regular">
+      <div className="mt-5 flex flex-wrap gap-4 text-black">
         {links.map((link, i) => (
           <a
             key={i}
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-regular font-medium text-blue-600 hover:text-blue-800 underline underline-offset-4 transition-colors"
+            className="inline-flex items-center gap-1 font-medium text-black underline underline-offset-4 transition-colors hover:text-black"
           >
             {link.label}
-            <ArrowUpRightIcon className="h-4 w-4" />
+            <ArrowUpRightIcon className="h-4 w-4 text-black" />
           </a>
         ))}
       </div>
@@ -189,7 +185,7 @@ function ProjectCard({ title, images = [], description, links = [], tags = [] })
 
 function TagChip({ label }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-regular font-medium uppercase tracking-[0.12em] text-neutral-600 hover:text-neutral-900 hover:border-neutral-900 transition-colors">
+    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-medium uppercase tracking-[0.12em] text-black hover:text-black hover:border-black transition-colors">
       {label}
     </span>
   );

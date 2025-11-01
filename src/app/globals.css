@@ -21,53 +21,6 @@
   }
 }
 
-/* ---------- Global Typography & Color Hierarchy ---------- */
-@layer base {
-  /* Base text (default body copy) */
-  body {
-    @apply text-neutral-800 font-regular leading-relaxed;
-  }
-
-  /* Headings */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-regular font-semibold text-neutral-900 tracking-tight;
-  }
-
-  h1 { @apply text-2xl sm:text-3xl; }  /* Main titles */
-  h2 { @apply text-xl sm:text-2xl; }   /* Section titles */
-  h3 { @apply text-lg; }               /* Subtitles or cards */
-
-  /* Paragraphs and inline text */
-  p, li, span, label, summary {
-    @apply text-neutral-700;
-  }
-
-  /* Small captions, metadata */
-  small, .text-small {
-    @apply text-neutral-500 text-sm;
-  }
-
-  /* Links */
-  a {
-    @apply text-blue-600 hover:text-blue-800 underline-offset-4 hover:underline transition-colors;
-  }
-
-  /* Buttons and inputs inherit body text color but stay readable */
-  button, input, textarea {
-    @apply text-neutral-900;
-  }
-
-  /* Accents — uppercase micro labels like "PROJECTS" or "EDUCATION" */
-  .micro-label {
-    @apply uppercase tracking-[0.14em] text-neutral-500 font-regular text-sm;
-  }
-
-  /* Divider text or muted elements */
-  .muted {
-    @apply text-neutral-500;
-  }
-}
-
 
 /* ---------- Subtle Appearance Animation ---------- */
 @keyframes fadeUp {
