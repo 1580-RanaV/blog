@@ -7,26 +7,67 @@
   html {
     scroll-behavior: smooth;
     font-size: 14px; /* 1rem = 14px */
+    font-family: var(--font-geist-sans), system-ui, sans-serif; /* global font-sans */
   }
 
   body {
     @apply bg-white text-neutral-900 antialiased;
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
     line-height: 1.6;
   }
 
   * {
     @apply border-neutral-200;
+    font-family: inherit; /* inherit from html (font-sans globally) */
   }
 }
 
-/* ---------- Font Utilities ---------- */
-.font-sans {
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+/* ---------- Global Typography & Color Hierarchy ---------- */
+@layer base {
+  /* Base text (default body copy) */
+  body {
+    @apply text-neutral-800 font-regular leading-relaxed;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-regular font-semibold text-neutral-900 tracking-tight;
+  }
+
+  h1 { @apply text-2xl sm:text-3xl; }  /* Main titles */
+  h2 { @apply text-xl sm:text-2xl; }   /* Section titles */
+  h3 { @apply text-lg; }               /* Subtitles or cards */
+
+  /* Paragraphs and inline text */
+  p, li, span, label, summary {
+    @apply text-neutral-700;
+  }
+
+  /* Small captions, metadata */
+  small, .text-small {
+    @apply text-neutral-500 text-sm;
+  }
+
+  /* Links */
+  a {
+    @apply text-blue-600 hover:text-blue-800 underline-offset-4 hover:underline transition-colors;
+  }
+
+  /* Buttons and inputs inherit body text color but stay readable */
+  button, input, textarea {
+    @apply text-neutral-900;
+  }
+
+  /* Accents — uppercase micro labels like "PROJECTS" or "EDUCATION" */
+  .micro-label {
+    @apply uppercase tracking-[0.14em] text-neutral-500 font-regular text-sm;
+  }
+
+  /* Divider text or muted elements */
+  .muted {
+    @apply text-neutral-500;
+  }
 }
-.font-mono {
-  font-family: var(--font-geist-mono), monospace;
-}
+
 
 /* ---------- Subtle Appearance Animation ---------- */
 @keyframes fadeUp {
@@ -37,7 +78,7 @@
   animation: fadeUp 0.6s ease-out both;
 }
 
-/* ---------- Force 14px everywhere (keeps Tailwind font-weight utilities working) ---------- */
+/* ---------- Force 14px everywhere ---------- */
 @layer base {
   :where(h1,h2,h3,h4,h5,h6,p,li,dl,small,label,summary,button,input,textarea,a,span) {
     font-size: 1rem !important;  /* 14px */
@@ -47,4 +88,16 @@
     font-size: 1rem !important;   /* catches sm:text-*, text-[15px], etc. */
     font-weight: inherit;
   }
+}
+
+@font-face {
+  font-family: 'font-regular';
+  src: url('/fonts/inter.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-regular {
+  font-family: 'font-regular', sans-serif;
 }

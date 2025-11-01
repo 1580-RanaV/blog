@@ -5,26 +5,28 @@ import Image from "next/image";
 
 export default function ProfileIntro() {
   return (
-    <section className="w-full">
+    <section className="w-full font-regular">
       <div className="mx-auto max-w-4xl">
         {/* Header Row — name, title, and photo side-by-side */}
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
           {/* --- Text block --- */}
           <div className="text-left">
-            <h1 className="text-[26px] sm:text-[30px] font-sans font-semibold leading-tight tracking-tight text-neutral-900 dark:text-neutral-50">
+            <h1 className="text-[26px] sm:text-[30px] font-regular font-semibold leading-tight tracking-tight text-neutral-900 dark:text-neutral-50">
               V Ranadheer
             </h1>
 
-            <p className="mt-2 text-[13px] sm:text-[14px] text-neutral-600 dark:text-neutral-300">
-              <span className="font-mono">Graduate</span>
+            <p className="mt-2 text-[13px] sm:text-[14px] text-neutral-600 dark:text-neutral-300 font-regular">
+              <span className="font-regular">Graduate</span>
               <span className="mx-2">•</span>
-              <span className="font-mono">Creative Developer</span>
+              <span className="font-regular">Creative Developer</span>
             </p>
-            <p className="mt-1 text-[12px] sm:text-[13px] text-neutral-500 dark:text-neutral-400">
-              <span className="font-mono">Andhra Pradesh, India</span>
+
+            <p className="mt-1 text-[12px] sm:text-[13px] text-neutral-500 dark:text-neutral-400 font-regular">
+              <span className="font-regular">Andhra Pradesh, India</span>
             </p>
-            <p className="mt-1 text-[12px] sm:text-[13px] text-neutral-500 dark:text-neutral-400">
-              <span className="font-mono">Open to work</span>
+
+            <p className="mt-1 text-[12px] sm:text-[13px] text-neutral-500 dark:text-neutral-400 font-regular">
+              <span className="font-regular">Open to work</span>
             </p>
           </div>
 
@@ -48,15 +50,15 @@ export default function ProfileIntro() {
 
         {/* Intro Paragraphs */}
         <div className="mt-6 space-y-5">
-          <p className="font-mono text-[15px] sm:text-[16px] leading-relaxed text-neutral-700 dark:text-neutral-300">
+          <p className="font-regular text-[15px] sm:text-[16px] leading-relaxed text-neutral-700 dark:text-neutral-300">
             Hi, I’m <span className="font-semibold">V. Ranadheer</span> — a CS graduate
             passionate about the intersection of{" "}
-            <span className="font-medium">design</span> and{" "}
-            <span className="font-medium">development</span>. Every line of code and every pixel
+            <span className="font-regular font-medium">design</span> and{" "}
+            <span className="font-regular font-medium">development</span>. Every line of code and every pixel
             I design reflects my commitment to clarity, creativity, and meaningful problem-solving.
           </p>
 
-          <p className="font-mono text-[15px] sm:text-[16px] leading-relaxed text-neutral-700 dark:text-neutral-300">
+          <p className="font-regular text-[15px] sm:text-[16px] leading-relaxed text-neutral-700 dark:text-neutral-300">
             I’m exploring what it truly means to be a developer — building tools, interfaces,
             and experiences that feel both technically sharp and emotionally resonant.
           </p>
@@ -94,9 +96,9 @@ function SocialIcon({ href, label, imgSrc }) {
       rel="noopener noreferrer"
       aria-label={label}
       title={label}
-      className="group inline-flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 ring-1 ring-inset ring-neutral-200 transition-all hover:-translate-y-[1px] hover:bg-white hover:ring-neutral-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-900 dark:ring-neutral-800 dark:hover:bg-neutral-800"
+      className="group inline-flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 ring-1 ring-inset ring-neutral-200 transition-all hover:-translate-y-[1px] hover:bg-white hover:ring-neutral-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-900 dark:ring-neutral-800 dark:hover:bg-neutral-800 font-regular"
     >
-      <span className="sr-only">{label}</span>
+      <span className="sr-only font-regular">{label}</span>
       <Image
         src={imgSrc}
         alt={label}
