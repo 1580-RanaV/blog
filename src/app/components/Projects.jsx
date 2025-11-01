@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Projects() {
   return (
-    <section className="w-full py-12 sm:py-16">
+    <section className="w-full">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         {/* Section Title */}
         <h2 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-neutral-500">

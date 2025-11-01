@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function ProfileIntro() {
   return (
     <section className="w-full">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
+      <div className="mx-auto max-w-4xl">
         {/* Header Row — name, title, and photo side-by-side */}
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
           {/* --- Text block --- */}
@@ -22,6 +22,9 @@ export default function ProfileIntro() {
             </p>
             <p className="mt-1 text-[12px] sm:text-[13px] text-neutral-500 dark:text-neutral-400">
               <span className="font-mono">Andhra Pradesh, India</span>
+            </p>
+            <p className="mt-1 text-[12px] sm:text-[13px] text-neutral-500 dark:text-neutral-400">
+              <span className="font-mono">Open to work</span>
             </p>
           </div>
 

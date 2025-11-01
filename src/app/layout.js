@@ -27,7 +27,7 @@ export const metadata = {
     siteName: "vrana.website",
     images: [
       {
-        url: "/my-view.png", // your OG image in /public
+        url: "/my-view.jpg", // your OG image in /public
         width: 1200,
         height: 630,
         alt: "V Ranadheer — cover",
@@ -39,7 +39,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "V Ranadheer — Portfolio",
     description: "Creative developer — portfolio & work.",
-    images: ["/my-view.png"],
+    images: ["/my-view.jpg"],
   },
 
   icons: {

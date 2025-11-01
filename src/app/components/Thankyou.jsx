@@ -32,7 +32,7 @@ export default function Thankyou() {
           </div>
 
           <div className="order-1 sm:order-2 text-neutral-500 sm:text-center">
-            <p className="uppercase text-[11px] tracking-[0.14em]">
+            <p className="uppercase font-normal tracking-[0.14em]">
               V RANA PERSONAL PORTFOLIO
             </p>
           </div>

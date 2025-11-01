@@ -6,11 +6,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-size: 14px; /* 1rem = 14px */
   }
 
   body {
     @apply bg-white text-neutral-900 antialiased;
     font-family: var(--font-geist-sans), system-ui, sans-serif;
+    line-height: 1.6;
   }
 
   * {
@@ -22,23 +24,27 @@
 .font-sans {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
-
 .font-mono {
   font-family: var(--font-geist-mono), monospace;
 }
 
 /* ---------- Subtle Appearance Animation ---------- */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .fade-up {
   animation: fadeUp 0.6s ease-out both;
+}
+
+/* ---------- Force 14px everywhere (keeps Tailwind font-weight utilities working) ---------- */
+@layer base {
+  :where(h1,h2,h3,h4,h5,h6,p,li,dl,small,label,summary,button,input,textarea,a,span) {
+    font-size: 1rem !important;  /* 14px */
+    font-weight: inherit;         /* let font-bold/semibold work */
+  }
+  :where([class*="text-"]) {
+    font-size: 1rem !important;   /* catches sm:text-*, text-[15px], etc. */
+    font-weight: inherit;
+  }
 }
