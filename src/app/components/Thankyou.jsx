@@ -2,22 +2,52 @@
 
 import React from "react";
 
-const Thankyou = () => {
+export default function Thankyou() {
+  const year = new Date().getFullYear();
+
+  function scrollToTop(e) {
+    e.preventDefault();
+    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
-    <footer className="w-full py-10 sm:py-12">
-        
-      
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
-        <p className="text-center mt-4 font-mono text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
-          You’ve reached the end — thank you !
+    <footer aria-label="Site footer" className="w-full">
+      {/* Hairline */}
+      <div className="h-px w-full bg-neutral-200" />
+
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-10">
+        {/* Top line: signature */}
+        <p className="font-mono text-[14px] sm:text-[15px] leading-relaxed text-neutral-800">
+          Thanks for reading — see you around. <br className="hidden sm:block" />
+          This space is where I collect my work, ideas, and a bit of myself. <br className="hidden sm:block" />
+          Always in progress, always becoming.
         </p>
-        <p className="mt-6 text-sm sm:text-base text-neutral-800 dark:text-neutral-400 font-mono">
-          © {new Date().getFullYear()} All rights reserved.{" "}
-          <span className="font-medium">vrana.fun</span> · www.vrana.fun
-        </p>
+
+        {/* Meta bar */}
+        <div className="mt-8 grid grid-cols-1 gap-3 text-[13px] text-neutral-600 sm:grid-cols-3 sm:items-center">
+          <div className="order-2 sm:order-1">
+            <p className="font-mono">
+              © {year} <span className="font-medium">www.vrana.website</span>
+            </p>
+          </div>
+
+          <div className="order-1 sm:order-2 text-neutral-500 sm:text-center">
+            <p className="uppercase text-[11px] tracking-[0.14em]">
+              V RANA PERSONAL PORTFOLIO
+            </p>
+          </div>
+
+          <div className="order-3 flex items-center justify-start gap-4 sm:justify-end">
+            <a
+              href="#top"
+              onClick={scrollToTop}
+              className="font-mono underline underline-offset-4 hover:text-neutral-900"
+            >
+              Back to top ↑
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );
-};
-
-export default Thankyou;
+}
