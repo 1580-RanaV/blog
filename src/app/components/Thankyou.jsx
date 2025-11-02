@@ -48,11 +48,11 @@ export default function Thankyou() {
           {/* Footer navigation */}
           <nav aria-label="Footer navigation" className="flex gap-4">
             <a
-              href="#"
+              href="https://www.linkedin.com/in/vrana11/"
               onClick={handleEmailError}
               className="underline underline-offset-4"
             >
-              Email
+              LinkedIn
             </a>
             <a
               href="https://github.com/1580-RanaV"
@@ -69,14 +69,6 @@ export default function Thankyou() {
               className="underline underline-offset-4"
             >
               Instagram
-            </a>
-            <a
-              href="https://x.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4"
-            >
-              X
             </a>
           </nav>
 

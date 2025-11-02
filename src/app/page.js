@@ -24,7 +24,7 @@ function SectionSkeleton({ title }) {
 
 /* ---------- Toolbar: single toggle (Open all / Close all) ---------- */
 function AccordionToggle({ allOpen, onToggleAll }) {
-  const label = allOpen ? "Close all" : "Open all";
+  const label = allOpen ? "close all" : "open all";
   return (
     <button
       type="button"

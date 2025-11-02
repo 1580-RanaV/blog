@@ -13,6 +13,7 @@
   body {
     @apply bg-white text-neutral-900 antialiased;
     line-height: 1.6;
+    text-transform: lowercase;
   }
 
   * {
