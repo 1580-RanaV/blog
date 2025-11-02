@@ -177,7 +177,7 @@ export default function Page() {
 
           <AccordionSection
             id="education"
-            title="Education + Academics"
+            title="Education & participations"
             isOpen={openMap.education}
             setOpen={setOpen}
           >
