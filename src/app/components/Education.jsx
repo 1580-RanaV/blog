@@ -46,21 +46,21 @@ export default function Education() {
             icon={{ src: "/providence.svg", alt: "Providence" }}
             title="Providence Ideathon 2024"
             description="Took on a health-focused problem statement at Unstop and advanced to the second round — one step away from the finals."
-            link={{ href: "https://github.com/YourGitHubUsername", label: "Reference" }}
+            link={{ href: "", label: "" }}
           />
 
           <ParticipationItem
             icon={{ src: "/catalog.jpg", alt: "Catalog" }}
             title="Catalog Hackathon"
             description="Reached the final round; hiring-style challenge across prompt engineering & problem solving. Statement based on an MIT cryptography paper."
-            link={{ href: "https://github.com/YourGitHubUsername", label: "Reference" }}
+            link={{ href: "", label: "" }}
           />
 
           <ParticipationItem
             icon={{ src: "/iim.jpeg", alt: "IIM Rohtak" }}
             title="IIM Rohtak Logo Competition"
             description="Consolation in IIM Rohtak logo design competition at Unstop."
-            link={{ href: "https://github.com/YourGitHubUsername", label: "Reference" }}
+            link={{ href: "", label: "" }}
           />
         </div>
       </div>
@@ -197,7 +197,7 @@ function LogoBox({ src, alt, rounded = "md" }) {
 
 function Pill({ children }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-regular font-medium uppercase tracking-[0.12em] text-black">
+    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-regular font-medium lowercase tracking-[0.12em] text-black">
       {children}
     </span>
   );

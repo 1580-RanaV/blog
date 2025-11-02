@@ -69,7 +69,7 @@ function WorkItem({ company, duration, role, description, tags = [] }) {
 
 function TagChip({ label }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-medium uppercase tracking-[0.12em] text-black hover:text-black hover:border-black transition-colors">
+    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-medium lowercase tracking-[0.12em] text-black hover:text-black hover:border-black transition-colors">
       {label}
     </span>
   );

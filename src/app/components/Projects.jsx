@@ -9,7 +9,7 @@ export default function Projects() {
       <div className="mx-auto max-w-3xl px-4 sm:px-6 text-black">
 
         <p className="mt-2 font-semibold leading-tight tracking-tight text-black">
-          Selected Work
+          Selected Work; some of my projects that are listen on my resume actively.
         </p>
 
         {/* Projects List */}
@@ -181,7 +181,7 @@ function ProjectCard({ title, images = [], description, links = [], tags = [] })
 
 function TagChip({ label }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-medium uppercase tracking-[0.12em] text-black hover:text-black hover:border-black transition-colors">
+    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-medium lowercase tracking-[0.12em] text-black hover:text-black hover:border-black transition-colors">
       {label}
     </span>
   );

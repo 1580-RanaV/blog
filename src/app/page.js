@@ -4,8 +4,9 @@ import React, { useMemo, useState, useCallback } from "react";
 import dynamic from "next/dynamic";
 import ProfileIntro from "./components/ProfileIntro";
 
-// Lazy sections
+/* ---------- Lazy sections ---------- */
 const Projects       = dynamic(() => import("./components/Projects"),       { loading: () => <SectionSkeleton title="Projects" /> });
+const Unfinished     = dynamic(() => import("./components/Unfinished"),     { loading: () => <SectionSkeleton title="Unfinished Projects" /> });
 const WorkExp        = dynamic(() => import("./components/WorkExp"),        { loading: () => <SectionSkeleton title="Work Experience" /> });
 const Education      = dynamic(() => import("./components/Education"),      { loading: () => <SectionSkeleton title="Education / Academics" /> });
 const Contact        = dynamic(() => import("./components/Contact"),        { loading: () => <SectionSkeleton title="Contact" /> });
@@ -41,9 +42,12 @@ function AccordionToggle({ allOpen, onToggleAll }) {
 
 /* ---------- Controlled, accessible accordion section ---------- */
 function AccordionSection({ id, title, isOpen, setOpen, children }) {
-  const onToggle = useCallback((e) => {
-    setOpen(id, e.currentTarget.open);
-  }, [id, setOpen]);
+  const onToggle = useCallback(
+    (e) => {
+      setOpen(id, e.currentTarget.open);
+    },
+    [id, setOpen]
+  );
 
   return (
     <details
@@ -61,7 +65,12 @@ function AccordionSection({ id, title, isOpen, setOpen, children }) {
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
-          <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <path
+            d="M12 5v14M5 12h14"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
         </svg>
       </summary>
 
@@ -75,19 +84,23 @@ function AccordionSection({ id, title, isOpen, setOpen, children }) {
 }
 
 export default function Page() {
-  const sections = useMemo(() => ([
-    { id: "profile",         title: "Profile" },
-    { id: "projects",        title: "Projects" },
-    { id: "certifications",  title: "Certifications" },
-    { id: "work",            title: "Work Experience" },
-    { id: "education",       title: "Education / Academics" },
-    { id: "contact",         title: "Contact" },
-    // tip: leave "thankyou" out of sections since it's not an accordion
-  ]), []);
+  const sections = useMemo(
+    () => [
+      { id: "profile",        title: "Profile" },
+      { id: "projects",       title: "Projects" },
+      { id: "unfinished",     title: "Unfinished / old Projects" },
+      { id: "certifications", title: "Certifications" },
+      { id: "work",           title: "Work Experience" },
+      { id: "education",      title: "Education / Academics" },
+      { id: "contact",        title: "Contact" },
+    ],
+    []
+  );
 
   const [openMap, setOpenMap] = useState(() => ({
     profile: false,
     projects: false,
+    unfinished: false,
     certifications: false,
     work: false,
     education: false,
@@ -116,27 +129,67 @@ export default function Page() {
         </div>
 
         <div className="divide-y divide-neutral-200">
-          <AccordionSection id="profile" title="Profile" isOpen={openMap.profile} setOpen={setOpen}>
+          <AccordionSection
+            id="profile"
+            title="Profile"
+            isOpen={openMap.profile}
+            setOpen={setOpen}
+          >
             <ProfileIntro />
           </AccordionSection>
 
-          <AccordionSection id="projects" title="Projects" isOpen={openMap.projects} setOpen={setOpen}>
+          <AccordionSection
+            id="projects"
+            title="Projects"
+            isOpen={openMap.projects}
+            setOpen={setOpen}
+          >
             <Projects />
           </AccordionSection>
 
-          <AccordionSection id="certifications" title="Certification(s)" isOpen={openMap.certifications} setOpen={setOpen}>
+          {/* ✅ New Accordion section below Projects */}
+          <AccordionSection
+            id="unfinished"
+            title="Unfinished / old Projects"
+            isOpen={openMap.unfinished}
+            setOpen={setOpen}
+          >
+            <Unfinished />
+          </AccordionSection>
+
+          <AccordionSection
+            id="certifications"
+            title="Certification(s)"
+            isOpen={openMap.certifications}
+            setOpen={setOpen}
+          >
             <Certifications />
           </AccordionSection>
 
-          <AccordionSection id="work" title="Work Experience" isOpen={openMap.work} setOpen={setOpen}>
+          <AccordionSection
+            id="work"
+            title="Work Experience"
+            isOpen={openMap.work}
+            setOpen={setOpen}
+          >
             <WorkExp />
           </AccordionSection>
 
-          <AccordionSection id="education" title="Education + Academics" isOpen={openMap.education} setOpen={setOpen}>
+          <AccordionSection
+            id="education"
+            title="Education + Academics"
+            isOpen={openMap.education}
+            setOpen={setOpen}
+          >
             <Education />
           </AccordionSection>
 
-          <AccordionSection id="contact" title="Contact" isOpen={openMap.contact} setOpen={setOpen}>
+          <AccordionSection
+            id="contact"
+            title="Contact"
+            isOpen={openMap.contact}
+            setOpen={setOpen}
+          >
             <Contact />
           </AccordionSection>
 
