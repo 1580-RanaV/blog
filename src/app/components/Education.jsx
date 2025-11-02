@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Education() {
   return (
     <div className="w-full font-regular text-black">
-      <p className="mt-2 font-regular font-semibold leading-tight tracking-tight text-black">
+      <p className="mt-2 font-regular font-semibold leading-tight text-black">
         Academics, Participations & Clubs
       </p>
 
@@ -197,7 +197,7 @@ function LogoBox({ src, alt, rounded = "md" }) {
 
 function Pill({ children }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-regular font-medium lowercase tracking-[0.12em] text-black">
+    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-regular font-medium lowercase text-black">
       {children}
     </span>
   );

@@ -19,11 +19,6 @@ export default function Thankyou() {
     });
   }
 
-  function handleEmailError(e) {
-    e.preventDefault();
-    alert("Sorry, email temporarily unavailable 😅");
-  }
-
   return (
     <footer
       aria-label="Site footer"
@@ -49,7 +44,8 @@ export default function Thankyou() {
           <nav aria-label="Footer navigation" className="flex gap-4">
             <a
               href="https://www.linkedin.com/in/vrana11/"
-              onClick={handleEmailError}
+              target="_blank"
+              rel="noopener noreferrer"
               className="underline underline-offset-4"
             >
               LinkedIn

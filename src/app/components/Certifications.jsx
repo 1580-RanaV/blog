@@ -16,7 +16,7 @@ export default function Certifications() {
         </p>
 
         <p className="leading-relaxed mb-4 font-regular text-black">
-      I completed the <strong>Oracle Cloud Infrastructure (OCI) AI Foundations</strong> course, 
+      I completed the Oracle Cloud Infrastructure (OCI) AI Foundations course, 
       where I learned the core concepts of cloud computing and artificial intelligence. 
       It gave me hands-on exposure to OCI services like Generative AI, the 23ai Vector Database, 
       and tools for Vision, Speech, and Language. Through it, I built a solid understanding of 
