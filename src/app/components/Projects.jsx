@@ -7,27 +7,70 @@ export default function Projects() {
   return (
     <section className="w-full font-regular text-black">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 text-black">
-
         <p className="mt-2 font-semibold leading-tight tracking-tight text-black">
-          Selected Work; some of my projects that are listed on my resume actively.
+          Selected Work; some of my projects that are listed on my resume
+          actively.
         </p>
 
         {/* Projects List */}
         <div className="mt-8 space-y-16 sm:space-y-20 text-black">
+
+          <ProjectCard
+            title={
+              <>
+                <span className="underline underline-offset-4">
+                  (final year capstone project)
+                </span>{" "}
+                HelmetGuard: Real-Time Helmet Detection
+              </>
+            }
+            images={[]}
+            description="We developed a real-time helmet detection system using PyTorch and OpenCV to identify whether a rider is wearing a helmet. The model combines an EfficientNet-B4 backbone with attention mechanisms for higher accuracy and includes a custom dataset loader, logging pipeline, and real-time video inference. It draws live bounding boxes, predicts helmet status, and saves frame-wise results. This project was our final-year team effort focused on practical computer vision for road safety."
+            tags={[
+              "python",
+              "OpenCV",
+              "cnn",
+              "yolo",
+              "EfficientNet",
+              "Computer Vision",
+            ]}
+            links={[]}
+          />
+
+          <ProjectCard
+            title="RabbitHole"
+            images={["/r1.png", "/r2.png", "/r3.png"]}
+            description="Built RabbitHole — a fully client-side YouTube Watch History analyzer that processes Google Takeout JSON files locally (no servers, no APIs). It performs real ETL, maps user behavior, and visualizes binge patterns through metrics like Night Owl Score, Nostalgic Year, and Serial Binge Depth. Designed a playful, analytics-driven interface to turn raw data into self-awareness — blending design, code, and storytelling in one experience."
+            tags={[
+              "next.js",
+              "React",
+              "Tailwind CSS",
+              "ETL Pipelines",
+              "IndexedDB",
+              "Web Workers",
+              "Data Visualization",
+              "JSON Parsing",
+              "Client-Side Analytics",
+              "html2pdf Export",
+            ]}
+            links={[{ href: "https://myjobsy.vercel.app", label: "[yet to deploy]" }]}
+          />
+
           <ProjectCard
             title="Jobsy: Application Tracker"
             images={["/jobsy-1.png", "/jobsy.png"]}
-            description="Local-first tracker that auto-captures job links, extracts details, flags inactive postings, and reminds you before deadlines."
+            description="I built Jobsy as a local-first job application tracker that runs fully in the browser. It automatically grabs job links, extracts key details, and organizes them with smart alerts for deadlines or inactive postings. The idea was to make job hunting feel calm and organized — a clean dark interface, quick reminders, and complete control over your own data without any servers involved. Not to mention, I use it myself."
             tags={[
-              "Next.js",
+              "next.js",
               "React",
               "Tailwind CSS",
               "IndexedDB",
-              "Shadcn UI",
-              "Vercel",
-              "GitHub",
+              "Headless UI",
+              "Local Storage",
+              "Automation",
+              "Data Extraction",
               "CI/CD Pipelines",
-              "Llama API",
+              "Vercel Deploy",
             ]}
             links={[{ href: "https://myjobsy.vercel.app", label: "Visit" }]}
           />
@@ -35,34 +78,38 @@ export default function Projects() {
           <ProjectCard
             title="BenchMarkIQ: AI Industry Benchmark Analyzer"
             images={["/bmiq.png"]}
-            description="Upload KPIs, compare against industry medians, and get data-driven insights to improve performance."
+            description="I created BenchMarkIQ to help teams understand where they stand in their industry. Users can upload CSV files with their KPIs, and the app automatically compares them against industry medians using AI-driven analysis. It highlights gaps, trends, and strengths through clean data visuals — turning plain spreadsheets into simple, actionable insights."
             tags={[
-              "Next.js",
+              "next.js",
               "React",
               "Tailwind CSS",
               "PapaParse",
               "Chart.js",
-              "CSV",
+              "CSV Handling",
+              "Data Visualization",
+              "AI Analysis",
               "GitHub",
-              "Vercel",
+              "Vercel Deploy",
             ]}
-            links={[{ href: "https://bench-mark-iq.vercel.app", label: "Visit" }]}
+            links={[
+              { href: "https://bench-mark-iq.vercel.app", label: "Visit" },
+            ]}
           />
 
           <ProjectCard
             title="SGA v1.1: Skills Gap Analyzer"
             images={["/sga.png"]}
-            description="Analyzes resumes vs. job descriptions, scores alignment, and recommends learning paths and portfolio projects."
+            description="I built SGA to make career growth more measurable. It compares your resume with job descriptions, scores how closely your skills match, and suggests what to learn next — even giving project ideas to strengthen your portfolio. It’s designed to feel like a personal coach that turns job goals into a clear action plan."
             tags={[
-              "Next.js",
+              "next.js",
               "React",
               "Tailwind CSS",
-              "Figma",
               "React Hook Form",
               "Headless UI",
-              "Vercel",
+              "AI Scoring",
+              "Figma",
+              "Vercel Deploy",
               "GitHub",
-              "CI/CD Pipelines",
             ]}
             links={[{ href: "https://sga-sage.vercel.app", label: "Visit" }]}
           />
@@ -70,14 +117,15 @@ export default function Projects() {
           <ProjectCard
             title="Client Personal Portfolio"
             images={["/js.png"]}
-            description="Single-page portfolio with tight typography, lazy loading, Supabase integration, and automated deployment pipeline."
+            description="I designed and developed a personal portfolio site for a client — a clean, single-page layout with tight typography and smooth animations. It includes lazy-loaded sections, Supabase integration for dynamic content, and a full CI/CD pipeline for automatic updates. High customer satisfaction."
             tags={[
-              "Next.js",
+              "next.js",
               "React",
               "Tailwind CSS",
-              "Vercel",
-              "CI/CD",
-              "Prisma/Supabase",
+              "Supabase",
+              "Vercel Deploy",
+              "CI/CD Pipelines",
+              "Client Work",
             ]}
             links={[{ href: "https://jayasurya.site/", label: "Visit" }]}
           />
@@ -85,17 +133,21 @@ export default function Projects() {
           <ProjectCard
             title="PureText"
             images={["/puretext.png"]}
-            description="Convert text into plagiarism-free content using an LLM. 80%+ effective against Turnitin & Grammarly. Featured on Product Hunt."
+            description="I built PureText to help writers, students, and creators rephrase content intelligently using an LLM. It generates clean, plagiarism-free text that stays human and natural — effective against tools like Turnitin and Grammarly. PureText gained attention on Product Hunt for its simplicity and real-world usefulness."
             tags={[
-              "Next.js",
+              "next.js",
               "React",
               "Tailwind CSS",
-              "LLM",
+              "LLM Integration",
               "Figma",
+              "AI Writing Tools",
               "Product Hunt",
             ]}
             links={[
-              { href: "https://puretextbydatco.vercel.app", label: "Visit" },
+              {
+                href: "https://puretextbydatco.vercel.app",
+                label: "Visit",
+              },
               {
                 href: "https://www.producthunt.com/posts/puretext",
                 label: "Product Hunt",
@@ -106,17 +158,20 @@ export default function Projects() {
           <ProjectCard
             title="SpeedCode"
             images={["/speedcode.png"]}
-            description="Practice coding algorithms while improving typing speed — algorithmic accuracy meets flow state typing."
+            description="I made SpeedCode to merge two skills that every developer needs — typing speed and algorithmic thinking. It lets you practice real coding challenges while typing at full flow, building accuracy, rhythm, and focus together. It’s designed to feel more like a game than a coding test."
             tags={[
-              "Next.js",
+              "next.js",
               "React",
               "Tailwind CSS",
-              "GitHub",
-              "CI/CD",
+              "Typing Engine",
+              "Algorithms",
               "Figma",
+              "GitHub",
+              "CI/CD Pipelines",
             ]}
             links={[{ href: "https://speedcode.vercel.app", label: "Visit" }]}
           />
+
         </div>
       </div>
     </section>
@@ -133,7 +188,10 @@ function ProjectCard({ title, images = [], description, links = [], tags = [] })
       {/* Images */}
       <div className="mt-5 space-y-3">
         {images.map((src, i) => (
-          <div key={i} className="overflow-hidden rounded-lg border border-neutral-200">
+          <div
+            key={i}
+            className="overflow-hidden rounded-lg border border-neutral-200"
+          >
             <Image
               src={src}
               alt={title}

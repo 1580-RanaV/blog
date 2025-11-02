@@ -16,17 +16,18 @@ export default function Education() {
           logo={{ src: "/gitam.jpeg", alt: "GITAM University" }}
           title="Gandhi Institute of Technology and Management (GITAM) University"
           line1="Bachelor of Technology, Computer Science & Engineering (Class of 2025)"
+          line2="Relevant Coursework: web application development, sql/nosql, software development methodologies, agile/scrum, operating systems, dbms, oops."
           badges={[{ label: "CGPA: 8.61" }]}
         />
         <EduItem
-          logo={{ src: "/sri.jpg", alt: "Sri Chaitanya Jr. College" }}
-          title="Sri Chaitanya Jr. College (Intermediate)"
+          logo={{ src: "/sri.jpg", alt: "Sri Chaitanya junior College" }}
+          title="Sri Chaitanya junior College (Intermediate, 12th)"
           line1="MPC (Math, Physics, Chemistry), 2021"
           badges={[{ label: "Percentage: 92.7%" }]}
         />
         <EduItem
           logo={{ src: "/dps.png", alt: "Delhi Public School" }}
-          title="Delhi Public School (Xth)"
+          title="Delhi Public School (10th)"
           line1="Secondary Education, 2019"
           badges={[{ label: "Percentage: 86.66%" }]}
         />
@@ -80,7 +81,7 @@ export default function Education() {
             title="Lead Graphic Designer"
             org="Google Developer Student Clubs (GDSC)"
             description="Led design across university events with 1,000+ participants; created visual systems and event collateral using Figma and Adobe Photoshop."
-            link={{ href: "https://github.com/YourGitHubUsername", label: "Reference" }}
+            link={{ href: "https://drive.google.com/file/d/1OXx-0RkdmgxBVE_1o3NNhmpA595O1DaF/view?usp=sharing", label: "Certificate of recognition" }}
           />
         </div>
       </div>
@@ -90,7 +91,7 @@ export default function Education() {
 
 /* ---------- Subcomponents ---------- */
 
-function EduItem({ logo, title, line1, badges = [] }) {
+function EduItem({ logo, title, line1, line2, badges = [] }) {
   return (
     <article className="group border-l border-neutral-200 pl-6 transition-colors hover:border-black font-regular text-black">
       <header className="flex items-start gap-4 font-regular text-black">
@@ -101,6 +102,7 @@ function EduItem({ logo, title, line1, badges = [] }) {
       </header>
 
       {line1 && <p className="mt-2 font-regular text-black">{line1}</p>}
+      {line2 && <p className="mt-2 font-regular text-black">{line2}</p>}
 
       {badges.length > 0 && (
         <ul className="mt-3 flex flex-wrap gap-2 font-regular text-black">
