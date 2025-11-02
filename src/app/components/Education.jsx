@@ -7,7 +7,7 @@ export default function Education() {
   return (
     <div className="w-full font-regular text-black">
       <p className="mt-2 font-regular font-semibold leading-tight text-black">
-        Academics, Participations & Clubs
+        Education
       </p>
 
       {/* EDUCATION */}
@@ -37,7 +37,7 @@ export default function Education() {
 
       {/* PARTICIPATIONS */}
       <div className="mt-12 font-regular text-black">
-        <h3 className="font-regular font-semibold uppercase tracking-[0.14em] text-black">
+        <h3 className="font-regular font-semibold text-black">
           Participations & Achievements
         </h3>
 
@@ -70,7 +70,7 @@ export default function Education() {
 
       {/* CLUBS */}
       <div className="mt-12 font-regular text-black">
-        <h3 className="font-regular font-semibold uppercase tracking-[0.14em] text-black">
+        <h3 className="font-regular font-semibold text-black">
           University Club Activities
         </h3>
 
