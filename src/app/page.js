@@ -98,7 +98,7 @@ export default function Page() {
   );
 
   const [openMap, setOpenMap] = useState(() => ({
-    profile: false,
+    profile: true,
     projects: false,
     unfinished: false,
     certifications: false,
