@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 export default function Unfinished() {
   const projects = [
@@ -42,32 +42,63 @@ export default function Unfinished() {
     },
   ];
 
+  const [openIndex, setOpenIndex] = useState(null);
+
   return (
     <section className="font-regular text-black">
       <p className="mb-12">
         these are the tech thought pieces i write out of curiosity when i get random doubts and try to learn about them.
       </p>
 
-      <div className="space-y-16"> {/* <— adds large gap between articles */}
+      <div className="space-y-12">
         {projects.map((project, index) => {
           const paragraphs = project.description
             .trim()
             .split(/\n\s*\n/)
             .map((p) => p.trim());
 
+          // preview - first 40 words
+          const preview =
+            project.description
+              .replace(/\s+/g, " ")
+              .trim()
+              .split(" ")
+              .slice(0, 40)
+              .join(" ") + "...";
+
+          const isOpen = openIndex === index;
+
           return (
-            <div key={index}>
+            <div
+              key={index}
+              className="border-b border-neutral-200 pb-6"
+            >
               <h3 className="text-lg font-semibold text-neutral-900 mb-1">
                 {project.title}
               </h3>
 
-              <p className="text-sm text-neutral-600 mb-2">{project.tech}</p>
+              <p className="text-sm text-neutral-600 mb-3">{project.tech}</p>
 
-              {paragraphs.map((para, i) => (
-                <p key={i} className="text-neutral-800 leading-relaxed mb-4">
-                  {para}
+              {!isOpen ? (
+                <p className="text-neutral-800 leading-relaxed mb-4">
+                  {preview}
                 </p>
-              ))}
+              ) : (
+                <div className="text-neutral-800 leading-relaxed space-y-4 mb-4">
+                  {paragraphs.map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
+              )}
+
+              <button
+                onClick={() =>
+                  setOpenIndex(isOpen ? null : index)
+                }
+                className="text-neutral-900 hover:underline text-sm font-medium"
+              >
+                {isOpen ? "show less ↑" : "read more ↓"}
+              </button>
             </div>
           );
         })}
