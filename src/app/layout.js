@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata = {
   metadataBase: new URL("https://www.vrana.website"), // your live domain
-  title: "V Ranadheer",
+  title: "v ranadheer",
   description: "Creative developer — portfolio & work.",
 
   openGraph: {

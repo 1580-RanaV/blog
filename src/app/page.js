@@ -11,6 +11,7 @@ const WorkExp        = dynamic(() => import("./components/WorkExp"),        { lo
 const Education      = dynamic(() => import("./components/Education"),      { loading: () => <SectionSkeleton title="Education / Academics" /> });
 const Contact        = dynamic(() => import("./components/Contact"),        { loading: () => <SectionSkeleton title="Contact" /> });
 const Certifications = dynamic(() => import("./components/Certifications"), { loading: () => <SectionSkeleton title="Certifications" /> });
+const Articles      = dynamic(() => import("./components/Articles"),       { loading: () => <SectionSkeleton title="Articles" /> });
 const Thankyou       = dynamic(() => import("./components/Thankyou"),       { loading: () => null });
 
 /* ---------- Small helper ---------- */
@@ -93,6 +94,7 @@ export default function Page() {
       { id: "work",           title: "Work Experience" },
       { id: "education",      title: "Education / Academics" },
       { id: "contact",        title: "Contact" },
+      { id: "articles",       title: "Articles" },
     ],
     []
   );
@@ -105,6 +107,7 @@ export default function Page() {
     work: false,
     education: false,
     contact: false,
+    articles: false,
   }));
 
   const setOpen = useCallback((id, value) => {
@@ -136,6 +139,15 @@ export default function Page() {
             setOpen={setOpen}
           >
             <ProfileIntro />
+          </AccordionSection>
+
+          <AccordionSection
+            id="articles"
+            title="Articles"
+            isOpen={openMap.articles}
+            setOpen={setOpen}
+          >
+            <Articles />
           </AccordionSection>
 
           <AccordionSection
