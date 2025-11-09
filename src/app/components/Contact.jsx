@@ -35,7 +35,7 @@ export default function Contact() {
       if (error) {
         // Avoid red dev overlay; still keep a useful console line
         console.warn("Supabase insert error:", error.message ?? error, error);
-        setFeedback({ type: "error", text: "Couldn't send it, please try later :(" });
+        setFeedback({ type: "error", text: "Couldn't send it, please try later :( you can ping me on any of the links at the bottom of the site or in the profile, thank you for understanding." });
       } else {
         setFeedback({ type: "success", text: "Got your message! :)" });
         setShowTick(true);

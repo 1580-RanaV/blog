@@ -3,15 +3,17 @@
 import React, { useMemo, useState, useCallback } from "react";
 import dynamic from "next/dynamic";
 import ProfileIntro from "./components/ProfileIntro";
+import ProfileViewsBadge from "./components/ProfileViewsBadge";
 
 /* ---------- Lazy sections ---------- */
-const Projects       = dynamic(() => import("./components/Projects"),       { loading: () => <SectionSkeleton title="Projects" /> });
-const Unfinished     = dynamic(() => import("./components/Unfinished"),     { loading: () => <SectionSkeleton title="Unfinished Projects" /> });
-const WorkExp        = dynamic(() => import("./components/WorkExp"),        { loading: () => <SectionSkeleton title="Work Experience" /> });
-const Education      = dynamic(() => import("./components/Education"),      { loading: () => <SectionSkeleton title="Education / Academics" /> });
-const Contact        = dynamic(() => import("./components/Contact"),        { loading: () => <SectionSkeleton title="Contact" /> });
-const Certifications = dynamic(() => import("./components/Certifications"), { loading: () => <SectionSkeleton title="Certifications" /> });
-const Articles      = dynamic(() => import("./components/Articles"),       { loading: () => <SectionSkeleton title="Articles" /> });
+const Projects       = dynamic(() => import("./components/Projects"),       { loading: () => <TextLoading /> });
+const Unfinished     = dynamic(() => import("./components/Unfinished"),     { loading: () => <TextLoading /> });
+const WorkExp        = dynamic(() => import("./components/WorkExp"),        { loading: () => <TextLoading /> });
+const Education      = dynamic(() => import("./components/Education"),      { loading: () => <TextLoading /> });
+const Contact        = dynamic(() => import("./components/Contact"),        { loading: () => <TextLoading /> });
+const Certifications = dynamic(() => import("./components/Certifications"), { loading: () => <TextLoading /> });
+const Articles       = dynamic(() => import("./components/Articles"),       { loading: () => <TextLoading /> });
+const Git            = dynamic(() => import("./components/Git"),            { loading: () => <TextLoading /> });
 const Thankyou       = dynamic(() => import("./components/Thankyou"),       { loading: () => null });
 
 /* ---------- Small helper ---------- */
@@ -24,6 +26,14 @@ function SectionSkeleton({ title }) {
   );
 }
 
+function TextLoading() {
+  return (
+    <p className="font-regular text-sm text-neutral-500 animate-pulse">
+      one second pls...
+    </p>
+  );
+}
+
 /* ---------- Toolbar: single toggle (Open all / Close all) ---------- */
 function AccordionToggle({ allOpen, onToggleAll }) {
   const label = allOpen ? "close all" : "open all";
@@ -31,7 +41,7 @@ function AccordionToggle({ allOpen, onToggleAll }) {
     <button
       type="button"
       onClick={onToggleAll}
-      className="rounded-full border border-neutral-300 px-3 py-1.5 font-regular font-medium hover:border-neutral-900"
+      className="border border-neutral-300 px-3 py-1.5 font-regular font-medium hover:border-neutral-900"
       aria-pressed={allOpen}
       aria-label={label}
       title={label}
@@ -95,12 +105,13 @@ export default function Page() {
       { id: "education",      title: "Education / Academics" },
       { id: "contact",        title: "Contact" },
       { id: "articles",       title: "Articles" },
+      { id: "git",            title: "Git"},
     ],
     []
   );
 
   const [openMap, setOpenMap] = useState(() => ({
-    profile: true,
+    profile: false,
     projects: false,
     unfinished: false,
     certifications: false,
@@ -108,6 +119,7 @@ export default function Page() {
     education: false,
     contact: false,
     articles: false,
+    git: false,
   }));
 
   const setOpen = useCallback((id, value) => {
@@ -126,6 +138,7 @@ export default function Page() {
 
   return (
     <main className="relative min-h-screen bg-white font-regular text-neutral-900">
+      <ProfileViewsBadge />
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
         <div className="mb-4 flex items-center justify-end">
           <AccordionToggle allOpen={allOpen} onToggleAll={toggleAll} />
@@ -148,6 +161,15 @@ export default function Page() {
             setOpen={setOpen}
           >
             <Articles />
+          </AccordionSection>
+
+          <AccordionSection
+            id="git"
+            title="Github contribution chart"
+            isOpen={openMap.git}
+            setOpen={setOpen}
+          >
+            <Git />
           </AccordionSection>
 
           <AccordionSection
