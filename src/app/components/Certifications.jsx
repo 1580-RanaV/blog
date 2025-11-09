@@ -4,18 +4,18 @@ import React from "react";
 
 export default function Certifications() {
   return (
-    <section className="space-y-6 font-regular text-black">
+    <section className="space-y-6 font-regular text-neutral-900">
       {/* Certification Card */}
-      <div className="text-black">
-        <h3 className="mb-1 font-semibold text-black">
+      <div className="text-neutral-900">
+        <h3 className="mb-1 font-semibold text-neutral-900">
           Oracle Cloud Infrastructure (OCI)
         </h3>
 
-        <p className="mb-2 font-medium text-black">
+        <p className="mb-2 font-medium text-neutral-900">
           AI Foundations Associate — 2025
         </p>
 
-        <p className="leading-relaxed mb-4 font-regular text-black">
+        <p className="leading-relaxed mb-4 font-regular text-neutral-900">
           I earned the Oracle Cloud Infrastructure (OCI) AI Foundations
           certification to strengthen my understanding of artificial
           intelligence and machine learning fundamentals within cloud systems.
@@ -30,7 +30,7 @@ export default function Certifications() {
           href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=DAF34BC44A7A3DC84A8F107B518A0C2558515ACEF827D948059534C4CEF373D2"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block font-regular text-black underline underline-offset-4 hover:text-black"
+          className="inline-block font-regular text-blue-600 underline underline-offset-4 hover:text-blue-700"
         >
           [Issued September 2025] View Certificate ↗
         </a>
@@ -38,3 +38,5 @@ export default function Certifications() {
     </section>
   );
 }
+
+

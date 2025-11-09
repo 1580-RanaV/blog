@@ -5,13 +5,13 @@ import Image from "next/image";
 
 export default function Education() {
   return (
-    <div className="w-full font-regular text-black">
-      <p className="mt-2 font-regular font-semibold leading-tight text-black">
+    <div className="w-full font-regular text-neutral-900">
+      <p className="mt-2 font-regular font-semibold leading-tight text-neutral-900">
         Education
       </p>
 
       {/* EDUCATION */}
-      <div className="mt-8 space-y-12 sm:space-y-14 font-regular text-black">
+      <div className="mt-8 space-y-12 sm:space-y-14 font-regular text-neutral-900">
         <EduItem
           logo={{ src: "/gitam.jpeg", alt: "GITAM University" }}
           title="Gandhi Institute of Technology and Management (GITAM) University"
@@ -37,12 +37,12 @@ export default function Education() {
       <div className="mt-12 h-px w-20 bg-neutral-200" />
 
       {/* PARTICIPATIONS */}
-      <div className="mt-12 font-regular text-black">
-        <h3 className="font-regular font-semibold text-black">
+      <div className="mt-12 font-regular text-neutral-900">
+        <h3 className="font-regular font-semibold text-neutral-900">
           Participations & Achievements
         </h3>
 
-        <div className="mt-6 space-y-10 sm:space-y-12 font-regular text-black">
+        <div className="mt-6 space-y-10 sm:space-y-12 font-regular text-neutral-900">
           <ParticipationItem
             icon={{ src: "/providence.svg", alt: "Providence" }}
             title="Providence Ideathon 2024"
@@ -70,12 +70,12 @@ export default function Education() {
       <div className="mt-12 h-px w-20 bg-neutral-200" />
 
       {/* CLUBS */}
-      <div className="mt-12 font-regular text-black">
-        <h3 className="font-regular font-semibold text-black">
+      <div className="mt-12 font-regular text-neutral-900">
+        <h3 className="font-regular font-semibold text-neutral-900">
           University Club Activities
         </h3>
 
-        <div className="mt-6 space-y-10 sm:space-y-12 font-regular text-black">
+        <div className="mt-6 space-y-10 sm:space-y-12 font-regular text-neutral-900">
           <ClubItem
             icon={{ src: "/google.svg", alt: "GDSC", rounded: "full" }}
             title="Lead Graphic Designer"
@@ -93,19 +93,19 @@ export default function Education() {
 
 function EduItem({ logo, title, line1, line2, badges = [] }) {
   return (
-    <article className="group border-l border-neutral-200 pl-6 transition-colors hover:border-black font-regular text-black">
-      <header className="flex items-start gap-4 font-regular text-black">
+    <article className="group border-l border-neutral-200 pl-6 transition-colors hover:border-black font-regular text-neutral-900">
+      <header className="flex items-start gap-4 font-regular text-neutral-900">
         <LogoBox {...logo} />
-        <h4 className="font-regular font-semibold leading-snug text-black">
+        <h4 className="font-regular font-semibold leading-snug text-neutral-900">
           {title}
         </h4>
       </header>
 
-      {line1 && <p className="mt-2 font-regular text-black">{line1}</p>}
-      {line2 && <p className="mt-2 font-regular text-black">{line2}</p>}
+      {line1 && <p className="mt-2 font-regular text-neutral-900">{line1}</p>}
+      {line2 && <p className="mt-2 font-regular text-neutral-900">{line2}</p>}
 
       {badges.length > 0 && (
-        <ul className="mt-3 flex flex-wrap gap-2 font-regular text-black">
+        <ul className="mt-3 flex flex-wrap gap-2 font-regular text-neutral-900">
           {badges.map((b, i) => (
             <li key={i}>
               <Pill>{b.label}</Pill>
@@ -119,16 +119,16 @@ function EduItem({ logo, title, line1, line2, badges = [] }) {
 
 function ParticipationItem({ icon, title, description, link }) {
   return (
-    <article className="group border-l border-neutral-200 pl-6 transition-colors hover:border-black font-regular text-black">
-      <header className="flex items-start gap-4 font-regular text-black">
+    <article className="group border-l border-neutral-200 pl-6 transition-colors hover:border-black font-regular text-neutral-900">
+      <header className="flex items-start gap-4 font-regular text-neutral-900">
         <LogoBox {...icon} />
-        <h4 className="font-regular font-semibold leading-snug text-black">
+        <h4 className="font-regular font-semibold leading-snug text-neutral-900">
           {title}
         </h4>
       </header>
 
       {description && (
-        <p className="mt-3 leading-relaxed font-regular text-black">
+        <p className="mt-3 leading-relaxed font-regular text-neutral-900">
           {description}
         </p>
       )}
@@ -139,10 +139,10 @@ function ParticipationItem({ icon, title, description, link }) {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-regular font-medium text-black underline-offset-4 hover:underline"
+            className="inline-flex items-center gap-1 font-regular font-medium text-blue-600 underline-offset-4 hover:text-blue-700 hover:underline"
           >
             {link.label ?? "View"}
-            <ArrowUpRightIcon className="h-4 w-4 text-black" />
+            <ArrowUpRightIcon className="h-4 w-4 text-blue-600" />
           </a>
         </div>
       )}
@@ -152,19 +152,19 @@ function ParticipationItem({ icon, title, description, link }) {
 
 function ClubItem({ icon, title, org, description, link }) {
   return (
-    <article className="font-regular text-black">
-      <header className="flex items-start gap-4 font-regular text-black">
+    <article className="font-regular text-neutral-900">
+      <header className="flex items-start gap-4 font-regular text-neutral-900">
         <LogoBox {...icon} />
         <div className="min-w-0">
-          <h4 className="font-regular font-semibold leading-snug text-black">
+          <h4 className="font-regular font-semibold leading-snug text-neutral-900">
             {title}
           </h4>
-          {org && <p className="mt-1 font-regular text-black">{org}</p>}
+          {org && <p className="mt-1 font-regular text-neutral-900">{org}</p>}
         </div>
       </header>
 
       {description && (
-        <p className="mt-3 leading-relaxed font-regular text-black">
+        <p className="mt-3 leading-relaxed font-regular text-neutral-900">
           {description}
         </p>
       )}
@@ -175,10 +175,10 @@ function ClubItem({ icon, title, org, description, link }) {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-regular font-medium text-black underline-offset-4 hover:underline"
+            className="inline-flex items-center gap-1 font-regular font-medium text-blue-600 underline-offset-4 hover:text-blue-700 hover:underline"
           >
             {link.label ?? "View"}
-            <ArrowUpRightIcon className="h-4 w-4 text-black" />
+            <ArrowUpRightIcon className="h-4 w-4 text-blue-600" />
           </a>
         </div>
       )}
@@ -199,7 +199,7 @@ function LogoBox({ src, alt, rounded = "md" }) {
 
 function Pill({ children }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-regular font-medium lowercase text-black">
+    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-regular font-medium lowercase text-neutral-900">
       {children}
     </span>
   );
@@ -218,3 +218,5 @@ function ArrowUpRightIcon(props) {
     </svg>
   );
 }
+
+

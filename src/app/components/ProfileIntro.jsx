@@ -5,27 +5,27 @@ import Image from "next/image";
 
 export default function ProfileIntro() {
   return (
-    <section className="w-full font-regular text-black">
+    <section className="w-full font-regular text-neutral-900">
       <div className="mx-auto max-w-4xl">
         {/* Header Row — name, title, and photo side-by-side */}
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
           {/* --- Text block --- */}
-          <div className="text-left text-black">
-            <h1 className="font-semibold leading-tight tracking-tight text-black">
+          <div className="text-left text-neutral-900">
+            <h1 className="font-semibold leading-tight tracking-tight text-neutral-900">
               V Ranadheer
             </h1>
 
-            <p className="mt-2 text-black">
+            <p className="mt-2 text-neutral-900">
               <span>Graduate</span>
               <span className="mx-2">•</span>
               <span>Creative Developer</span>
             </p>
 
-            <p className="mt-1 text-black">
+            <p className="mt-1 text-neutral-900">
               <span>Andhra Pradesh, India</span>
             </p>
 
-            <p className="mt-1 text-black">
+            <p className="mt-1 text-neutral-900">
               <span>Open to work</span>
             </p>
           </div>
@@ -49,8 +49,8 @@ export default function ProfileIntro() {
         <div className="mt-6 h-px w-16 bg-neutral-200" />
 
         {/* Intro Paragraphs */}
-        <div className="mt-6 space-y-5 text-black">
-          <p className="leading-relaxed text-black">
+        <div className="mt-6 space-y-5 text-neutral-900">
+          <p className="leading-relaxed text-neutral-900">
             Hi, I’m V. Ranadheer — a CS graduate
             passionate about the intersection of{" "}
             <span className="font-medium">design</span> and{" "}
@@ -58,7 +58,7 @@ export default function ProfileIntro() {
             I design reflects my commitment to clarity, creativity, and meaningful problem-solving.
           </p>
 
-          <p className="leading-relaxed text-black">
+          <p className="leading-relaxed text-neutral-900">
             I’m exploring what it truly means to be a developer — building tools, interfaces,
             and experiences that feel both technically sharp and emotionally resonant.
           </p>
@@ -96,7 +96,7 @@ function SocialIcon({ href, label, imgSrc }) {
       rel="noopener noreferrer"
       aria-label={label}
       title={label}
-      className="group inline-flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 ring-1 ring-inset ring-neutral-200 transition-all hover:-translate-y-[1px] hover:bg-white hover:ring-neutral-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 font-regular text-black"
+      className="group inline-flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 ring-1 ring-inset ring-neutral-200 transition-all hover:-translate-y-[1px] hover:bg-white hover:ring-neutral-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 font-regular text-neutral-900"
     >
       <span className="sr-only">{label}</span>
       <Image
@@ -109,3 +109,4 @@ function SocialIcon({ href, label, imgSrc }) {
     </a>
   );
 }
+

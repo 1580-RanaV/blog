@@ -45,7 +45,7 @@ export default function Unfinished() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="font-regular text-black">
+    <section className="font-regular text-neutral-900">
       <p className="mb-12">
         these are the tech thought pieces i write out of curiosity when i get random doubts and try to learn about them.
       </p>
@@ -77,14 +77,14 @@ export default function Unfinished() {
                 {project.title}
               </h3>
 
-              <p className="text-sm text-neutral-600 mb-3">{project.tech}</p>
+              <p className="text-sm text-neutral-900 mb-3">{project.tech}</p>
 
               {!isOpen ? (
-                <p className="text-neutral-800 leading-relaxed mb-4">
+                <p className="text-neutral-900 leading-relaxed mb-4">
                   {preview}
                 </p>
               ) : (
-                <div className="text-neutral-800 leading-relaxed space-y-4 mb-4">
+                <div className="text-neutral-900 leading-relaxed space-y-4 mb-4">
                   {paragraphs.map((para, i) => (
                     <p key={i}>{para}</p>
                   ))}
@@ -92,12 +92,13 @@ export default function Unfinished() {
               )}
 
               <button
+                type="button"
                 onClick={() =>
                   setOpenIndex(isOpen ? null : index)
                 }
-                className="text-neutral-900 hover:underline text-sm font-medium"
+                className="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline"
               >
-                {isOpen ? "show less ↑" : "read more ↓"}
+                {isOpen ? "show less" : "read more"}
               </button>
             </div>
           );
@@ -106,3 +107,7 @@ export default function Unfinished() {
     </section>
   );
 }
+
+
+
+

@@ -5,15 +5,15 @@ import Image from "next/image";
 
 export default function Projects() {
   return (
-    <section className="w-full font-regular text-black">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 text-black">
-        <p className="mt-2 font-semibold leading-tight tracking-tight text-black">
+    <section className="w-full font-regular text-neutral-900">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 text-neutral-900">
+        <p className="mt-2 font-semibold leading-tight tracking-tight text-neutral-900">
           Selected Work; some of my projects that are listed on my resume
           actively.
         </p>
 
         {/* Projects List */}
-        <div className="mt-8 space-y-16 sm:space-y-20 text-black">
+        <div className="mt-8 space-y-16 sm:space-y-20 text-neutral-900">
 
           <ProjectCard
             title={
@@ -180,9 +180,9 @@ export default function Projects() {
 
 function ProjectCard({ title, images = [], description, links = [], tags = [] }) {
   return (
-    <article className="font-regular text-black">
+    <article className="font-regular text-neutral-900">
       <header>
-        <h3 className="font-semibold leading-snug text-black">{title}</h3>
+        <h3 className="font-semibold leading-snug text-neutral-900">{title}</h3>
       </header>
 
       {/* Images */}
@@ -205,11 +205,11 @@ function ProjectCard({ title, images = [], description, links = [], tags = [] })
       </div>
 
       {/* Description */}
-      <p className="mt-4 leading-relaxed text-black">{description}</p>
+      <p className="mt-4 leading-relaxed text-neutral-900">{description}</p>
 
       {/* Tags */}
       {tags.length > 0 && (
-        <ul className="mt-5 flex flex-wrap gap-2 text-black">
+        <ul className="mt-5 flex flex-wrap gap-2 text-neutral-900">
           {tags.map((tag, idx) => (
             <li key={idx}>
               <TagChip label={tag} />
@@ -219,17 +219,17 @@ function ProjectCard({ title, images = [], description, links = [], tags = [] })
       )}
 
       {/* Links */}
-      <div className="mt-5 flex flex-wrap gap-4 text-black">
+      <div className="mt-5 flex flex-wrap gap-4 text-neutral-900">
         {links.map((link, i) => (
           <a
             key={i}
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-medium text-black underline underline-offset-4 transition-colors hover:text-black"
+            className="inline-flex items-center gap-1 font-medium text-blue-600 underline underline-offset-4 transition-colors hover:text-blue-700"
           >
             {link.label}
-            <ArrowUpRightIcon className="h-4 w-4 text-black" />
+            <ArrowUpRightIcon className="h-4 w-4 text-blue-600" />
           </a>
         ))}
       </div>
@@ -239,7 +239,7 @@ function ProjectCard({ title, images = [], description, links = [], tags = [] })
 
 function TagChip({ label }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-medium lowercase text-black hover:text-black hover:border-black transition-colors">
+    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-medium lowercase text-neutral-900 hover:text-neutral-900 hover:border-black transition-colors">
       {label}
     </span>
   );
@@ -258,3 +258,5 @@ function ArrowUpRightIcon(props) {
     </svg>
   );
 }
+
+

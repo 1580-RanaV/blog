@@ -22,7 +22,7 @@ export default function Thankyou() {
   return (
     <footer
       aria-label="Site footer"
-      className="w-full font-regular text-black border-t border-neutral-200"
+      className="w-full font-regular text-neutral-900 border-t border-neutral-200"
     >
       <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-10">
         {/* Closing note */}
@@ -46,7 +46,7 @@ export default function Thankyou() {
               href="https://www.linkedin.com/in/vrana11/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-4"
+              className="underline underline-offset-4 text-blue-600 hover:text-blue-700"
             >
               LinkedIn
             </a>
@@ -54,7 +54,7 @@ export default function Thankyou() {
               href="https://github.com/1580-RanaV"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-4"
+              className="underline underline-offset-4 text-blue-600 hover:text-blue-700"
             >
               GitHub
             </a>
@@ -62,7 +62,7 @@ export default function Thankyou() {
               href="https://www.instagram.com/byvrana/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-4"
+              className="underline underline-offset-4 text-blue-600 hover:text-blue-700"
             >
               Instagram
             </a>
@@ -73,3 +73,5 @@ export default function Thankyou() {
     </footer>
   );
 }
+
+

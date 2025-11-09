@@ -18,7 +18,7 @@ const Thankyou       = dynamic(() => import("./components/Thankyou"),       { lo
 function SectionSkeleton({ title }) {
   return (
     <div className="border-l border-neutral-200 pl-6 font-regular">
-      <p className="uppercase tracking-[0.14em] text-neutral-500">{title}</p>
+      <p className="uppercase tracking-[0.14em] text-neutral-900">{title}</p>
       <div className="mt-3 h-24 w-full animate-pulse rounded bg-neutral-100" />
     </div>
   );
