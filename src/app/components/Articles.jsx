@@ -40,6 +40,76 @@ export default function Unfinished() {
         services they use to achieve this are: java, scala, c++, search engine called lucene, etc etc. its too deep! but so cool.
       `,
     },
+    {
+      title:
+        "how spotify streams our fav music instantly? with no lag, no buffer, even when millions of people are hitting play at the same time?",
+      tech: "tech thoughts 2",
+      description: `
+        a question that popped in my head while i was jamming to my fav playlist on spotify. how does spotify stream music so quickly with no lag, no buffer, even when millions of people are hitting play at the same time + at the
+        same time its not even saved on our device. how does it do that?
+
+        as usual, dug into my research just for curiosity and here is what i have learnt.
+
+        spotify uses combination of multiple techniques such as content delivery networks called "cdn", caching and ffew streaming protocols.
+        so how cdn's in spotify work are, when a song from an artist is uploaded to spotify, its not just stored in one central main spotify server. that would be too many requests to deliver from one source.
+    
+        instead, when an user clicks on the song, it fetches the song from the nearest cdn server, a big data center nearby that stores copies of popular songs aka caching the popular songs.
+        servers to user is already fast even if it is across contients, so by bringing a copy of the song more closer to the user who requests the loading time makes it even faster.
+
+        now part 2, how does it stream the song so that it plays instantly with no lag or buffer?
+        spotify uses a streaming protocol called "http live streaming" or hls. what hls does is, it breaks the song into smaller chunks of data, usually 2-10 seconds long (is what i have read not sure),
+        and these chunks are sent to the user one after another like, when the user is listening to first chunk, in the background, the second chunk is already downlaoded and ready to play. so by the time the first chunk ends, the second chunk is ready to play and so on. this way it gives an illusion of continuous playback with no lag or buffer.
+
+        and to handle millions of people hitting play at the same time, it uses distributed servers, load balancing techniques, a p2p peer to peer caching.
+        this p2p concept is very fascinating, what it does is, when we stream a song, spotify first checks if any nearby users (that are on the same network or a region) already have chunks downloaded of that song.
+        if yes, it can download the same chunks of song from them insteead of always requesting from the servers. it might be a small thing when we look at it in a single user level.
+        but when we zoom out the picture and see millions of users doing this, it actually does save a lot of the pressure from a server.
+
+        however, spotify has stopped or reduced the usage of p2p since they believe their cdn became fast enough to deliver content without any hiccups
+      `,
+    },
+    {
+      title: "how does uber match riders to drivers so quickly?",
+      tech: "tech thoughts 3",
+      description: `
+        while i was waiting for my uber ride the other day at bangalore, i wondered how does uber match riders to drivers so quickly? like within seconds of requesting a ride, it shows you the driver details and the estimated time of arrival. how does it do that?
+
+        i found that when an user requests a ride, the app instantly sends their location and trip details like the pickup and drop point to the uber servers in a json format.
+        uber app collects key info like user id, current gps co-ordinated (to keep pickup accurate), pickup, drop off location, ride type (uberx, black etc etc), payment method, devide info (for any security purposes).
+
+        the uber backend servers recieve this json and it validates the request (checks if the co ordinates are real because we cant ask them to drop off at a sea), with the pickup locations
+        it looks up nearby drivers using in a circular map (will explain in another article). 
+        the driver's of uber, their devices also send jsons to the server, such as driver id, location, status available or doing a trip, time. 
+        
+        then comes the matching logic. the request json and driver json are compared and it calculates the best eta. it usually is drivers near 3-5km range of the pickup point.
+        it filters all drivers who are nearby the pickup point -> then who are available -> calculate estimated time of arrival -> prioritize the drivers who can reach the fastest.
+
+        then uber sends a ride offer as these are not force assigned, drivers have a choice to accept or reject. the driver sees the pikcup, drop. now the drivers can accept or reject. but uber servers
+        keep sending the requests to multiple people until its accepted.
+
+        then the driver who accepts it, their name, vehicle number, phone number, are picked from the driver and sent as json file to uber servers, and that is again sent back to the user to show on their apps as to who is coming to pickup.
+
+        in short, there is a lot of api magic.
+      `,
+    },
+    {
+      title:
+        "why do delivery apps like uber, ola, rapido, swiggy, zomato all user circular map searching?",
+      tech: "tech thoughts 4",
+      description: `
+        all apps of these kind use circular map searching because its the most efficient way to find nearby drivers of any sort.
+        there a reason why its efficient, a circle as a shape has no corners, no edges, so there are no spaces wasted on a map while searching.
+        its simpler to calculate using formulas like haversine distance, which finds the distance between 2 latitudes and longitudes points on earth.
+
+        a circle can cover a larger area than any other shape around a person (a point).
+        the system treats your current location as the center of the circle, nearby drivers are defined in a radius of 3-5kms, this naturally forms a circle which ensures
+        equal distance in all the directions. try that with any other shape, it will not be equidistant.
+
+        hence it is the most efficient and fair geometric shape for proximity, no one particular direction is favoured, and no nook and corner is wasted.
+
+        so the next time you see a circle animation in one of those apps while waiting for a driver to be assigned, its for a purpose and not aesthetic!
+      `,
+    },
   ];
 
   const [openIndex, setOpenIndex] = useState(null);
@@ -57,27 +127,23 @@ export default function Unfinished() {
             .split(/\n\s*\n/)
             .map((p) => p.trim());
 
-          // preview - first 40 words
           const preview =
             project.description
               .replace(/\s+/g, " ")
               .trim()
               .split(" ")
-              .slice(0, 40)
+              .slice(0, 30)
               .join(" ") + "...";
 
           const isOpen = openIndex === index;
 
           return (
-            <div
-              key={index}
-              className="border-b border-neutral-200 pb-6"
-            >
-              <h3 className="text-lg font-semibold text-neutral-900 mb-1">
+            <div key={index} className="border-b border-neutral-200 pb-6">
+              <p className="text-xs text-neutral-900 mb-3">{project.tech}</p>
+
+              <h3 className="text-lg bg-neutral-900 px-3 py-3 font-semibold text-white mb-1">
                 {project.title}
               </h3>
-
-              <p className="text-sm text-neutral-900 mb-3">{project.tech}</p>
 
               {!isOpen ? (
                 <p className="text-neutral-900 leading-relaxed mb-4">
@@ -93,9 +159,7 @@ export default function Unfinished() {
 
               <button
                 type="button"
-                onClick={() =>
-                  setOpenIndex(isOpen ? null : index)
-                }
+                onClick={() => setOpenIndex(isOpen ? null : index)}
                 className="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline"
               >
                 {isOpen ? "show less" : "read more"}
@@ -107,7 +171,3 @@ export default function Unfinished() {
     </section>
   );
 }
-
-
-
-
