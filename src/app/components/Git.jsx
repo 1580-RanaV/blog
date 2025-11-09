@@ -326,7 +326,7 @@ export default function Git() {
                 </div>
               </div>
 
-              <div className="mt-4 flex items-center gap-3 text-xs text-neutral-900">
+              {/* <div className="mt-4 flex items-center gap-3 text-xs text-neutral-900">
                 <span>Less</span>
                 <div className="flex items-center gap-[3px]">
                   {[COLOR_EMPTY, getCellColor(4, 1)].map((color, idx) => (
@@ -338,7 +338,7 @@ export default function Git() {
                   ))}
                 </div>
                 <span>More</span>
-              </div>
+              </div> */}
             </div>
 
             <p className="mt-6 text-xs text-neutral-900">

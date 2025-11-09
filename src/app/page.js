@@ -4,6 +4,7 @@ import React, { useMemo, useState, useCallback } from "react";
 import dynamic from "next/dynamic";
 import ProfileIntro from "./components/ProfileIntro";
 import ProfileViewsBadge from "./components/ProfileViewsBadge";
+import ScrollToTop from "./components/ScrollToTop";
 
 /* ---------- Lazy sections ---------- */
 const Projects       = dynamic(() => import("./components/Projects"),       { loading: () => <TextLoading /> });
@@ -139,6 +140,7 @@ export default function Page() {
   return (
     <main className="relative min-h-screen bg-white font-regular text-neutral-900">
       <ProfileViewsBadge />
+      <ScrollToTop />
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
         <div className="mb-4 flex items-center justify-end">
           <AccordionToggle allOpen={allOpen} onToggleAll={toggleAll} />
