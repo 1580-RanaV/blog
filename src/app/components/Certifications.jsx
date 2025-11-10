@@ -7,11 +7,11 @@ export default function Certifications() {
     <section className="space-y-6 font-regular text-neutral-900">
       {/* Certification Card */}
       <div className="text-neutral-900">
-        <h3 className="mb-1 font-semibold text-neutral-900">
+        <h3 className="mb-1 text-neutral-900">
           Oracle Cloud Infrastructure (OCI)
         </h3>
 
-        <p className="mb-2 font-medium text-neutral-900">
+        <p className="mb-2 text-neutral-900">
           AI Foundations Associate — 2025
         </p>
 

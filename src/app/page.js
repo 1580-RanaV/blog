@@ -21,7 +21,7 @@ const Thankyou       = dynamic(() => import("./components/Thankyou"),       { lo
 function SectionSkeleton({ title }) {
   return (
     <div className="border-l border-neutral-200 pl-6 font-regular">
-      <p className="uppercase tracking-[0.14em] text-neutral-900">{title}</p>
+      <p className="uppercase text-neutral-900">{title}</p>
       <div className="mt-3 h-24 w-full animate-pulse rounded bg-neutral-100" />
     </div>
   );
@@ -29,7 +29,7 @@ function SectionSkeleton({ title }) {
 
 function TextLoading() {
   return (
-    <p className="font-regular text-sm text-neutral-500 animate-pulse">
+    <p className="font-regular text-neutral-500 animate-pulse">
       one second pls...
     </p>
   );
@@ -42,7 +42,7 @@ function AccordionToggle({ allOpen, onToggleAll }) {
     <button
       type="button"
       onClick={onToggleAll}
-      className="border border-neutral-300 px-3 py-1.5 font-regular rounded-full font-medium hover:border-neutral-900"
+      className="border border-neutral-300 px-3 py-1.5 font-regular rounded-full hover:border-neutral-900"
       aria-pressed={allOpen}
       aria-label={label}
       title={label}
@@ -68,7 +68,7 @@ function AccordionSection({ id, title, isOpen, setOpen, children }) {
       onToggle={onToggle}
     >
       <summary className="flex cursor-pointer list-none items-center justify-between py-4 sm:py-5">
-        <span className="font-regular font-semibold tracking-tight text-neutral-900">
+        <span className="font-regular text-neutral-900">
           {title}
         </span>
         <svg
@@ -139,7 +139,9 @@ export default function Page() {
 
   return (
     <main className="relative min-h-screen bg-white font-regular text-neutral-900">
-      <ProfileViewsBadge />
+      <div className="absolute left-0 top-0">
+        <ProfileViewsBadge />
+      </div>
       <ScrollToTop />
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
         <div className="mb-4 flex items-center justify-end">

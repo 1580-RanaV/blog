@@ -263,18 +263,18 @@ export default function Git() {
               <div>
                 <h2
                   id="github-activity-heading"
-                  className="text-3xl font-semibold leading-tight tracking-tight text-neutral-900"
+                  className="leading-tight text-neutral-900"
                 >
                   {`${formattedTotal} contributions`}
                 </h2>
-                <p className="text-sm text-neutral-900">{rangeLabel}</p>
+                <p className="text-neutral-900">{rangeLabel}</p>
               </div>
 
               <a
                 href={PROFILE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex rounded-full items-center justify-center border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:border-neutral-900"
+                className="inline-flex rounded-full items-center justify-center border border-neutral-300 px-4 py-2 text-neutral-900 transition-colors hover:border-neutral-900"
               >
                 View profile
               </a>
@@ -282,7 +282,7 @@ export default function Git() {
 
             <div className="mt-6">
               {error && (
-                <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+                <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-red-700">
                   {error}{" "}
                   <a
                     href={CONTRIBUTIONS_PAGE}
@@ -352,7 +352,7 @@ export default function Git() {
               </div> */}
             </div>
 
-            <p className="mt-6 text-xs text-neutral-900">
+            <p className="mt-6 text-neutral-900">
               Updated from GitHub — current through today.
             </p>
           </>

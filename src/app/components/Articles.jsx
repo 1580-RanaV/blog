@@ -139,9 +139,9 @@ export default function Unfinished() {
 
           return (
             <div key={index} className="border-b border-neutral-200 pb-6">
-              <p className="text-xs text-neutral-900 mb-3">{project.tech}</p>
+              <p className="text-neutral-900 mb-3">{project.tech}</p>
 
-              <h3 className="text-lg bg-blue-400 px-3 py-3 rounded-br-3xl font-semibold text-white mb-1">
+              <h3 className="bg-blue-600 px-3 py-3 rounded-xl rounded-br-3xl text-white mb-1">
                 {project.title}
               </h3>
 
@@ -160,7 +160,7 @@ export default function Unfinished() {
               <button
                 type="button"
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline"
+                className="text-blue-600 hover:text-blue-700 hover:underline"
               >
                 {isOpen ? "show less" : "read more"}
               </button>

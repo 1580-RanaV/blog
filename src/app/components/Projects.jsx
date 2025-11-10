@@ -7,7 +7,7 @@ export default function Projects() {
   return (
     <section className="w-full font-regular text-neutral-900">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 text-neutral-900">
-        <p className="mt-2 font-semibold leading-tight tracking-tight text-neutral-900">
+        <p className="mt-2 leading-tight text-neutral-900">
           Selected Work; some of my projects that are listed on my resume
           actively.
         </p>
@@ -182,7 +182,7 @@ function ProjectCard({ title, images = [], description, links = [], tags = [] })
   return (
     <article className="font-regular text-neutral-900">
       <header>
-        <h3 className="font-semibold leading-snug text-neutral-900">{title}</h3>
+        <h3 className="leading-snug text-neutral-900">{title}</h3>
       </header>
 
       {/* Images */}
@@ -226,7 +226,7 @@ function ProjectCard({ title, images = [], description, links = [], tags = [] })
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-medium text-blue-600 underline underline-offset-4 transition-colors hover:text-blue-700"
+            className="inline-flex items-center gap-1 text-blue-600 underline underline-offset-4 transition-colors hover:text-blue-700"
           >
             {link.label}
             <ArrowUpRightIcon className="h-4 w-4 text-blue-600" />
@@ -239,7 +239,7 @@ function ProjectCard({ title, images = [], description, links = [], tags = [] })
 
 function TagChip({ label }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-medium lowercase text-neutral-900 hover:text-neutral-900 hover:border-black transition-colors">
+    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 lowercase text-neutral-900 hover:text-neutral-900 hover:border-black transition-colors">
       {label}
     </span>
   );

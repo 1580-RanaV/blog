@@ -52,11 +52,11 @@ export default function Unfinished() {
     <section className="space-y-8 font-regular text-neutral-900">
       {projects.map((project, index) => (
         <div key={index}>
-          <h3 className="text-lg font-semibold text-neutral-900 mb-1">
+          <h3 className="text-neutral-900 mb-1">
             {project.title}
           </h3>
 
-          <p className="text-sm text-neutral-900 mb-2">{project.tech}</p>
+          <p className="text-neutral-900 mb-2">{project.tech}</p>
 
           <p className="text-neutral-900 leading-relaxed mb-2">
             {project.description}

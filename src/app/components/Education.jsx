@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Education() {
   return (
     <div className="w-full font-regular text-neutral-900">
-      <p className="mt-2 font-regular font-semibold leading-tight text-neutral-900">
+      <p className="mt-2 font-regular leading-tight text-neutral-900">
         Education
       </p>
 
@@ -38,7 +38,7 @@ export default function Education() {
 
       {/* PARTICIPATIONS */}
       <div className="mt-12 font-regular text-neutral-900">
-        <h3 className="font-regular font-semibold text-neutral-900">
+        <h3 className="font-regular text-neutral-900">
           Participations & Achievements
         </h3>
 
@@ -71,7 +71,7 @@ export default function Education() {
 
       {/* CLUBS */}
       <div className="mt-12 font-regular text-neutral-900">
-        <h3 className="font-regular font-semibold text-neutral-900">
+        <h3 className="font-regular text-neutral-900">
           University Club Activities
         </h3>
 
@@ -96,7 +96,7 @@ function EduItem({ logo, title, line1, line2, badges = [] }) {
     <article className="group border-l border-neutral-200 pl-6 transition-colors hover:border-black font-regular text-neutral-900">
       <header className="flex items-start gap-4 font-regular text-neutral-900">
         <LogoBox {...logo} />
-        <h4 className="font-regular font-semibold leading-snug text-neutral-900">
+        <h4 className="font-regular leading-snug text-neutral-900">
           {title}
         </h4>
       </header>
@@ -122,7 +122,7 @@ function ParticipationItem({ icon, title, description, link }) {
     <article className="group border-l border-neutral-200 pl-6 transition-colors hover:border-black font-regular text-neutral-900">
       <header className="flex items-start gap-4 font-regular text-neutral-900">
         <LogoBox {...icon} />
-        <h4 className="font-regular font-semibold leading-snug text-neutral-900">
+        <h4 className="font-regular leading-snug text-neutral-900">
           {title}
         </h4>
       </header>
@@ -139,7 +139,7 @@ function ParticipationItem({ icon, title, description, link }) {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-regular font-medium text-blue-600 underline-offset-4 hover:text-blue-700 hover:underline"
+            className="inline-flex items-center gap-1 font-regular text-blue-600 underline-offset-4 hover:text-blue-700 hover:underline"
           >
             {link.label ?? "View"}
             <ArrowUpRightIcon className="h-4 w-4 text-blue-600" />
@@ -156,7 +156,7 @@ function ClubItem({ icon, title, org, description, link }) {
       <header className="flex items-start gap-4 font-regular text-neutral-900">
         <LogoBox {...icon} />
         <div className="min-w-0">
-          <h4 className="font-regular font-semibold leading-snug text-neutral-900">
+          <h4 className="font-regular leading-snug text-neutral-900">
             {title}
           </h4>
           {org && <p className="mt-1 font-regular text-neutral-900">{org}</p>}
@@ -175,7 +175,7 @@ function ClubItem({ icon, title, org, description, link }) {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-regular font-medium text-blue-600 underline-offset-4 hover:text-blue-700 hover:underline"
+            className="inline-flex items-center gap-1 font-regular text-blue-600 underline-offset-4 hover:text-blue-700 hover:underline"
           >
             {link.label ?? "View"}
             <ArrowUpRightIcon className="h-4 w-4 text-blue-600" />
@@ -199,7 +199,7 @@ function LogoBox({ src, alt, rounded = "md" }) {
 
 function Pill({ children }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-regular font-medium lowercase text-neutral-900">
+    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-regular lowercase text-neutral-900">
       {children}
     </span>
   );

@@ -64,7 +64,7 @@ export default function Contact() {
 
   return (
     <div className="w-full font-regular text-neutral-900">
-      <p className="mt-2 font-regular font-semibold leading-tight tracking-tight text-neutral-900">
+      <p className="mt-2 font-regular leading-tight text-neutral-900">
         Reach out to me
       </p>
 
@@ -111,7 +111,7 @@ export default function Contact() {
             onClick={handleSubmit}
             disabled={btnDisabled}
             aria-disabled={btnDisabled}
-            className={`flex-1 inline-flex items-center justify-center rounded-full px-5 py-3 font-regular font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/50 ${btnDisabled ? disabledBtn : enabledBtn}`}
+            className={`flex-1 inline-flex items-center justify-center rounded-full px-5 py-3 font-regular transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/50 ${btnDisabled ? disabledBtn : enabledBtn}`}
             aria-live="polite"
           >
             {showTick ? (

@@ -6,7 +6,7 @@ export default function WorkExp() {
   return (
     <div className="w-full font-regular text-neutral-900">
 
-      <p className="mt-2 font-semibold leading-tight tracking-tight text-neutral-900">
+      <p className="mt-2 leading-tight text-neutral-900">
         Roles & Internships
       </p>
 
@@ -44,7 +44,7 @@ function WorkItem({ company, duration, role, description, tags = [] }) {
   return (
     <article className="font-regular text-neutral-900">
       <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1 font-regular text-neutral-900">
-        <h3 className="font-semibold leading-snug text-neutral-900">
+        <h3 className="leading-snug text-neutral-900">
           {company}
         </h3>
         {duration && <span className="text-neutral-900">{duration}</span>}
@@ -69,7 +69,7 @@ function WorkItem({ company, duration, role, description, tags = [] }) {
 
 function TagChip({ label }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 font-medium lowercase text-neutral-900 hover:text-neutral-900 hover:border-black transition-colors">
+    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 lowercase text-neutral-900 hover:text-neutral-900 hover:border-black transition-colors">
       {label}
     </span>
   );

@@ -11,7 +11,7 @@ export default function ProfileIntro() {
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
           {/* --- Text block --- */}
           <div className="text-left text-neutral-900">
-            <h1 className="font-semibold leading-tight tracking-tight text-neutral-900">
+            <h1 className="leading-tight text-neutral-900">
               V Ranadheer
             </h1>
 
@@ -53,8 +53,8 @@ export default function ProfileIntro() {
           <p className="leading-relaxed text-neutral-900">
             Hi, I’m V. Ranadheer — a CS graduate
             passionate about the intersection of{" "}
-            <span className="font-medium">design</span> and{" "}
-            <span className="font-medium">development</span>. Every line of code and every pixel
+            <span className="font-regular">design</span> and{" "}
+            <span className="font-regular">development</span>. Every line of code and every pixel
             I design reflects my commitment to clarity, creativity, and meaningful problem-solving.
           </p>
 

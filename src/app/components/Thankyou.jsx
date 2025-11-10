@@ -37,7 +37,7 @@ export default function Thankyou() {
         {/* Meta + actions */}
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} <span className="font-medium">& 2026 - www.vrana.website</span>
+            © {year} <span className="font-regular">& 2026 - www.vrana.website</span>
           </p>
 
           {/* Footer navigation */}
