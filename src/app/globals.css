@@ -39,7 +39,7 @@
     font-size: 1rem !important;  /* 14px */
   }
   :where([class*="text-"]) {
-    font-size: 1.1rem !important;   /* catches sm:text-*, text-[15px], etc. */
+    font-size: 1rem !important;   /* catches sm:text-*, text-[15px], etc. */
   }
 }
 
