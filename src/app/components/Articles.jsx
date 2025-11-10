@@ -94,7 +94,7 @@ export default function Unfinished() {
     },
     {
       title:
-        "why do delivery apps like uber, ola, rapido, swiggy, zomato all user circular map searching?",
+        "why do delivery apps like uber, ola, rapido, swiggy, zomato all use circular map searching?",
       tech: "tech thoughts 4",
       description: `
         all apps of these kind use circular map searching because its the most efficient way to find nearby drivers of any sort.
@@ -141,7 +141,7 @@ export default function Unfinished() {
             <div key={index} className="border-b border-neutral-200 pb-6">
               <p className="text-xs text-neutral-900 mb-3">{project.tech}</p>
 
-              <h3 className="text-lg bg-neutral-900 px-3 py-3 font-semibold text-white mb-1">
+              <h3 className="text-lg bg-blue-400 px-3 py-3 rounded-br-3xl font-semibold text-white mb-1">
                 {project.title}
               </h3>
 

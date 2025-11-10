@@ -42,7 +42,7 @@ function AccordionToggle({ allOpen, onToggleAll }) {
     <button
       type="button"
       onClick={onToggleAll}
-      className="border border-neutral-300 px-3 py-1.5 font-regular font-medium hover:border-neutral-900"
+      className="border border-neutral-300 px-3 py-1.5 font-regular rounded-full font-medium hover:border-neutral-900"
       aria-pressed={allOpen}
       aria-label={label}
       title={label}

@@ -21,6 +21,7 @@ const FULL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
 
 const COLOR_EMPTY = "#d4d4d8";
 const COLOR_ACTIVE_BASE = "rgba(15, 15, 15, VAR_ALPHA)";
+const TODAY_KEY = new Date().toISOString().slice(0, 10);
 
 const FALLBACK_WEEKS = Array.from({ length: 16 }, (_, weekIdx) => ({
   key: `placeholder-week-${weekIdx}`,
@@ -29,8 +30,9 @@ const FALLBACK_WEEKS = Array.from({ length: 16 }, (_, weekIdx) => ({
     date: null,
     count: 0,
     level: 0,
-    color: COLOR_EMPTY,
     placeholder: true,
+    color: COLOR_EMPTY,
+    isToday: false,
   })),
 }));
 
@@ -58,6 +60,7 @@ function createPlaceholderCell(id) {
     level: 0,
     placeholder: true,
     color: COLOR_EMPTY,
+    isToday: false,
   };
 }
 
@@ -79,13 +82,15 @@ function buildWeeks(contributions) {
   }
 
   sorted.forEach((day, idx) => {
+    const dateKey = day?.date ?? null;
     cells.push({
-      id: day?.date ?? `missing-${idx}`,
-      date: day?.date ?? null,
+      id: dateKey ?? `missing-${idx}`,
+      date: dateKey,
       count: Math.max(0, day?.count ?? 0),
       level: Math.max(0, day?.level ?? 0),
       placeholder: !day?.date,
       color: getCellColor(day?.level ?? 0, day?.count ?? 0),
+      isToday: Boolean(dateKey && dateKey === TODAY_KEY),
     });
   });
 
@@ -269,7 +274,7 @@ export default function Git() {
                 href={PROFILE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:border-neutral-900"
+                className="inline-flex rounded-full items-center justify-center border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:border-neutral-900"
               >
                 View profile
               </a>
@@ -314,10 +319,16 @@ export default function Git() {
                           return (
                             <span
                               key={day?.id ?? `${week.key}-${idx}`}
-                              className="h-4 w-4"
+                              className="relative block h-4 w-4 rounded-[3px]"
                               style={{ backgroundColor: background }}
                               title={label}
-                            />
+                            >
+                              {day?.isToday && (
+                                <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+                                </span>
+                              )}
+                            </span>
                           );
                         })}
                       </div>

@@ -85,7 +85,7 @@ export default function Contact() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="w-full resize-y rounded-lg border border-neutral-300 bg-white p-3 leading-relaxed text-neutral-900 outline-none focus:border-neutral-900 focus-visible:ring-2 focus-visible:ring-neutral-400/50"
+            className="w-full resize-y rounded-2xl border border-neutral-300 bg-white p-4 leading-relaxed text-neutral-900 outline-none focus:border-neutral-900 focus-visible:ring-2 focus-visible:ring-neutral-400/50"
           />
         </div>
 
@@ -102,7 +102,7 @@ export default function Contact() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="w-full rounded-lg border border-neutral-300 bg-white p-3 text-neutral-900 outline-none focus:border-neutral-900 focus-visible:ring-2 focus-visible:ring-neutral-400/50"
+              className="w-full rounded-full border border-neutral-300 bg-white px-5 py-3 text-neutral-900 outline-none focus:border-neutral-900 focus-visible:ring-2 focus-visible:ring-neutral-400/50"
             />
           </div>
 
@@ -111,7 +111,7 @@ export default function Contact() {
             onClick={handleSubmit}
             disabled={btnDisabled}
             aria-disabled={btnDisabled}
-            className={`flex-1 inline-flex items-center justify-center rounded-lg px-4 py-3 font-regular font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/50 ${btnDisabled ? disabledBtn : enabledBtn}`}
+            className={`flex-1 inline-flex items-center justify-center rounded-full px-5 py-3 font-regular font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/50 ${btnDisabled ? disabledBtn : enabledBtn}`}
             aria-live="polite"
           >
             {showTick ? (

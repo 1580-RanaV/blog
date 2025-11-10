@@ -46,13 +46,13 @@ export default function ScrollToTop() {
       type="button"
       onClick={scrollToTop}
       aria-label="Scroll back to top"
-      className={`fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 border-2 border-neutral-300 bg-white/90 px-4 py-2 text-sm font-semibold uppercase tracking-[0.2em] text-neutral-900 shadow-lg shadow-black/5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/70 ${
+      className={`fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 border-2 border-neutral-300 bg-white/90 px-4 py-2 text-sm font-semibold uppercase rounded-full text-neutral-900 shadow-lg shadow-black/5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/70 ${
         visible
           ? "pointer-events-auto opacity-100 translate-y-0"
           : "pointer-events-none opacity-0 translate-y-2"
       }`}
     >
-      <span className="text-xs tracking-tight text-neutral-900 font-medium">scroll to top</span>
+      <span className="text-xs tracking-tight text-neutral-900 font-medium">top</span>
       <ArrowIcon />
     </button>
   );

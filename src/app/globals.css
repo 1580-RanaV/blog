@@ -41,12 +41,13 @@
   :where([class*="text-"]) {
     font-size: 1rem !important;   /* catches sm:text-*, text-[15px], etc. */
     font-weight: inherit;
+    letter-spacing: 0.2px;
   }
 }
 
 @font-face {
   font-family: 'font-regular';
-  src: url('/fonts/inter.woff') format('woff');
+  src: url('/fonts/isemb.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
