@@ -7,27 +7,20 @@ export default function ProfileIntro() {
   return (
     <section className="w-full font-regular text-neutral-900">
       <div className="mx-auto max-w-4xl">
-        {/* Header Row — name, title, and photo side-by-side */}
+        {/* --- Header Row --- */}
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-          {/* --- Text block --- */}
+          {/* --- Text Block --- */}
           <div className="text-left text-neutral-900">
-            <h1 className="leading-tight text-neutral-900">
-              V Ranadheer
-            </h1>
+            <h1 className="leading-tight text-neutral-900">V Ranadheer</h1>
 
             <p className="mt-2 text-neutral-900">
-              <span>Graduate</span>
-              <span className="mx-2">•</span>
               <span>Creative Developer</span>
+              <span className="mx-2">•</span>
+              <span>Product Designer</span>
             </p>
 
-            <p className="mt-1 text-neutral-900">
-              <span>Andhra Pradesh, India</span>
-            </p>
-
-            <p className="mt-1 text-neutral-900">
-              <span>Open to work</span>
-            </p>
+            <p className="mt-1 text-neutral-900">Andhra Pradesh, India</p>
+            <p className="mt-1 text-neutral-900">Open to Work</p>
           </div>
 
           {/* --- Photo --- */}
@@ -48,23 +41,21 @@ export default function ProfileIntro() {
         {/* Divider */}
         <div className="mt-6 h-px w-16 bg-neutral-200" />
 
-        {/* Intro Paragraphs */}
+        {/* --- Intro Paragraphs --- */}
         <div className="mt-6 space-y-5 text-neutral-900">
-          <p className="leading-relaxed text-neutral-900">
-            Hi, I’m V. Ranadheer — a CS graduate
-            passionate about the intersection of{" "}
-            <span className="font-regular">design</span> and{" "}
-            <span className="font-regular">development</span>. Every line of code and every pixel
-            I design reflects my commitment to clarity, creativity, and meaningful problem-solving.
+          <p className="leading-relaxed">
+            Hey, I’m v ranadheer. I build products, interfaces, and systems that sit
+            somewhere between <span className="font-regular">design</span> and{" "}
+            <span className="font-regular">engineering</span>. I like things
+            that are minimal, intentional, and fast; whether it’s a frontend
+            flow or a visual identity.
           </p>
-
-          <p className="leading-relaxed text-neutral-900">
-            I’m exploring what it truly means to be a developer — building tools, interfaces,
-            and experiences that feel both technically sharp and emotionally resonant.
-          </p>
+            I treat code like a design tool; something that shapes experience,
+            not just function. Most of what I work on lives at the intersection
+            of clarity, structure, and a great attention to detail.
         </div>
 
-        {/* Social Icons */}
+        {/* --- Social Icons --- */}
         <div className="mt-8 flex items-center gap-3">
           <SocialIcon
             href="https://github.com/1580-RanaV"
@@ -87,7 +78,7 @@ export default function ProfileIntro() {
   );
 }
 
-/* --- Reusable social icon --- */
+/* --- Reusable Social Icon --- */
 function SocialIcon({ href, label, imgSrc }) {
   return (
     <a
@@ -96,7 +87,7 @@ function SocialIcon({ href, label, imgSrc }) {
       rel="noopener noreferrer"
       aria-label={label}
       title={label}
-      className="group inline-flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 ring-1 ring-inset ring-neutral-200 transition-all hover:-translate-y-[1px] hover:bg-white hover:ring-neutral-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 font-regular text-neutral-900"
+      className="group inline-flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 ring-1 ring-inset ring-neutral-200 transition-all hover:-translate-y-[1px] hover:bg-white hover:ring-neutral-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400"
     >
       <span className="sr-only">{label}</span>
       <Image
@@ -109,4 +100,3 @@ function SocialIcon({ href, label, imgSrc }) {
     </a>
   );
 }
-

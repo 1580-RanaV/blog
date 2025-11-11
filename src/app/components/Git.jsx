@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 
 const USERNAME = "1580-RanaV";
 const API_URL = `https://github-contributions-api.jogruber.de/v4/${USERNAME}`;
@@ -174,6 +174,8 @@ export default function Git() {
   const [range, setRange] = useState({ start: null, end: null });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [showScrollHint, setShowScrollHint] = useState(true);
+  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -233,6 +235,57 @@ export default function Git() {
     return () => {
       cancelled = true;
     };
+  }, []);
+
+  // Smooth scroll animation on mount
+  useEffect(() => {
+    if (!loading && scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const scrollDistance = 200; // pixels to scroll
+      const duration = 1500; // milliseconds
+      const startTime = Date.now();
+
+      const animateScroll = () => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Ease-in-out function
+        const easeInOut = progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        
+        container.scrollLeft = scrollDistance * easeInOut;
+
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        } else {
+          // After animation, scroll back to start smoothly
+          setTimeout(() => {
+            container.scrollTo({ left: 0, behavior: 'smooth' });
+          }, 500);
+        }
+      };
+
+      // Start animation after a brief delay
+      const timeoutId = setTimeout(() => {
+        animateScroll();
+      }, 300);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [loading]);
+
+  // Hide scroll hint after user scrolls
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      setShowScrollHint(false);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
   }, []);
 
   const rangeLabel = useMemo(() => {
@@ -295,69 +348,93 @@ export default function Git() {
                 </div>
               )}
 
-              <div className="overflow-x-auto">
-                <div className="min-w-[640px]">
-                  <div
-                    className="flex gap-[3px]"
-                    aria-label="Contribution heatmap"
-                  >
-                    {weeks.map((week) => (
-                      <div
-                        key={week.key}
-                        className="flex flex-col gap-[3px]"
-                        aria-hidden="true"
-                      >
-                        {week.days.map((day, idx) => {
-                          const count = Math.max(0, day?.count ?? 0);
-                          const background = day?.color ?? COLOR_EMPTY;
-                          const label = day?.date
-                            ? `${count} contribution${
-                                count === 1 ? "" : "s"
-                              } on ${formatFullDate(day.date)}`
-                            : "No data";
+              <div className="relative">
+                {/* Scroll hint */}
+                {showScrollHint && (
+                  <div className="absolute -top-5 right-0 flex items-center gap-2 text-xs text-neutral-500 animate-pulse">
+                    <span></span>
+                  </div>
+                )}
 
-                          return (
-                            <span
-                              key={day?.id ?? `${week.key}-${idx}`}
-                              className="relative block h-4 w-4 rounded-[3px]"
-                              style={{ backgroundColor: background }}
-                              title={label}
-                            >
-                              {day?.isToday && (
-                                <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                                  <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
-                                </span>
-                              )}
-                            </span>
-                          );
-                        })}
-                      </div>
-                    ))}
+                {/* Scrollable container with visible scrollbar */}
+                <div 
+                  ref={scrollContainerRef}
+                  className="overflow-x-auto scrollbar-visible"
+                  style={{
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: '#d4d4d8 transparent'
+                  }}
+                >
+                  <div className="min-w-[640px] pb-2">
+                    <div
+                      className="flex gap-[3px]"
+                      aria-label="Contribution heatmap"
+                    >
+                      {weeks.map((week) => (
+                        <div
+                          key={week.key}
+                          className="flex flex-col gap-[3px]"
+                          aria-hidden="true"
+                        >
+                          {week.days.map((day, idx) => {
+                            const count = Math.max(0, day?.count ?? 0);
+                            const background = day?.color ?? COLOR_EMPTY;
+                            const label = day?.date
+                              ? `${count} contribution${
+                                  count === 1 ? "" : "s"
+                                } on ${formatFullDate(day.date)}`
+                              : "No data";
+
+                            return (
+                              <span
+                                key={day?.id ?? `${week.key}-${idx}`}
+                                className="relative block h-4 w-4 rounded-[3px]"
+                                style={{ backgroundColor: background }}
+                                title={label}
+                              >
+                                {day?.isToday && (
+                                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                                    <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+                                  </span>
+                                )}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-
-              {/* <div className="mt-4 flex items-center gap-3 text-xs text-neutral-900">
-                <span>Less</span>
-                <div className="flex items-center gap-[3px]">
-                  {[COLOR_EMPTY, getCellColor(4, 1)].map((color, idx) => (
-                    <span
-                      key={`${color}-${idx}`}
-                      className="h-3 w-3"
-                      style={{ backgroundColor: color }}
-                    />
-                  ))}
-                </div>
-                <span>More</span>
-              </div> */}
             </div>
 
             <p className="mt-6 text-neutral-900">
-              Updated from GitHub — current through today.
+              Updated from GitHub, current through today. Red dot indicates today.
             </p>
           </>
         )}
       </div>
+
+      <style jsx>{`
+        .scrollbar-visible::-webkit-scrollbar {
+          height: 8px;
+        }
+        
+        .scrollbar-visible::-webkit-scrollbar-track {
+          background: transparent;
+          border-radius: 4px;
+        }
+        
+        .scrollbar-visible::-webkit-scrollbar-thumb {
+          background: #d4d4d8;
+          border-radius: 4px;
+          transition: background 0.2s;
+        }
+        
+        .scrollbar-visible::-webkit-scrollbar-thumb:hover {
+          background: #a1a1aa;
+        }
+      `}</style>
     </section>
   );
 }

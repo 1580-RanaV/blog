@@ -6,7 +6,6 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-size: 14px; /* 1rem = 14px */
     font-family: 'font-regular', sans-serif;
   }
 
@@ -36,16 +35,16 @@
 /* ---------- Force 14px everywhere ---------- */
 @layer base {
   :where(h1,h2,h3,h4,h5,h6,p,li,dl,small,label,summary,button,input,textarea,a,span) {
-    font-size: 1rem !important;  /* 14px */
+    font-size: 0.9rem !important;  /* 14px */
   }
   :where([class*="text-"]) {
-    font-size: 1rem !important;   /* catches sm:text-*, text-[15px], etc. */
+    font-size: 0.9rem !important;   /* catches sm:text-*, text-[15px], etc. */
   }
 }
 
 @font-face {
   font-family: 'font-regular';
-  src: url('/fonts/blink.woff') format('woff');
+  src: url('/fonts/incon.woff') format('woff');
   font-style: normal;
   font-display: swap;
 }

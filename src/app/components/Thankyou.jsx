@@ -27,17 +27,17 @@ export default function Thankyou() {
       <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-10">
         {/* Closing note */}
         <p className="leading-relaxed">
-          Thanks for reading — see you around.{" "}
+          Thanks for reading, see you around.{" "}
           <br className="hidden sm:block" />
           This space is where I collect my work, ideas, and a bit of myself.{" "}
           <br className="hidden sm:block" />
-          Always in progress, always becoming.
+          Always in progress, always becoming. 
         </p>
 
         {/* Meta + actions */}
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} <span className="font-regular">& 2026 - www.vrana.website</span>
+            all rights reserved © {year} <span className="font-regular">& 2026 | www.vrana.website</span>
           </p>
 
           {/* Footer navigation */}
