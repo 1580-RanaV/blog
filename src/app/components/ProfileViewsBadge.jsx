@@ -67,9 +67,9 @@ export default function ProfileViewsBadge() {
           {displayValue}
         </span>
       </div>
-      <div className="bg-neutral-800 px-2 py-1 text-neutral-100">
+      {/* <div className="bg-neutral-800 px-2 py-1 text-neutral-100">
         {LAST_UPDATED_LABEL}
-      </div>
+      </div> */}
     </div>
   );
 }
