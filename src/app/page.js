@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState, useCallback } from "react";
+import React, { useMemo, useState, useCallback, useEffect } from "react";
 import dynamic from "next/dynamic";
 import ProfileIntro from "./components/ProfileIntro";
 import ProfileViewsBadge from "./components/ProfileViewsBadge";
@@ -53,7 +53,7 @@ function AccordionToggle({ allOpen, onToggleAll }) {
 }
 
 /* ---------- Controlled, accessible accordion section ---------- */
-function AccordionSection({ id, title, isOpen, setOpen, children }) {
+function AccordionSection({ id, title, isOpen, setOpen, children, delayMs = 0 }) {
   const onToggle = useCallback(
     (e) => {
       setOpen(id, e.currentTarget.open);
@@ -63,7 +63,8 @@ function AccordionSection({ id, title, isOpen, setOpen, children }) {
 
   return (
     <details
-      className="group border-t border-neutral-200 first:border-t-0"
+      className="group border-t border-neutral-200 first:border-t-0 fade-seq"
+      style={{ "--fade-delay": `${delayMs}ms` }}
       open={isOpen}
       onToggle={onToggle}
     >
@@ -111,6 +112,7 @@ export default function Page() {
     []
   );
 
+  const [contentReady, setContentReady] = useState(false);
   const [openMap, setOpenMap] = useState(() => ({
     profile: false,
     projects: false,
@@ -122,6 +124,28 @@ export default function Page() {
     articles: false,
     git: false,
   }));
+
+  useEffect(() => {
+    const timer = setTimeout(() => setContentReady(true), 150);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const entryDelays = useMemo(
+    () => ({
+      profile: 0,
+      articles: 120,
+      git: 240,
+      projects: 360,
+      unfinished: 480,
+      certifications: 600,
+      work: 720,
+      education: 840,
+      contact: 960,
+      footer: 1080,
+      profileBadge: 1220,
+    }),
+    []
+  );
 
   const setOpen = useCallback((id, value) => {
     setOpenMap((prev) => ({ ...prev, [id]: value }));
@@ -137,9 +161,16 @@ export default function Page() {
     setOpenMap(Object.fromEntries(sections.map((s) => [s.id, next])));
   }, [allOpen, sections]);
 
+  if (!contentReady) {
+    return <main className="min-h-screen bg-white" />;
+  }
+
   return (
     <main className="relative min-h-screen bg-white font-regular text-neutral-900">
-      <div className="absolute left-0 top-0">
+      <div
+        className="absolute left-0 top-0 fade-seq"
+        style={{ "--fade-delay": `${entryDelays.profileBadge}ms` }}
+      >
         <ProfileViewsBadge />
       </div>
       <ScrollToTop />
@@ -154,6 +185,7 @@ export default function Page() {
             title="Profile"
             isOpen={openMap.profile}
             setOpen={setOpen}
+            delayMs={entryDelays.profile}
           >
             <ProfileIntro />
           </AccordionSection>
@@ -163,6 +195,7 @@ export default function Page() {
             title="Articles"
             isOpen={openMap.articles}
             setOpen={setOpen}
+            delayMs={entryDelays.articles}
           >
             <Articles />
           </AccordionSection>
@@ -172,6 +205,7 @@ export default function Page() {
             title="Github contribution chart"
             isOpen={openMap.git}
             setOpen={setOpen}
+            delayMs={entryDelays.git}
           >
             <Git />
           </AccordionSection>
@@ -181,6 +215,7 @@ export default function Page() {
             title="Projects"
             isOpen={openMap.projects}
             setOpen={setOpen}
+            delayMs={entryDelays.projects}
           >
             <Projects />
           </AccordionSection>
@@ -191,6 +226,7 @@ export default function Page() {
             title="Unfinished / old Projects"
             isOpen={openMap.unfinished}
             setOpen={setOpen}
+            delayMs={entryDelays.unfinished}
           >
             <Unfinished />
           </AccordionSection>
@@ -200,6 +236,7 @@ export default function Page() {
             title="Certification(s)"
             isOpen={openMap.certifications}
             setOpen={setOpen}
+            delayMs={entryDelays.certifications}
           >
             <Certifications />
           </AccordionSection>
@@ -209,6 +246,7 @@ export default function Page() {
             title="Work Experience"
             isOpen={openMap.work}
             setOpen={setOpen}
+            delayMs={entryDelays.work}
           >
             <WorkExp />
           </AccordionSection>
@@ -218,6 +256,7 @@ export default function Page() {
             title="Education & participations"
             isOpen={openMap.education}
             setOpen={setOpen}
+            delayMs={entryDelays.education}
           >
             <Education />
           </AccordionSection>
@@ -227,12 +266,13 @@ export default function Page() {
             title="Contact"
             isOpen={openMap.contact}
             setOpen={setOpen}
+            delayMs={entryDelays.contact}
           >
             <Contact />
           </AccordionSection>
 
           {/* Not an accordion; renders separately */}
-          <Thankyou />
+          <Thankyou delayMs={entryDelays.footer} />
         </div>
       </div>
     </main>

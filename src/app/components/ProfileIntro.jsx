@@ -20,7 +20,7 @@ export default function ProfileIntro() {
             </p>
 
             <p className="mt-1 text-neutral-900">Andhra Pradesh, India</p>
-            <p className="mt-1 text-neutral-900">Open to Work</p>
+            {/* <p className="mt-1 text-neutral-900">Open to Work</p> */}
           </div>
 
           {/* --- Photo --- */}

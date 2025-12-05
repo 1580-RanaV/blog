@@ -32,6 +32,19 @@
   animation: fadeUp 0.6s ease-out both;
 }
 
+@keyframes fadeFocus {
+  0%   { opacity: 0; filter: brightness(1) blur(20px); }
+  10%  { opacity: 1; filter: brightness(2) blur(10px); }
+  100% { opacity: 1; filter: brightness(1) blur(0); }
+}
+
+.fade-seq {
+  opacity: 0;
+  filter: brightness(1) blur(20px);
+  animation: fadeFocus 0.9s ease forwards;
+  animation-delay: var(--fade-delay, 0ms);
+}
+
 /* ---------- Force 14px everywhere ---------- */
 @layer base {
   :where(h1,h2,h3,h4,h5,h6,p,li,dl,small,label,summary,button,input,textarea,a,span) {

@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export default function Thankyou() {
+export default function Thankyou({ delayMs = 0 }) {
   const year = new Date().getFullYear();
 
   function scrollToTop(e) {
@@ -22,7 +22,8 @@ export default function Thankyou() {
   return (
     <footer
       aria-label="Site footer"
-      className="w-full font-regular text-neutral-900 border-t border-neutral-200"
+      className="w-full font-regular text-neutral-900 border-t border-neutral-200 fade-seq"
+      style={{ "--fade-delay": `${delayMs}ms` }}
     >
       <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-10">
         {/* Closing note */}
