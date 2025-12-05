@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
-export default function Unfinished() {
+export default function Articles() {
   const projects = [
     {
       title:
@@ -113,58 +113,76 @@ export default function Unfinished() {
   ];
 
   const [openIndex, setOpenIndex] = useState(null);
+  const formatter = useMemo(
+    () => ({
+      sentence: (text = "") => {
+        const trimmed = text.trim();
+        if (!trimmed) return "";
+        return trimmed[0].toUpperCase() + trimmed.slice(1);
+      },
+      paragraph: (text = "") =>
+        text
+          .replace(/\s+/g, " ")
+          .trim()
+          .replace(/([.?!])\s+/g, "$1 ")
+          .replace(/^\s*/, ""),
+    }),
+    []
+  );
 
   return (
-    <section className="font-regular text-neutral-900">
-      <p className="mb-12">
-        these are the tech thought pieces i write out of curiosity when i get random doubts and try to learn about them.
+    <section className="font-regular text-neutral-100 normal-case">
+      <p className="mb-8 text-neutral-300">
+        These are the tech thought pieces I write out of curiosity when I get random doubts and try to learn about them.
       </p>
 
-      <div className="space-y-12">
+      <div className="space-y-6">
         {projects.map((project, index) => {
           const paragraphs = project.description
             .trim()
             .split(/\n\s*\n/)
-            .map((p) => p.trim());
+            .map((p) => formatter.paragraph(p));
 
           const preview =
-            project.description
-              .replace(/\s+/g, " ")
-              .trim()
+            formatter.paragraph(project.description)
               .split(" ")
               .slice(0, 30)
-              .join(" ") + "...";
+              .join(" ") + "…";
 
           const isOpen = openIndex === index;
 
           return (
-            <div key={index} className="border-b border-neutral-200 pb-6">
-              <p className="text-neutral-900 mb-3">{project.tech}</p>
-
-              <h3 className="bg-blue-600 px-3 py-3 rounded-xl rounded-br-3xl text-white mb-1">
-                {project.title}
-              </h3>
-
-              {!isOpen ? (
-                <p className="text-neutral-900 leading-relaxed mb-4">
-                  {preview}
-                </p>
-              ) : (
-                <div className="text-neutral-900 leading-relaxed space-y-4 mb-4">
-                  {paragraphs.map((para, i) => (
-                    <p key={i}>{para}</p>
-                  ))}
+            <article
+              key={index}
+              className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-5 hover:border-neutral-700 transition-colors"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-xs text-neutral-400 mb-2">{formatter.sentence(project.tech)}</p>
+                  <h3 className="text-neutral-50 text-sm font-semibold leading-snug">
+                    {formatter.sentence(project.title)}
+                  </h3>
                 </div>
-              )}
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="text-xs text-neutral-400 underline underline-offset-2 hover:text-neutral-200"
+                  aria-expanded={isOpen}
+                >
+                  {isOpen ? "Hide" : "Read"}
+                </button>
+              </div>
 
-              <button
-                type="button"
-                onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="text-blue-600 hover:text-blue-700 hover:underline"
-              >
-                {isOpen ? "show less" : "read more"}
-              </button>
-            </div>
+              <div className="mt-3 text-neutral-200 leading-relaxed space-y-3 text-xs">
+                {!isOpen ? (
+                  <p>{formatter.sentence(preview)}</p>
+                ) : (
+                  paragraphs.map((para, i) => (
+                    <p key={i}>{formatter.sentence(para)}</p>
+                  ))
+                )}
+              </div>
+            </article>
           );
         })}
       </div>

@@ -6,19 +6,21 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'font-regular', sans-serif;
+    font-family: 'Inter', 'font-regular', sans-serif;
   }
 
   body {
-    @apply bg-white text-neutral-900 antialiased;
-    line-height: 1.6;
-    text-transform: lowercase;
+    @apply bg-neutral-950 text-neutral-100 antialiased;
+    font-family: inherit;
+    font-weight: 400;
+  }
+
+  body, button, input, textarea, select {
     font-family: inherit;
   }
 
   * {
-    @apply border-neutral-200;
-    font-family: inherit; /* inherit from html (font-sans globally) */
+    @apply border-neutral-800;
   }
 }
 
@@ -45,23 +47,138 @@
   animation-delay: var(--fade-delay, 0ms);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .fade-seq {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
+}
+
 /* ---------- Force 14px everywhere ---------- */
 @layer base {
   :where(h1,h2,h3,h4,h5,h6,p,li,dl,small,label,summary,button,input,textarea,a,span) {
-    font-size: 0.9rem !important;  /* 14px */
+    font-size: 0.875rem !important;  /* 14px (text-sm) */
+    letter-spacing: -0.01em;
   }
   :where([class*="text-"]) {
-    font-size: 0.9rem !important;   /* catches sm:text-*, text-[15px], etc. */
+    font-size: 0.875rem !important;   /* catches sm:text-*, text-[14px], etc. */
+    letter-spacing: -0.01em;
+  }
+  :where(h1,h2,h3,h4,h5,h6) {
+    font-weight: 700 !important;
+  }
+  :where(p,li,dl,small,label,summary,button,input,textarea,a,span) {
+    font-weight: 400 !important;
   }
 }
 
-@font-face {
-  font-family: 'font-regular';
-  src: url('/fonts/blinkbold.woff') format('woff');
-  font-style: normal;
-  font-display: swap;
+/* ---------- Dark palette overrides ---------- */
+@layer base {
+  :where(.text-neutral-900, .text-neutral-800, .text-neutral-700) {
+    color: #e5e7eb !important;
+  }
+  :where(.text-neutral-600, .text-neutral-500, .text-neutral-400) {
+    color: #cbd5e1 !important;
+  }
+  :where(.bg-white, .bg-neutral-50, .bg-neutral-100) {
+    background-color: #0f172a !important;
+  }
+  :where(.divide-neutral-200, .border-neutral-200, .border-neutral-300) {
+    border-color: #2f3640 !important;
+  }
+  :where(.text-blue-600, .text-blue-700, .text-blue-500) {
+    color: #e5e7eb !important;
+  }
+}
+
+/* ---------- Link + accent styling (muted gray, subtle underline) ---------- */
+@layer base {
+  a {
+    color: #f1f5f9;
+    text-decoration: underline;
+    text-decoration-color: #94a3b8;
+    text-underline-offset: 3px;
+    font-weight: 500;
+  }
+  a:hover {
+    color: #ffffff;
+    text-decoration-color: #ffffff;
+  }
+  strong, b {
+    color: #f8fafc;
+    font-weight: 700;
+  }
+  small, .muted {
+    color: #9ca3af;
+  }
+  summary { list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+}
+
+/* ---------- Form & button defaults ---------- */
+@layer base {
+  button,
+  input,
+  textarea {
+    background-color: #0f0f10;
+    color: #f1f5f9;
+    border-color: #1f1f22;
+  }
+  button {
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+  button:disabled {
+    background-color: #1c1c1f;
+    color: #6b7280;
+    cursor: not-allowed;
+  }
+  button:not(:disabled):hover {
+    background-color: #1b1b1e;
+  }
+  button:not(:disabled):active {
+    transform: translateY(1px);
+  }
+  textarea,
+  input {
+    border-radius: 14px;
+  }
+  textarea::placeholder,
+  input::placeholder {
+    color: #94a3b8;
+  }
+
+  ::selection {
+    background: #1f2937;
+    color: #f8fafc;
+  }
+}
+
+/* ---------- Scrollbar (dark, minimal) ---------- */
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #1f1f24 #0b0b0f;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #0b0b0f;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #1f1f24;
+    border-radius: 999px;
+    border: 2px solid #0b0b0f;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: #2b2b32;
+  }
 }
 
 .font-regular {
-  font-family: 'font-regular', sans-serif;
+  font-family: 'Inter', sans-serif;
 }

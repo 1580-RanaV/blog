@@ -1,32 +1,38 @@
 // src/app/layout.js
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
 export const metadata = {
-  metadataBase: new URL("https://www.vrana.website"), // your live domain
-  title: "v ranadheer",
-  description: "Creative developer — portfolio & work.",
+  metadataBase: new URL("https://www.vrana.website"),
+  title: "V Ranadheer",
+  description: "Creative developer portfolio & work.",
 
   openGraph: {
     type: "website",
     url: "https://www.vrana.website",
-    title: "V Ranadheer — Portfolio",
-    description: "Creative developer — portfolio & work.",
+    title: "V Ranadheer · Portfolio",
+    description: "Creative developer portfolio & work.",
     siteName: "vrana.website",
     images: [
       {
-        url: "/my-view.jpg", // your OG image in /public
+        url: "/my-view.jpg",
         width: 1200,
         height: 630,
-        alt: "V Ranadheer — cover",
+        alt: "V Ranadheer cover",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "V Ranadheer — Portfolio",
-    description: "Creative developer — portfolio & work.",
+    title: "V Ranadheer · Portfolio",
+    description: "Creative developer portfolio & work.",
     images: ["/my-view.jpg"],
   },
 
@@ -43,14 +49,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.className}>
       <head>
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#0c0c0f" />
         <meta name="apple-mobile-web-app-title" content="V Ranadheer" />
       </head>
-      <body className={``}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

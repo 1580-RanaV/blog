@@ -11,7 +11,6 @@ const Projects       = dynamic(() => import("./components/Projects"),       { lo
 const Unfinished     = dynamic(() => import("./components/Unfinished"),     { loading: () => <TextLoading /> });
 const WorkExp        = dynamic(() => import("./components/WorkExp"),        { loading: () => <TextLoading /> });
 const Education      = dynamic(() => import("./components/Education"),      { loading: () => <TextLoading /> });
-const Contact        = dynamic(() => import("./components/Contact"),        { loading: () => <TextLoading /> });
 const Certifications = dynamic(() => import("./components/Certifications"), { loading: () => <TextLoading /> });
 const Articles       = dynamic(() => import("./components/Articles"),       { loading: () => <TextLoading /> });
 const Git            = dynamic(() => import("./components/Git"),            { loading: () => <TextLoading /> });
@@ -30,7 +29,7 @@ function SectionSkeleton({ title }) {
 function TextLoading() {
   return (
     <p className="font-regular text-neutral-500 animate-pulse">
-      one second pls...
+      One second....
     </p>
   );
 }
@@ -42,7 +41,7 @@ function AccordionToggle({ allOpen, onToggleAll }) {
     <button
       type="button"
       onClick={onToggleAll}
-      className="border border-neutral-300 px-3 py-1.5 font-regular rounded-full hover:border-neutral-900"
+      className="text-neutral-300 underline underline-offset-4 hover:text-white"
       aria-pressed={allOpen}
       aria-label={label}
       title={label}
@@ -63,36 +62,54 @@ function AccordionSection({ id, title, isOpen, setOpen, children, delayMs = 0 })
 
   return (
     <details
-      className="group border-t border-neutral-200 first:border-t-0 fade-seq"
+      className="group fade-seq py-1.5 sm:py-2.5"
       style={{ "--fade-delay": `${delayMs}ms` }}
       open={isOpen}
       onToggle={onToggle}
     >
-      <summary className="flex cursor-pointer list-none items-center justify-between py-4 sm:py-5">
-        <span className="font-regular text-neutral-900">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-1.5 sm:py-2.5 text-neutral-50 font-semibold tracking-tight">
+        <span className="font-regular text-[0.8rem]">
           {title}
         </span>
-        <svg
-          className="h-4 w-4 shrink-0 transition-transform duration-200"
-          style={{ transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            d="M12 5v14M5 12h14"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-        </svg>
+        <span className="text-neutral-500 text-xs">{isOpen ? "−" : "+"}</span>
       </summary>
 
       <div className="pb-8 sm:pb-10">
-        <div className="border-l border-neutral-200 pl-6">
+        <div className="pl-1 sm:pl-2 space-y-3 text-neutral-200 leading-relaxed">
           {isOpen ? children : null}
         </div>
       </div>
     </details>
+  );
+}
+
+function ClockBadge({ delayMs = 0 }) {
+  const [now, setNow] = useState(() => new Date());
+
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const label = now.toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
+
+  return (
+    <div
+      className="fade-seq"
+      style={{ "--fade-delay": `${delayMs}ms` }}
+    >
+      <span className="font-regular text-xs tracking-tight text-neutral-300 whitespace-nowrap">
+        {label}
+      </span>
+    </div>
   );
 }
 
@@ -101,11 +118,10 @@ export default function Page() {
     () => [
       { id: "profile",        title: "Profile" },
       { id: "projects",       title: "Projects" },
-      { id: "unfinished",     title: "Unfinished / old Projects" },
+      { id: "unfinished",     title: "Unfinished / Old Projects" },
       { id: "certifications", title: "Certifications" },
       { id: "work",           title: "Work Experience" },
       { id: "education",      title: "Education / Academics" },
-      { id: "contact",        title: "Contact" },
       { id: "articles",       title: "Articles" },
       { id: "git",            title: "Git"},
     ],
@@ -120,7 +136,6 @@ export default function Page() {
     certifications: false,
     work: false,
     education: false,
-    contact: false,
     articles: false,
     git: false,
   }));
@@ -140,9 +155,9 @@ export default function Page() {
       certifications: 600,
       work: 720,
       education: 840,
-      contact: 960,
-      footer: 1080,
-      profileBadge: 1220,
+      footer: 960,
+      profileBadge: 1100,
+      clock: 1200,
     }),
     []
   );
@@ -162,24 +177,27 @@ export default function Page() {
   }, [allOpen, sections]);
 
   if (!contentReady) {
-    return <main className="min-h-screen bg-white" />;
+    return <main className="min-h-screen bg-neutral-950" />;
   }
 
   return (
-    <main className="relative min-h-screen bg-white font-regular text-neutral-900">
+    <main className="relative min-h-screen bg-neutral-950 font-regular text-neutral-100">
       <div
         className="absolute left-0 top-0 fade-seq"
         style={{ "--fade-delay": `${entryDelays.profileBadge}ms` }}
       >
         <ProfileViewsBadge />
       </div>
+      <div className="absolute right-0 top-0">
+        <ClockBadge delayMs={entryDelays.clock} />
+      </div>
       <ScrollToTop />
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-        <div className="mb-4 flex items-center justify-end">
+      <div className="mx-auto max-w-4xl px-5 sm:px-7 lg:px-10 py-16 sm:py-20 lg:py-24 space-y-6">
+        <div className="flex items-center justify-end text-sm text-neutral-400">
           <AccordionToggle allOpen={allOpen} onToggleAll={toggleAll} />
         </div>
 
-        <div className="divide-y divide-neutral-200">
+        <div className="space-y-3 sm:space-y-4">
           <AccordionSection
             id="profile"
             title="Profile"
@@ -259,16 +277,6 @@ export default function Page() {
             delayMs={entryDelays.education}
           >
             <Education />
-          </AccordionSection>
-
-          <AccordionSection
-            id="contact"
-            title="Contact"
-            isOpen={openMap.contact}
-            setOpen={setOpen}
-            delayMs={entryDelays.contact}
-          >
-            <Contact />
           </AccordionSection>
 
           {/* Not an accordion; renders separately */}

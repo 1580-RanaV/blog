@@ -189,7 +189,7 @@ function ClubItem({ icon, title, org, description, link }) {
 function LogoBox({ src, alt, rounded = "md" }) {
   return (
     <div
-      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-${rounded} bg-neutral-100 ring-1 ring-inset ring-neutral-200 overflow-hidden`}
+      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-${rounded} bg-neutral-800 ring-1 ring-inset ring-neutral-600 overflow-hidden`}
       aria-hidden
     >
       <Image src={src} alt={alt} width={24} height={24} className="object-contain" />

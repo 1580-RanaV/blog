@@ -62,8 +62,8 @@ export default function ProfileViewsBadge() {
   return (
     <div className="inline-flex flex-col text-white">
       <div className="inline-flex overflow-hidden bg-neutral-900 text-white">
-        <span className="bg-neutral-900 px-2 py-1">profile views&nbsp;&nbsp;&nbsp;</span>
-        <span className="bg-neutral-500 px-2.5 py-1 text-white">
+        <span className="bg-neutral-900 px-2 py-1">Profile Views&nbsp;&nbsp;&nbsp;</span>
+        <span className="bg-neutral-800 px-2.5 py-1 text-white">
           {displayValue}
         </span>
       </div>

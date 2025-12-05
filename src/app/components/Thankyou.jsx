@@ -22,7 +22,7 @@ export default function Thankyou({ delayMs = 0 }) {
   return (
     <footer
       aria-label="Site footer"
-      className="w-full font-regular text-neutral-900 border-t border-neutral-200 fade-seq"
+      className="w-full font-regular text-neutral-200 border-t border-neutral-800 fade-seq"
       style={{ "--fade-delay": `${delayMs}ms` }}
     >
       <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-10">
@@ -38,7 +38,7 @@ export default function Thankyou({ delayMs = 0 }) {
         {/* Meta + actions */}
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            all rights reserved © {year} <span className="font-regular">& 2026 | www.vrana.website</span>
+            All rights reserved © {year} <span className="font-regular">& 2026 | www.vrana.website</span>
           </p>
 
           {/* Footer navigation */}

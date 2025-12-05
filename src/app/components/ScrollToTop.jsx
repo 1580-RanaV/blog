@@ -46,13 +46,13 @@ export default function ScrollToTop() {
       type="button"
       onClick={scrollToTop}
       aria-label="Scroll back to top"
-      className={`fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 border border-neutral-300 bg-white/90 px-4 py-2 rounded-full text-neutral-900 shadow-lg shadow-black/5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/70 ${
+      className={`fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 border border-neutral-800 bg-neutral-900 px-4 py-2 rounded-full text-neutral-100 shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-600/70 ${
         visible
           ? "pointer-events-auto opacity-100 translate-y-0"
           : "pointer-events-none opacity-0 translate-y-2"
       }`}
     >
-      <span className="text-neutral-900">top</span>
+      <span className="text-neutral-100">Scroll</span>
       <ArrowIcon />
     </button>
   );
@@ -61,7 +61,7 @@ export default function ScrollToTop() {
 function ArrowIcon() {
   return (
     <svg
-      className="h-4 w-4 text-neutral-900"
+      className="h-4 w-4 text-neutral-100"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

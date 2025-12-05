@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState, useRef } from "react";
+import React, { useEffect, useMemo, useState, useRef, useCallback } from "react";
 
 const USERNAME = "1580-RanaV";
 const API_URL = `https://github-contributions-api.jogruber.de/v4/${USERNAME}`;
@@ -19,8 +19,8 @@ const FULL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
 });
 
-const COLOR_EMPTY = "#d4d4d8";
-const COLOR_ACTIVE_BASE = "rgba(15, 15, 15, VAR_ALPHA)";
+const COLOR_EMPTY = "#1f1f24";
+const COLOR_ACTIVE_BASE = "rgba(34, 197, 94, VAR_ALPHA)"; // emerald green
 const TODAY_KEY = new Date().toISOString().slice(0, 10);
 
 const FALLBACK_WEEKS = Array.from({ length: 16 }, (_, weekIdx) => ({
@@ -115,10 +115,10 @@ function LoadingSkeleton() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-2">
-          <div className="h-8 w-48 animate-pulse rounded-lg bg-gradient-to-r from-neutral-200 via-neutral-100 to-neutral-200 bg-[length:200%_100%]" style={{ animation: 'shimmer 2s infinite' }} />
-          <div className="h-4 w-32 animate-pulse rounded bg-gradient-to-r from-neutral-200 via-neutral-100 to-neutral-200 bg-[length:200%_100%]" style={{ animation: 'shimmer 2s infinite', animationDelay: '0.2s' }} />
+          <div className="h-8 w-48 animate-pulse rounded-lg bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%]" style={{ animation: 'shimmer 2s infinite' }} />
+          <div className="h-4 w-32 animate-pulse rounded bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%]" style={{ animation: 'shimmer 2s infinite', animationDelay: '0.2s' }} />
         </div>
-        <div className="h-9 w-28 animate-pulse rounded-full bg-gradient-to-r from-neutral-200 via-neutral-100 to-neutral-200 bg-[length:200%_100%]" style={{ animation: 'shimmer 2s infinite', animationDelay: '0.4s' }} />
+        <div className="h-9 w-28 animate-pulse rounded-full bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%]" style={{ animation: 'shimmer 2s infinite', animationDelay: '0.4s' }} />
       </div>
 
       <div className="overflow-x-auto">
@@ -129,7 +129,7 @@ function LoadingSkeleton() {
                 {Array.from({ length: 7 }, (_, dayIdx) => (
                   <span
                     key={dayIdx}
-                    className="h-4 w-4 animate-pulse rounded-sm bg-gradient-to-br from-neutral-200 via-neutral-150 to-neutral-200"
+                    className="h-4 w-4 animate-pulse rounded-sm bg-gradient-to-br from-neutral-800 via-neutral-700 to-neutral-800"
                     style={{
                       animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                       animationDelay: `${(weekIdx * 7 + dayIdx) * 10}ms`
@@ -143,20 +143,20 @@ function LoadingSkeleton() {
       </div>
 
       <div className="flex items-center gap-3">
-        <div className="h-3 w-8 animate-pulse rounded bg-neutral-200" />
+        <div className="h-3 w-8 animate-pulse rounded bg-neutral-800" />
         <div className="flex items-center gap-[3px]">
           {Array.from({ length: 2 }, (_, idx) => (
             <span
               key={idx}
-              className="h-3 w-3 animate-pulse rounded-sm bg-neutral-200"
+              className="h-3 w-3 animate-pulse rounded-sm bg-neutral-800"
               style={{ animationDelay: `${idx * 100}ms` }}
             />
           ))}
         </div>
-        <div className="h-3 w-8 animate-pulse rounded bg-neutral-200" style={{ animationDelay: '200ms' }} />
+        <div className="h-3 w-8 animate-pulse rounded bg-neutral-800" style={{ animationDelay: '200ms' }} />
       </div>
 
-      <div className="h-3 w-64 animate-pulse rounded bg-neutral-200" style={{ animationDelay: '300ms' }} />
+      <div className="h-3 w-64 animate-pulse rounded bg-neutral-800" style={{ animationDelay: '300ms' }} />
 
       <style jsx>{`
         @keyframes shimmer {
@@ -177,6 +177,35 @@ export default function Git() {
   const [showScrollHint, setShowScrollHint] = useState(true);
   const scrollContainerRef = useRef(null);
 
+  // simple session cache to avoid refetching on same tab
+  const getCached = useCallback(() => {
+    if (typeof window === "undefined") return null;
+    try {
+      const raw = sessionStorage.getItem("gh-contrib-cache");
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (!parsed?.ts || !parsed?.data) return null;
+      const age = Date.now() - parsed.ts;
+      // 6 hours cache
+      if (age > 6 * 60 * 60 * 1000) return null;
+      return parsed.data;
+    } catch {
+      return null;
+    }
+  }, []);
+
+  const setCached = useCallback((data) => {
+    if (typeof window === "undefined") return;
+    try {
+      sessionStorage.setItem(
+        "gh-contrib-cache",
+        JSON.stringify({ ts: Date.now(), data })
+      );
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
   useEffect(() => {
     let cancelled = false;
 
@@ -184,6 +213,15 @@ export default function Git() {
       try {
         setLoading(true);
         setError("");
+
+        const cached = getCached();
+        if (cached && !cancelled) {
+          setTotal(cached.total ?? null);
+          setWeeks(buildWeeks(cached.contributions ?? []));
+          setRange({ start: cached.start ?? null, end: cached.end ?? null });
+          setLoading(false);
+          return;
+        }
 
         const response = await fetch(`${API_URL}?y=last`, {
           headers: { Accept: "application/json" },
@@ -216,6 +254,7 @@ export default function Git() {
         setTotal(totalCount);
         setWeeks(normalizedWeeks.length ? normalizedWeeks : FALLBACK_WEEKS);
         setRange({ start, end });
+        setCached({ contributions, total: totalCount, start, end });
       } catch (err) {
         if (!cancelled) {
           console.warn("GitHub contributions fetch failed:", err);
@@ -305,9 +344,9 @@ export default function Git() {
   return (
     <section
       aria-labelledby="github-activity-heading"
-      className="w-full font-regular text-neutral-900"
+      className="w-full font-regular text-neutral-100"
     >
-      <div className="rounded-3xl border border-neutral-200 bg-white/80 p-6 shadow-sm backdrop-blur-sm">
+      <div className="rounded-3xl border border-neutral-800 bg-neutral-900/70 p-6 shadow-sm backdrop-blur-sm">
         {loading ? (
           <LoadingSkeleton />
         ) : (
@@ -316,18 +355,18 @@ export default function Git() {
               <div>
                 <h2
                   id="github-activity-heading"
-                  className="leading-tight text-neutral-900"
+                  className="leading-tight text-neutral-100 font-semibold"
                 >
                   {`${formattedTotal} contributions`}
                 </h2>
-                <p className="text-neutral-900">{rangeLabel}</p>
+                <p className="text-neutral-300">{rangeLabel}</p>
               </div>
 
               <a
                 href={PROFILE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex rounded-full items-center justify-center border border-neutral-300 px-4 py-2 text-neutral-900 transition-colors hover:border-neutral-900"
+                className="inline-flex rounded-full items-center justify-center border border-neutral-700 px-4 py-2 text-neutral-100 transition-colors hover:border-neutral-500 bg-neutral-800"
               >
                 View profile
               </a>
@@ -335,13 +374,13 @@ export default function Git() {
 
             <div className="mt-6">
               {error && (
-                <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-red-700">
+                <div className="mb-4 rounded-lg border border-red-800 bg-red-950/40 px-3 py-2 text-red-200">
                   {error}{" "}
                   <a
                     href={CONTRIBUTIONS_PAGE}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline underline-offset-2"
+                    className="underline underline-offset-2 text-red-100"
                   >
                     Open on GitHub
                   </a>
@@ -362,7 +401,7 @@ export default function Git() {
                   className="overflow-x-auto scrollbar-visible"
                   style={{
                     scrollbarWidth: 'thin',
-                    scrollbarColor: '#d4d4d8 transparent'
+                    scrollbarColor: '#1f1f24 #0b0b0f'
                   }}
                 >
                   <div className="min-w-[640px] pb-2">
@@ -388,7 +427,7 @@ export default function Git() {
                             return (
                               <span
                                 key={day?.id ?? `${week.key}-${idx}`}
-                                className="relative block h-4 w-4 rounded-[3px]"
+                                className="relative block h-4 w-4 rounded-[3px] border border-neutral-800/60"
                                 style={{ backgroundColor: background }}
                                 title={label}
                               >
@@ -408,7 +447,7 @@ export default function Git() {
               </div>
             </div>
 
-            <p className="mt-6 text-neutral-900">
+            <p className="mt-6 text-neutral-300">
               Updated from GitHub, current through today. Red dot indicates today.
             </p>
           </>
@@ -421,18 +460,18 @@ export default function Git() {
         }
         
         .scrollbar-visible::-webkit-scrollbar-track {
-          background: transparent;
+          background: rgba(255,255,255,0.04);
           border-radius: 4px;
         }
         
         .scrollbar-visible::-webkit-scrollbar-thumb {
-          background: #d4d4d8;
+          background: #52555f;
           border-radius: 4px;
           transition: background 0.2s;
         }
         
         .scrollbar-visible::-webkit-scrollbar-thumb:hover {
-          background: #a1a1aa;
+          background: #7a7d87;
         }
       `}</style>
     </section>
