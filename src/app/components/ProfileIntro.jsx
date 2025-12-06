@@ -31,12 +31,12 @@ export default function ProfileIntro() {
           {/* --- Photo --- */}
           <div className="shrink-0">
             <Image
-              src="/for-site-compressed.png"
+              src="/photo.png"
               alt="V Ranadheer"
               width={132}
               height={132}
               priority
-              className="h-28 w-28 sm:h-32 sm:w-32 rounded-xl object-cover"
+              className="h-28 w-28 sm:h-32 sm:w-32 rounded-full object-cover"
             />
           </div>
         </div>
