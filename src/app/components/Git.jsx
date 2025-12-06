@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState, useRef, useCallback } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 
 const USERNAME = "1580-RanaV";
 const API_URL = `https://github-contributions-api.jogruber.de/v4/${USERNAME}`;
@@ -50,6 +50,34 @@ function getCellColor(level, count) {
   const normalized = Math.min(Math.max(level, 1), 4);
   const alpha = 0.45 + normalized * 0.12;
   return COLOR_ACTIVE_BASE.replace("VAR_ALPHA", alpha.toFixed(2));
+}
+
+function getCached() {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = sessionStorage.getItem("gh-contrib-cache");
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed?.ts || !parsed?.data) return null;
+    const age = Date.now() - parsed.ts;
+    // 6 hours cache
+    if (age > 6 * 60 * 60 * 1000) return null;
+    return parsed.data;
+  } catch {
+    return null;
+  }
+}
+
+function setCached(data) {
+  if (typeof window === "undefined") return;
+  try {
+    sessionStorage.setItem(
+      "gh-contrib-cache",
+      JSON.stringify({ ts: Date.now(), data })
+    );
+  } catch {
+    /* ignore */
+  }
 }
 
 function createPlaceholderCell(id) {
@@ -177,35 +205,6 @@ export default function Git() {
   const [showScrollHint, setShowScrollHint] = useState(true);
   const scrollContainerRef = useRef(null);
 
-  // simple session cache to avoid refetching on same tab
-  const getCached = useCallback(() => {
-    if (typeof window === "undefined") return null;
-    try {
-      const raw = sessionStorage.getItem("gh-contrib-cache");
-      if (!raw) return null;
-      const parsed = JSON.parse(raw);
-      if (!parsed?.ts || !parsed?.data) return null;
-      const age = Date.now() - parsed.ts;
-      // 6 hours cache
-      if (age > 6 * 60 * 60 * 1000) return null;
-      return parsed.data;
-    } catch {
-      return null;
-    }
-  }, []);
-
-  const setCached = useCallback((data) => {
-    if (typeof window === "undefined") return;
-    try {
-      sessionStorage.setItem(
-        "gh-contrib-cache",
-        JSON.stringify({ ts: Date.now(), data })
-      );
-    } catch {
-      /* ignore */
-    }
-  }, []);
-
   useEffect(() => {
     let cancelled = false;
 
@@ -274,7 +273,7 @@ export default function Git() {
     return () => {
       cancelled = true;
     };
-  }, [getCached, setCached]);
+  }, []);
 
   // Smooth scroll animation on mount
   useEffect(() => {
