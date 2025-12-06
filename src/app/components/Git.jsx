@@ -274,7 +274,7 @@ export default function Git() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [getCached, setCached]);
 
   // Smooth scroll animation on mount
   useEffect(() => {
