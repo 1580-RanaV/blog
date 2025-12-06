@@ -7,7 +7,7 @@ export default function Articles() {
     {
       title:
         "how does x (twitter) store tweets for a user for years and still be able to fetch them quickly?",
-      tech: "tech thoughts 1",
+      tech: "#1",
       description: `
         I was recently scrolling on X, and I used the search function on a profile that had 100k+ tweets. In no time, it fetched all the tweets that contained that word.
 
@@ -43,7 +43,7 @@ export default function Articles() {
     {
       title:
         "how spotify streams our fav music instantly? with no lag, no buffer, even when millions of people are hitting play at the same time?",
-      tech: "tech thoughts 2",
+      tech: "#2",
       description: `
         a question that popped in my head while i was jamming to my fav playlist on spotify. how does spotify stream music so quickly with no lag, no buffer, even when millions of people are hitting play at the same time + at the
         same time its not even saved on our device. how does it do that?
@@ -70,7 +70,7 @@ export default function Articles() {
     },
     {
       title: "how does uber match riders to drivers so quickly?",
-      tech: "tech thoughts 3",
+      tech: "#3",
       description: `
         while i was waiting for my uber ride the other day at bangalore, i wondered how does uber match riders to drivers so quickly? like within seconds of requesting a ride, it shows you the driver details and the estimated time of arrival. how does it do that?
 
@@ -95,7 +95,7 @@ export default function Articles() {
     {
       title:
         "why do delivery apps like uber, ola, rapido, swiggy, zomato all use circular map searching?",
-      tech: "tech thoughts 4",
+      tech: "#4",
       description: `
         all apps of these kind use circular map searching because its the most efficient way to find nearby drivers of any sort.
         there a reason why its efficient, a circle as a shape has no corners, no edges, so there are no spaces wasted on a map while searching.

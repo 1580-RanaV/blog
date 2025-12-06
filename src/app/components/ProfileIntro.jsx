@@ -48,12 +48,12 @@ export default function ProfileIntro() {
             somewhere between <span className="font-regular">design</span> and{" "}
             <span className="font-regular">engineering</span>. I like things
             that are minimal, intentional, and fast; whether it’s a frontend
-            flow or a visual identity.
-          </p>
-          <p className="leading-relaxed">
-            I treat code like a design tool; something that shapes experience,
+            flow or a visual identity. I treat code like a design tool; something that shapes experience,
             not just function. Most of what I work on lives at the intersection
             of clarity, structure, and a great attention to detail.
+          </p>
+          <p className="leading-relaxed">
+            In short, I love to design with purpose and build what I design with function.
           </p>
         </div>
 

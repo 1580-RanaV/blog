@@ -130,7 +130,7 @@ export default function Page() {
 
   const [contentReady, setContentReady] = useState(false);
   const [openMap, setOpenMap] = useState(() => ({
-    profile: false,
+    profile: true,
     projects: false,
     unfinished: false,
     certifications: false,
@@ -241,7 +241,7 @@ export default function Page() {
           {/* ✅ New Accordion section below Projects */}
           <AccordionSection
             id="unfinished"
-            title="Unfinished / old Projects"
+            title="Unfinished / Old Projects"
             isOpen={openMap.unfinished}
             setOpen={setOpen}
             delayMs={entryDelays.unfinished}

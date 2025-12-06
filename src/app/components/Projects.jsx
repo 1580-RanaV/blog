@@ -18,8 +18,8 @@ export default function Projects() {
           <ProjectCard
             title={
               <>
-                <span className="underline underline-offset-4">
-                  (final year capstone project)
+                <span className="">
+                  (Final engineering year capstone project)
                 </span>{" "}
                 HelmetGuard: Real-Time Helmet Detection
               </>
