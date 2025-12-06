@@ -40,7 +40,7 @@ function AccordionToggle({ allOpen, onToggleAll }) {
     <button
       type="button"
       onClick={onToggleAll}
-      className="text-white/60 underline underline-offset-4 hover:text-white"
+      className="text-white/60 hover:text-white"
       aria-pressed={allOpen}
       aria-label={label}
       title={label}

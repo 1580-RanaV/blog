@@ -52,9 +52,6 @@ export default function ProfileIntro() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px w-16 bg-white/5" />
-
         {/* --- Intro Paragraphs --- */}
         <div className="space-y-4">
           <p className="leading-relaxed">

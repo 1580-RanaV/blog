@@ -14,14 +14,17 @@ export default function Thankyou({ delayMs = 0 }) {
       <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-10 space-y-6">
         {/* Closing note */}
         <p className="leading-relaxed text-white/80">
-          Thanks for reading. This space collects my work, ideas, and a bit of myself.
-          Always in progress, always becoming.
+          Thanks for reading.
+          <br></br>
+          This space collects my work, ideas, and a bit of myself.
+          <br></br>
+          <span className="italic">Always in progress, always becoming.</span>
         </p>
 
         {/* Meta + actions */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-white/70">
-            All rights reserved (c) {year} | vrana.website
+            All rights reserved {year} | vrana.website
           </p>
 
           {/* Footer navigation */}
