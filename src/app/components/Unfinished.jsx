@@ -3,67 +3,61 @@
 import React from "react";
 
 export default function Unfinished() {
-  // Dummy data (you can add more items later)
   const projects = [
     {
       title: "Zing: 10-Minute Food Delivery",
       tech: "Next.js, Tailwind CSS",
       description:
-        "Redesigned a Shark Tank–backed startup’s website. The original site was pretty rough — I made it fully responsive and added consistent styling throughout to give it a cleaner, more polished look.",
+        "Redesigned a Shark Tank–backed startup’s website. Made it responsive and added consistent styling for a cleaner, more polished look.",
     },
 
     {
       title: "CreditLedger",
       tech: "Web3, Next.js, Tailwind CSS",
       description:
-        "Built an app where users could lend their extra money as low-interest loans. Think of it like a student with some spare cash deciding to lend it out for small returns. Had to stop working on it because it started getting too complex to handle properly.",
+        "Built an app where users could lend extra money as low-interest loans. Paused when the product complexity outgrew the initial scope.",
     },
 
     {
       title: "Timetabler",
       tech: "Next.js, Tailwind CSS, Supabase",
       description:
-        "A web app for schools where admins can log in, enter teacher details, class info, and set various constraints to automatically generate a full school timetable. It could even export PNGs for each teacher’s timetable. Had to pause development since the PDF generation part became tricky.",
+        "A web app for schools to generate timetables automatically with constraints, plus PNG exports for each teacher. Paused when PDF generation became a time sink.",
     },
 
     {
       title: "Poor Man’s Spotify",
       tech: "Next.js, Tailwind CSS, YouTube API, Spotify API",
       description:
-        "Since Spotify without premium is pretty limited, I tried building a workaround — the app fetched liked/saved songs from Spotify’s API, searched them on YouTube, and created a YouTube playlist automatically. Eventually dropped it because handling API rate limits got painful.",
+        "Fetched liked songs from Spotify, mapped them to YouTube, and built playlists automatically to dodge premium limits. Dropped due to API rate-limit pain.",
     },
 
     {
       title: "Capsules",
       tech: "Next.js, Tailwind CSS, Supabase",
       description:
-        "Basically untraceable online chat rooms. Users could log in, either create a capsule or join one. When creating, they’d get an ID and password to share with others to join and chat. Added features like a clean UI and file sharing up to 100MB. Everything ran in memory — no data stored on the server. Capsules self-destructed after 30 minutes.",
+        "Untraceable, timed chat rooms with file sharing up to 100MB. All in-memory; capsules self-destructed after 30 minutes.",
     },
 
     {
       title: "YT Payola",
       tech: "Next.js, Tailwind CSS, YouTube API",
       description:
-        "Users could input a YouTube video URL and check hidden stats like view count graphs and engagement data. The idea was to spot if a creator had botted their views or engagement.",
+        "Input a YouTube URL to see hidden stats like view graphs and engagement, built to spot botted views.",
     },
   ];
 
   return (
-    <section className="space-y-8 font-regular text-neutral-900">
+    <section className="space-y-4 font-regular text-white">
       {projects.map((project, index) => (
-        <div key={index}>
-          <h3 className="text-neutral-900 mb-1">
+        <article key={index} className="space-y-2">
+          <h3 className="text-sm font-semibold leading-snug">
             {project.title}
           </h3>
-
-          <p className="text-neutral-900 mb-2">{project.tech}</p>
-
-          <p className="text-neutral-900 leading-relaxed mb-2">
-            {project.description}
-          </p>
-        </div>
+          <p className="text-white/60 text-sm">{project.tech}</p>
+          <p className="text-white/80 leading-relaxed">{project.description}</p>
+        </article>
       ))}
     </section>
   );
 }
-

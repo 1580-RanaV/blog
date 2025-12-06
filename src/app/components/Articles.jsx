@@ -131,11 +131,7 @@ export default function Articles() {
   );
 
   return (
-    <section className="font-regular text-neutral-100 normal-case">
-      <p className="mb-8 text-neutral-300">
-        These are the tech thought pieces I write out of curiosity when I get random doubts and try to learn about them.
-      </p>
-
+    <section className="font-regular text-white space-y-6 normal-case">
       <div className="space-y-6">
         {projects.map((project, index) => {
           const paragraphs = project.description
@@ -154,26 +150,26 @@ export default function Articles() {
           return (
             <article
               key={index}
-              className="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-5 hover:border-neutral-700 transition-colors"
+              className="space-y-3"
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-xs text-neutral-400 mb-2">{formatter.sentence(project.tech)}</p>
-                  <h3 className="text-neutral-50 text-sm font-semibold leading-snug">
+                  <p className="text-xs text-white/50 mb-2">{formatter.sentence(project.tech)}</p>
+                  <h3 className="text-sm font-semibold leading-snug">
                     {formatter.sentence(project.title)}
                   </h3>
                 </div>
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="text-xs text-neutral-400 underline underline-offset-2 hover:text-neutral-200"
+                  className="text-xs text-white/60 underline underline-offset-2 hover:text-white"
                   aria-expanded={isOpen}
                 >
                   {isOpen ? "Hide" : "Read"}
                 </button>
               </div>
 
-              <div className="mt-3 text-neutral-200 leading-relaxed space-y-3 text-xs">
+              <div className="mt-3 text-white/80 leading-relaxed space-y-3 text-sm">
                 {!isOpen ? (
                   <p>{formatter.sentence(preview)}</p>
                 ) : (

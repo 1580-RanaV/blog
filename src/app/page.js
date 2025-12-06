@@ -4,7 +4,6 @@ import React, { useMemo, useState, useCallback, useEffect } from "react";
 import dynamic from "next/dynamic";
 import ProfileIntro from "./components/ProfileIntro";
 import ProfileViewsBadge from "./components/ProfileViewsBadge";
-import ScrollToTop from "./components/ScrollToTop";
 
 /* ---------- Lazy sections ---------- */
 const Projects       = dynamic(() => import("./components/Projects"),       { loading: () => <TextLoading /> });
@@ -19,16 +18,16 @@ const Thankyou       = dynamic(() => import("./components/Thankyou"),       { lo
 /* ---------- Small helper ---------- */
 function SectionSkeleton({ title }) {
   return (
-    <div className="border-l border-neutral-200 pl-6 font-regular">
-      <p className="uppercase text-neutral-900">{title}</p>
-      <div className="mt-3 h-24 w-full animate-pulse rounded bg-neutral-100" />
+    <div className="border-l border-white/10 pl-6 font-regular">
+      <p className="text-white">{title}</p>
+      <div className="mt-3 h-24 w-full animate-pulse rounded bg-white/5" />
     </div>
   );
 }
 
 function TextLoading() {
   return (
-    <p className="font-regular text-neutral-500 animate-pulse">
+    <p className="font-regular text-white/50 animate-pulse">
       One second....
     </p>
   );
@@ -41,7 +40,7 @@ function AccordionToggle({ allOpen, onToggleAll }) {
     <button
       type="button"
       onClick={onToggleAll}
-      className="text-neutral-300 underline underline-offset-4 hover:text-white"
+      className="text-white/60 underline underline-offset-4 hover:text-white"
       aria-pressed={allOpen}
       aria-label={label}
       title={label}
@@ -67,15 +66,15 @@ function AccordionSection({ id, title, isOpen, setOpen, children, delayMs = 0 })
       open={isOpen}
       onToggle={onToggle}
     >
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-1.5 sm:py-2.5 text-neutral-50 font-semibold tracking-tight">
-        <span className="font-regular text-[0.8rem]">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-1.5 sm:py-2.5 text-white font-semibold tracking-tight">
+        <span className="font-regular text-sm">
           {title}
         </span>
-        <span className="text-neutral-500 text-xs">{isOpen ? "−" : "+"}</span>
+        <span className="text-white/30 text-xs">{isOpen ? "−" : "+"}</span>
       </summary>
 
       <div className="pb-8 sm:pb-10">
-        <div className="pl-1 sm:pl-2 space-y-3 text-neutral-200 leading-relaxed">
+        <div className="pl-1 sm:pl-2 space-y-3 text-white leading-relaxed">
           {isOpen ? children : null}
         </div>
       </div>
@@ -177,11 +176,11 @@ export default function Page() {
   }, [allOpen, sections]);
 
   if (!contentReady) {
-    return <main className="min-h-screen bg-neutral-950" />;
+    return <main className="min-h-screen bg-[#050505]" />;
   }
 
   return (
-    <main className="relative min-h-screen bg-neutral-950 font-regular text-neutral-100">
+    <main className="relative min-h-screen font-regular text-white">
       <div
         className="absolute left-0 top-0 fade-seq"
         style={{ "--fade-delay": `${entryDelays.profileBadge}ms` }}
@@ -191,13 +190,12 @@ export default function Page() {
       <div className="absolute right-0 top-0">
         <ClockBadge delayMs={entryDelays.clock} />
       </div>
-      <ScrollToTop />
-      <div className="mx-auto max-w-4xl px-5 sm:px-7 lg:px-10 py-16 sm:py-20 lg:py-24 space-y-6">
-        <div className="flex items-center justify-end text-sm text-neutral-400">
+      <div className="mx-auto max-w-3xl px-5 sm:px-7 py-16 sm:py-20 space-y-8">
+        <div className="flex items-center justify-end text-xs text-white/60">
           <AccordionToggle allOpen={allOpen} onToggleAll={toggleAll} />
         </div>
 
-        <div className="space-y-3 sm:space-y-4">
+        <div className="space-y-4 sm:space-y-5">
           <AccordionSection
             id="profile"
             title="Profile"

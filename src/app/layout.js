@@ -1,10 +1,11 @@
 // src/app/layout.js
-import { Inter } from "next/font/google";
+import { Onest } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const onest = Onest({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  variable: "--font-onest",
   display: "swap",
 });
 
@@ -49,12 +50,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={onest.className}>
       <head>
         <meta name="theme-color" content="#0c0c0f" />
         <meta name="apple-mobile-web-app-title" content="V Ranadheer" />
       </head>
-      <body>{children}</body>
+      <body className="font-[var(--font-onest)] text-white">{children}</body>
     </html>
   );
 }

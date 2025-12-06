@@ -19,8 +19,8 @@ const FULL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
 });
 
-const COLOR_EMPTY = "#1f1f24";
-const COLOR_ACTIVE_BASE = "rgba(34, 197, 94, VAR_ALPHA)"; // emerald green
+const COLOR_EMPTY = "#0d0d0d";
+const COLOR_ACTIVE_BASE = "rgba(255, 255, 255, VAR_ALPHA)";
 const TODAY_KEY = new Date().toISOString().slice(0, 10);
 
 const FALLBACK_WEEKS = Array.from({ length: 16 }, (_, weekIdx) => ({
@@ -343,9 +343,9 @@ export default function Git() {
   return (
     <section
       aria-labelledby="github-activity-heading"
-      className="w-full font-regular text-neutral-100"
+      className="w-full font-regular text-white"
     >
-      <div className="rounded-3xl border border-neutral-800 bg-neutral-900/70 p-6 shadow-sm backdrop-blur-sm">
+      <div className="p-0 space-y-4">
         {loading ? (
           <LoadingSkeleton />
         ) : (
@@ -354,18 +354,18 @@ export default function Git() {
               <div>
                 <h2
                   id="github-activity-heading"
-                  className="leading-tight text-neutral-100 font-semibold"
+                  className="leading-tight text-white font-semibold"
                 >
                   {`${formattedTotal} contributions`}
                 </h2>
-                <p className="text-neutral-300">{rangeLabel}</p>
+                <p className="text-white/60">{rangeLabel}</p>
               </div>
 
               <a
                 href={PROFILE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex rounded-full items-center justify-center border border-neutral-700 px-4 py-2 text-neutral-100 transition-colors hover:border-neutral-500 bg-neutral-800"
+                className="inline-flex rounded-full items-center justify-center px-4 py-2 text-white transition-colors bg-transparent underline underline-offset-4"
               >
                 View profile
               </a>
@@ -373,13 +373,13 @@ export default function Git() {
 
             <div className="mt-6">
               {error && (
-                <div className="mb-4 rounded-lg border border-red-800 bg-red-950/40 px-3 py-2 text-red-200">
+                <div className="mb-4 rounded-lg px-3 py-2 text-white/80">
                   {error}{" "}
                   <a
                     href={CONTRIBUTIONS_PAGE}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline underline-offset-2 text-red-100"
+                    className="underline underline-offset-2 text-white"
                   >
                     Open on GitHub
                   </a>
@@ -389,7 +389,7 @@ export default function Git() {
               <div className="relative">
                 {/* Scroll hint */}
                 {showScrollHint && (
-                  <div className="absolute -top-5 right-0 flex items-center gap-2 text-xs text-neutral-500 animate-pulse">
+                  <div className="absolute -top-5 right-0 flex items-center gap-2 text-xs text-white/50 animate-pulse">
                     <span></span>
                   </div>
                 )}
@@ -426,13 +426,13 @@ export default function Git() {
                             return (
                               <span
                                 key={day?.id ?? `${week.key}-${idx}`}
-                                className="relative block h-4 w-4 rounded-[3px] border border-neutral-800/60"
+                                className="relative block h-4 w-4 rounded-[3px]"
                                 style={{ backgroundColor: background }}
                                 title={label}
                               >
                                 {day?.isToday && (
                                   <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+                                    <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
                                   </span>
                                 )}
                               </span>
@@ -446,8 +446,8 @@ export default function Git() {
               </div>
             </div>
 
-            <p className="mt-6 text-neutral-300">
-              Updated from GitHub, current through today. Red dot indicates today.
+            <p className="mt-6 text-white/70">
+              Updated from GitHub, current through today. Bright dot indicates today.
             </p>
           </>
         )}

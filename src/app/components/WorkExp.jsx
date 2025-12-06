@@ -4,61 +4,53 @@ import React from "react";
 
 export default function WorkExp() {
   return (
-    <div className="w-full font-regular text-neutral-900">
-
-      <p className="mt-2 leading-tight text-neutral-900">
-        Roles & Internships
-      </p>
-
-      <div className="mt-8 space-y-12 sm:space-y-14 font-regular text-neutral-900">
+    <section className="w-full font-regular text-white space-y-6">
+      <div className="space-y-5 sm:space-y-6">
         <WorkItem
           company="Fluentgrid Limited"
-          duration="(for a month)"
+          duration="1 month"
           role="Full-Stack Intern"
-          description="Brushed up SQL and Python, touched Java. Built a full-stack banking demo with CRUD, MySQL, and Postman for API tests. Got a peek at delivery practices—turns out there’s a lot more than just code and coffee."
+          description="Brushed up SQL and Python, touched Java. Built a full-stack banking demo with CRUD, MySQL, and Postman tests. Learned delivery hygiene beyond code."
           tags={[
-            "SQL",
-            "Python",
-            "Java",
-            "Spring Boot",
-            "MySQL",
-            "Postman",
-            "Full-stack",
-            "SDLC",
+            "sql",
+            "python",
+            "java",
+            "spring boot",
+            "mysql",
+            "postman",
+            "full-stack",
           ]}
         />
 
         <WorkItem
           company="Thrusoft Solutions"
-          duration="(remote)"
+          duration="Remote"
           role="Machine Learning Intern"
-          description="Implemented an ANPR pipeline with Python + OpenCV after covering ML basics. Reached ~80–85% plate recognition and proposed storage-efficient logging. Collaborative group project."
-          tags={["Python", "OpenCV", "Machine Learning", "ANPR"]}
+          description="Implemented ANPR pipeline with Python and OpenCV after covering ML basics. Reached ~80-85% plate recognition and proposed storage-aware logging."
+          tags={["python", "opencv", "machine learning", "anpr"]}
         />
       </div>
-    </div>
+    </section>
   );
 }
 
 function WorkItem({ company, duration, role, description, tags = [] }) {
   return (
-    <article className="font-regular text-neutral-900">
-      <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1 font-regular text-neutral-900">
-        <h3 className="leading-snug text-neutral-900">
-          {company}
-        </h3>
-        {duration && <span className="text-neutral-900">{duration}</span>}
+    <article className="space-y-3">
+      <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <h3 className="text-sm font-semibold leading-snug">{company}</h3>
+        {duration && <span className="text-white/60 text-sm">{duration}</span>}
       </header>
 
-      <p className="mt-1 text-neutral-900">{role}</p>
+      <p className="text-white/75">{role}</p>
 
-      <p className="mt-4 leading-relaxed text-neutral-900">{description}</p>
+      <p className="text-white/80 leading-relaxed">{description}</p>
 
       {tags.length > 0 && (
-        <ul className="mt-5 flex flex-wrap gap-2 font-regular text-neutral-900">
+        <ul className="flex flex-wrap gap-2">
           {tags.map((t, i) => (
             <li key={i}>
-              <TagChip label={t} />
+              <span className="tag-chip text-xs capitalize">{t}</span>
             </li>
           ))}
         </ul>
@@ -66,12 +58,3 @@ function WorkItem({ company, duration, role, description, tags = [] }) {
     </article>
   );
 }
-
-function TagChip({ label }) {
-  return (
-    <span className="inline-flex items-center rounded-full border border-neutral-300 px-3 py-1 lowercase text-neutral-900 hover:text-neutral-900 hover:border-black transition-colors">
-      {label}
-    </span>
-  );
-}
-
