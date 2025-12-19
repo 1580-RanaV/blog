@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function Education() {
   return (
-    <section className="w-full font-regular text-white space-y-8">
-      <div className="space-y-4">
+    <section className="w-full font-regular text-white [data-theme='light']:text-black space-y-8 transition-colors duration-300">
+      <div className="space-y-6">
         <EduItem
           title="Gandhi Institute of Technology and Management (GITAM) University"
           line1="B.Tech, Computer Science & Engineering (2025)"
@@ -25,10 +25,12 @@ export default function Education() {
         />
       </div>
 
-      <div className="divider w-12" />
+      <div className="border-t border-white/10 [data-theme='light']:border-black/10 pt-6 transition-colors duration-300" />
 
-      <div className="space-y-4">
-        <h3 className="text-sm font-semibold">Participations & Achievements</h3>
+      <div className="space-y-6">
+        <h3 className="text-[0.875rem] font-medium text-white [data-theme='light']:text-black transition-colors duration-300">
+          Participations & Achievements
+        </h3>
         <ParticipationItem
           title="Providence Ideathon 2024"
           description="Health-focused problem statement on Unstop; advanced to second round."
@@ -43,10 +45,12 @@ export default function Education() {
         />
       </div>
 
-      <div className="divider w-12" />
+      <div className="border-t border-white/10 [data-theme='light']:border-black/10 pt-6 transition-colors duration-300" />
 
-      <div className="space-y-4">
-        <h3 className="text-sm font-semibold">University Club Activities</h3>
+      <div className="space-y-6">
+        <h3 className="text-[0.875rem] font-medium text-white [data-theme='light']:text-black transition-colors duration-300">
+          University Club Activities
+        </h3>
         <ClubItem
           icon={{ src: "/google.svg", alt: "GDSC", rounded: "full" }}
           title="Lead Graphic Designer"
@@ -63,16 +67,28 @@ export default function Education() {
 
 function EduItem({ title, line1, line2, badges = [] }) {
   return (
-    <article className="space-y-2">
-      <h4 className="text-sm font-semibold leading-snug">{title}</h4>
-      {line1 && <p className="text-white/80">{line1}</p>}
-      {line2 && <p className="text-white/70 leading-relaxed">{line2}</p>}
+    <article className="space-y-3 border-b border-white/10 [data-theme='light']:border-black/10 pb-6 last:border-0 last:pb-0 transition-colors duration-300">
+      <h4 className="text-[0.875rem] font-medium leading-[1.5] text-white [data-theme='light']:text-black transition-colors duration-300">
+        {title}
+      </h4>
+      {line1 && (
+        <p className="text-[0.875rem] font-normal text-white/90 [data-theme='light']:text-black/90 transition-colors duration-300">
+          {line1}
+        </p>
+      )}
+      {line2 && (
+        <p className="text-[0.875rem] font-normal leading-[1.6] text-white/80 [data-theme='light']:text-black/80 transition-colors duration-300">
+          {line2}
+        </p>
+      )}
 
       {badges.length > 0 && (
         <ul className="flex flex-wrap gap-2">
           {badges.map((b, i) => (
-            <li key={i} className="text-xs">
-              <span className="tag-chip">{b.label}</span>
+            <li key={i}>
+              <span className="text-[0.75rem] font-normal text-white/50 [data-theme='light']:text-black/50 transition-colors duration-300">
+                {b.label}
+              </span>
             </li>
           ))}
         </ul>
@@ -83,30 +99,40 @@ function EduItem({ title, line1, line2, badges = [] }) {
 
 function ParticipationItem({ title, description }) {
   return (
-    <article className="p-0">
-      <div className="space-y-2">
-        <h4 className="font-semibold leading-snug">{title}</h4>
-        {description && (
-          <p className="text-white/75 leading-relaxed">{description}</p>
-        )}
-      </div>
+    <article className="space-y-3 border-b border-white/10 [data-theme='light']:border-black/10 pb-6 last:border-0 last:pb-0 transition-colors duration-300">
+      <h4 className="text-[0.875rem] font-medium leading-[1.5] text-white [data-theme='light']:text-black transition-colors duration-300">
+        {title}
+      </h4>
+      {description && (
+        <p className="text-[0.875rem] font-normal leading-[1.6] text-white/90 [data-theme='light']:text-black/90 transition-colors duration-300">
+          {description}
+        </p>
+      )}
     </article>
   );
 }
 
 function ClubItem({ icon, title, org, description, link }) {
   return (
-    <article className="space-y-3">
+    <article className="space-y-4 border-b border-white/10 [data-theme='light']:border-black/10 pb-6 last:border-0 last:pb-0 transition-colors duration-300">
       <div className="flex gap-4">
         <LogoBox {...icon} />
-        <div className="space-y-1 min-w-0">
-          <h4 className="text-sm font-semibold leading-snug">{title}</h4>
-          {org && <p className="text-white/70">{org}</p>}
+        <div className="space-y-1 min-w-0 flex-1">
+          <h4 className="text-[0.875rem] font-medium leading-[1.5] text-white [data-theme='light']:text-black transition-colors duration-300">
+            {title}
+          </h4>
+          {org && (
+            <p className="text-[0.75rem] font-normal text-white/60 [data-theme='light']:text-black/60 transition-colors duration-300">
+              {org}
+            </p>
+          )}
         </div>
       </div>
 
       {description && (
-        <p className="text-white/75 leading-relaxed">{description}</p>
+        <p className="text-[0.875rem] font-normal leading-[1.6] text-white/90 [data-theme='light']:text-black/90 transition-colors duration-300">
+          {description}
+        </p>
       )}
 
       {link?.href && (
@@ -114,10 +140,10 @@ function ClubItem({ icon, title, org, description, link }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-white underline underline-offset-4"
+          className="inline-flex items-center gap-1 text-[0.875rem] font-normal text-white [data-theme='light']:text-black underline underline-offset-4 hover:text-white/80 [data-theme='light']:hover:text-black/80 transition-colors duration-300"
         >
           {link.label ?? "View"}
-          <ArrowUpRightIcon className="h-4 w-4 text-white/70" />
+          <ArrowUpRightIcon className="h-3 w-3" />
         </a>
       )}
     </article>
@@ -128,7 +154,7 @@ function LogoBox({ src, alt, rounded = "md" }) {
   const radiusClass = rounded === "full" ? "rounded-full" : "rounded-md";
   return (
     <div
-      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center ${radiusClass} overflow-hidden`}
+      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center ${radiusClass} overflow-hidden bg-white/5 [data-theme='light']:bg-black/5 transition-colors duration-300`}
       aria-hidden
     >
       <Image src={src} alt={alt} width={24} height={24} className="object-contain" />

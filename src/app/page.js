@@ -132,6 +132,18 @@ export default function Page() {
     setOpenMap((prev) => ({ ...prev, [id]: value }));
   }, []);
 
+  const closeAllAccordions = useCallback(() => {
+    setOpenMap({
+      articles: false,
+      git: false,
+      projects: false,
+      unfinished: false,
+      certifications: false,
+      work: false,
+      education: false,
+    });
+  }, []);
+
   if (!contentReady) {
     return <main className="min-h-screen bg-black" />;
   }
@@ -144,15 +156,25 @@ export default function Page() {
       <div className="hidden md:block md:min-h-screen md:px-6 lg:px-8 xl:px-12 md:py-8 lg:py-12">
         <div className="md:grid md:grid-cols-12 md:gap-12 lg:gap-16 xl:gap-20 md:h-[calc(100vh-4rem)] lg:h-[calc(100vh-6rem)]">
           {/* Left Top: Name and Title */}
-          <div className="md:col-span-3 lg:col-span-3 xl:col-span-2 md:flex md:flex-col">
+          <div className="md:col-span-2 lg:col-span-2 xl:col-span-2 md:flex md:flex-col">
             <div className="fade-seq" style={{ "--fade-delay": "0ms" }}>
-              <h1 className="text-[0.875rem] font-normal mb-1 leading-[1.5]">V Ranadheer</h1>
-              <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Product Designer</p>
+              <h1 
+                onClick={closeAllAccordions}
+                className="text-[0.875rem] font-medium mb-1 leading-[1.5] cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                V Ranadheer
+              </h1>
+              <p 
+                onClick={closeAllAccordions}
+                className="text-[0.875rem] font-medium sub-heading leading-[1.5] cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                Product Designer
+              </p>
             </div>
           </div>
 
           {/* Middle: Content */}
-          <div className="md:col-span-5 lg:col-span-5 xl:col-span-6 md:flex md:flex-col md:justify-start md:max-w-2xl">
+          <div className="md:col-span-4 lg:col-span-4 xl:col-span-4 md:flex md:flex-col md:justify-start md:max-w-2xl">
             <div className="fade-seq space-y-4" style={{ "--fade-delay": "100ms" }}>
               <p className="text-[0.875rem] font-normal leading-[1.5]">
                 A hands-on builder who designs with restraint and ships with intention. I build products, interfaces, and systems that sit between design and engineering. I like things that are minimal, intentional, and fast; whether it is a frontend flow or a visual identity. I treat code like a design tool; it shapes experience, not just function. I love designing and building what I create.
@@ -187,7 +209,7 @@ export default function Page() {
           </div>
 
           {/* Right: Accordions - Scrollable */}
-          <div className="md:col-span-4 lg:col-span-4 xl:col-span-4 md:space-y-0 md:overflow-y-auto md:max-h-full md:pr-2 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+          <div className="md:col-span-6 lg:col-span-6 xl:col-span-6 md:space-y-0 md:overflow-y-auto md:max-h-full md:pr-2 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
             {sections.map((section, idx) => (
               <AccordionSection
                 key={section.id}
@@ -209,13 +231,15 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Bottom Left: Views Badge, Location and Time */}
+        {/* Bottom Left: Location, Views Badge, and Time */}
         <div className="md:absolute md:bottom-6 lg:bottom-8 xl:bottom-12 md:left-6 lg:left-8 xl:left-12 md:flex md:flex-col md:gap-1">
+          <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
+            <p className="text-[0.875rem] font-normal text-white leading-[1.5]">India</p>
+          </div>
           <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.profileBadge}ms` }}>
             <ProfileViewsBadge />
           </div>
           <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
-            <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Andhra Pradesh, India</p>
             <ClockBadge delayMs={entryDelays.clock} />
           </div>
         </div>
@@ -225,8 +249,18 @@ export default function Page() {
       <div className="hidden sm:block md:hidden px-6 py-12 space-y-10">
         {/* Tablet: Name and Title */}
         <div className="fade-seq" style={{ "--fade-delay": "0ms" }}>
-          <h1 className="text-[0.875rem] font-normal mb-1 leading-[1.5]">V Ranadheer</h1>
-          <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Product Designer</p>
+          <h1 
+            onClick={closeAllAccordions}
+            className="text-[0.875rem] font-normal mb-1 leading-[1.5] cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            V Ranadheer
+          </h1>
+          <p 
+            onClick={closeAllAccordions}
+            className="text-[0.875rem] font-normal text-white leading-[1.5] cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            Product Designer
+          </p>
         </div>
 
         {/* Tablet: Content */}
@@ -286,11 +320,13 @@ export default function Page() {
 
         {/* Tablet: Bottom elements */}
         <div className="flex flex-col gap-1 mt-10">
+          <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
+            <p className="text-[0.875rem] font-normal text-white leading-[1.5]">India</p>
+          </div>
           <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.profileBadge}ms` }}>
             <ProfileViewsBadge />
           </div>
-          <div className="fade-seq flex flex-col gap-1" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
-            <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Andhra Pradesh, India</p>
+          <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
             <ClockBadge delayMs={entryDelays.clock} />
           </div>
         </div>
@@ -300,8 +336,18 @@ export default function Page() {
       <div className="sm:hidden px-5 py-12 space-y-8">
         {/* Mobile: Name and Title */}
         <div className="fade-seq" style={{ "--fade-delay": "0ms" }}>
-          <h1 className="text-[0.875rem] font-normal mb-1 leading-[1.5]">V Ranadheer</h1>
-          <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Product Designer</p>
+          <h1 
+            onClick={closeAllAccordions}
+            className="text-[0.875rem] font-normal mb-1 leading-[1.5] cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            V Ranadheer
+          </h1>
+          <p 
+            onClick={closeAllAccordions}
+            className="text-[0.875rem] font-normal text-white leading-[1.5] cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            Product Designer
+          </p>
         </div>
 
         {/* Mobile: Content */}
@@ -361,11 +407,13 @@ export default function Page() {
 
         {/* Mobile: Bottom elements */}
         <div className="flex flex-col gap-1 mt-8">
+          <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
+            <p className="text-[0.875rem] font-normal text-white leading-[1.5]">India</p>
+          </div>
           <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.profileBadge}ms` }}>
             <ProfileViewsBadge />
           </div>
-          <div className="fade-seq flex flex-col gap-1" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
-            <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Andhra Pradesh, India</p>
+          <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
             <ClockBadge delayMs={entryDelays.clock} />
           </div>
         </div>

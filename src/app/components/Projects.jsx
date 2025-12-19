@@ -5,151 +5,149 @@ import Image from "next/image";
 
 export default function Projects() {
   return (
-    <section className="w-full font-regular text-white">
-      <div className="space-y-6">
-        <div className="space-y-8 sm:space-y-10">
-          <ProjectCard
-            title="HelmetGuard: Real-Time Helmet Detection"
-            subtitle="Final engineering year capstone"
-            images={[]}
-            description="Built a real-time helmet detection system with PyTorch and OpenCV. EfficientNet-B4 backbone with attention, custom dataset loader, logging, and live video inference with bounding boxes. Team effort focused on practical computer vision for road safety."
-            tags={[
-              "python",
-              "opencv",
-              "cnn",
-              "yolo",
-              "efficientnet",
-              "computer vision",
-            ]}
-            links={[]}
-          />
+    <section className="w-full font-regular text-white [data-theme='light']:text-black space-y-8 transition-colors duration-300">
+      <div className="space-y-8">
+        <ProjectCard
+          title="HelmetGuard: Real-Time Helmet Detection"
+          subtitle="Final engineering year capstone"
+          images={[]}
+          description="Built a real-time helmet detection system with PyTorch and OpenCV. EfficientNet-B4 backbone with attention, custom dataset loader, logging, and live video inference with bounding boxes. Team effort focused on practical computer vision for road safety."
+          tags={[
+            "Python",
+            "OpenCV",
+            "CNN",
+            "YOLO",
+            "EfficientNet",
+            "Computer Vision",
+          ]}
+          links={[]}
+        />
 
-          <ProjectCard
-            title="RabbitHole"
-            subtitle="Client-side YouTube history analyzer"
-            images={["/r3.png"]}
-            description="RabbitHole runs fully in the browser to analyze YouTube Watch History from Google Takeout JSON. Performs ETL locally, maps behavior, and visualizes binge patterns like Night Owl Score or Nostalgic Year. No servers, only playful analytics."
-            tags={[
-              "next.js",
-              "react",
-              "tailwind",
-              "etl",
-              "indexeddb",
-              "web workers",
-              "data viz",
-              "client-only",
-              "html2pdf",
-            ]}
-            links={[{ href: "https://myjobsy.vercel.app", label: "[yet to deploy]" }]}
-          />
+        <ProjectCard
+          title="RabbitHole"
+          subtitle="Client-side YouTube history analyzer"
+          images={["/r3.png"]}
+          description="RabbitHole runs fully in the browser to analyze YouTube Watch History from Google Takeout JSON. Performs ETL locally, maps behavior, and visualizes binge patterns like Night Owl Score or Nostalgic Year. No servers, only playful analytics."
+          tags={[
+            "Next.js",
+            "React",
+            "Tailwind",
+            "ETL",
+            "IndexedDB",
+            "Web Workers",
+            "Data Viz",
+            "Client-Only",
+            "HTML2PDF",
+          ]}
+          links={[{ href: "https://myjobsy.vercel.app", label: "[Yet to deploy]" }]}
+        />
 
-          <ProjectCard
-            title="Jobsy: Application Tracker"
-            subtitle="Local-first job pipeline"
-            images={["/jobsy.png"]}
-            description="Local-first job tracker that scrapes links, extracts details, and manages reminders. Dark calm UI with alerts for deadlines or inactive posts. Fully browser based with no servers so data stays with the user."
-            tags={[
-              "next.js",
-              "react",
-              "tailwind",
-              "indexeddb",
-              "headless ui",
-              "automation",
-              "data extraction",
-              "vercel",
-            ]}
-            links={[{ href: "https://myjobsy.vercel.app", label: "Visit" }]}
-          />
+        <ProjectCard
+          title="Jobsy: Application Tracker"
+          subtitle="Local-first job pipeline"
+          images={["/jobsy.png"]}
+          description="Local-first job tracker that scrapes links, extracts details, and manages reminders. Dark calm UI with alerts for deadlines or inactive posts. Fully browser based with no servers so data stays with the user."
+          tags={[
+            "Next.js",
+            "React",
+            "Tailwind",
+            "IndexedDB",
+            "Headless UI",
+            "Automation",
+            "Data Extraction",
+            "Vercel",
+          ]}
+          links={[{ href: "https://myjobsy.vercel.app", label: "Visit" }]}
+        />
 
-          <ProjectCard
-            title="BenchMarkIQ: AI Industry Benchmark Analyzer"
-            subtitle="Compare your KPIs"
-            images={["/bmiq.png"]}
-            description="Upload CSV KPIs and get instant comparisons against industry medians. AI-driven summaries highlight gaps, trends, and strengths with clean data visuals so teams can move from spreadsheets to decisions."
-            tags={[
-              "next.js",
-              "react",
-              "tailwind",
-              "papaparse",
-              "chart.js",
-              "csv",
-              "data viz",
-              "ai analysis",
-            ]}
-            links={[{ href: "https://bench-mark-iq.vercel.app", label: "Visit" }]}
-          />
+        <ProjectCard
+          title="BenchMarkIQ: AI Industry Benchmark Analyzer"
+          subtitle="Compare your KPIs"
+          images={["/bmiq.png"]}
+          description="Upload CSV KPIs and get instant comparisons against industry medians. AI-driven summaries highlight gaps, trends, and strengths with clean data visuals so teams can move from spreadsheets to decisions."
+          tags={[
+            "Next.js",
+            "React",
+            "Tailwind",
+            "PapaParse",
+            "Chart.js",
+            "CSV",
+            "Data Viz",
+            "AI Analysis",
+          ]}
+          links={[{ href: "https://bench-mark-iq.vercel.app", label: "Visit" }]}
+        />
 
-          <ProjectCard
-            title="SGA v1.1: Skills Gap Analyzer"
-            subtitle="Resume vs JD scoring"
-            images={["/sga.png"]}
-            description="Compares resumes with job descriptions, scores alignment, and suggests learning paths plus project ideas. Designed to feel like a calm coach that turns job goals into a clear action plan."
-            tags={[
-              "next.js",
-              "react",
-              "tailwind",
-              "react hook form",
-              "headless ui",
-              "ai scoring",
-              "vercel",
-            ]}
-            links={[{ href: "https://sga-sage.vercel.app", label: "Visit" }]}
-          />
+        <ProjectCard
+          title="SGA v1.1: Skills Gap Analyzer"
+          subtitle="Resume vs JD scoring"
+          images={["/sga.png"]}
+          description="Compares resumes with job descriptions, scores alignment, and suggests learning paths plus project ideas. Designed to feel like a calm coach that turns job goals into a clear action plan."
+          tags={[
+            "Next.js",
+            "React",
+            "Tailwind",
+            "React Hook Form",
+            "Headless UI",
+            "AI Scoring",
+            "Vercel",
+          ]}
+          links={[{ href: "https://sga-sage.vercel.app", label: "Visit" }]}
+        />
 
-          <ProjectCard
-            title="Client Personal Portfolio"
-            subtitle="Single-page client site"
-            images={["/image.png"]}
-            description="Designed and built a single-page portfolio with lazy-loaded sections, Supabase content, and CI/CD. Smooth animations, tight typography, and high client satisfaction."
-            tags={[
-              "next.js",
-              "react",
-              "tailwind",
-              "supabase",
-              "vercel",
-              "ci/cd",
-              "client work",
-            ]}
-            links={[{ href: "https://jayasurya.site/", label: "Visit" }]}
-          />
+        <ProjectCard
+          title="Client Personal Portfolio"
+          subtitle="Single-page client site"
+          images={["/image.png"]}
+          description="Designed and built a single-page portfolio with lazy-loaded sections, Supabase content, and CI/CD. Smooth animations, tight typography, and high client satisfaction."
+          tags={[
+            "Next.js",
+            "React",
+            "Tailwind",
+            "Supabase",
+            "Vercel",
+            "CI/CD",
+            "Client Work",
+          ]}
+          links={[{ href: "https://jayasurya.site/", label: "Visit" }]}
+        />
 
-          <ProjectCard
-            title="PureText"
-            subtitle="LLM-powered rephrase tool"
-            images={["/puretext.png"]}
-            description="LLM tool that rewrites text to stay human and natural while reducing plagiarism flags. Simple, clean interface; gained attention on Product Hunt for practicality."
-            tags={[
-              "next.js",
-              "react",
-              "tailwind",
-              "llm",
-              "figma",
-              "ai writing",
-              "product hunt",
-            ]}
-            links={[
-              { href: "https://puretextbydatco.vercel.app", label: "Visit" },
-              { href: "https://www.producthunt.com/posts/puretext", label: "Product Hunt" },
-            ]}
-          />
+        <ProjectCard
+          title="PureText"
+          subtitle="LLM-powered rephrase tool"
+          images={["/puretext.png"]}
+          description="LLM tool that rewrites text to stay human and natural while reducing plagiarism flags. Simple, clean interface; gained attention on Product Hunt for practicality."
+          tags={[
+            "Next.js",
+            "React",
+            "Tailwind",
+            "LLM",
+            "Figma",
+            "AI Writing",
+            "Product Hunt",
+          ]}
+          links={[
+            { href: "https://puretextbydatco.vercel.app", label: "Visit" },
+            { href: "https://www.producthunt.com/posts/puretext", label: "Product Hunt" },
+          ]}
+        />
 
-          <ProjectCard
-            title="SpeedCode"
-            subtitle="Typing meets algorithms"
-            images={["/speedcode.png"]}
-            description="Practice real coding challenges while typing at speed. Blends rhythm, focus, and algorithmic thinking; built to feel more like a game than a test."
-            tags={[
-              "next.js",
-              "react",
-              "tailwind",
-              "typing engine",
-              "algorithms",
-              "figma",
-              "ci/cd",
-            ]}
-            links={[{ href: "https://speedcode.vercel.app", label: "Visit" }]}
-          />
-        </div>
+        <ProjectCard
+          title="SpeedCode"
+          subtitle="Typing meets algorithms"
+          images={["/speedcode.png"]}
+          description="Practice real coding challenges while typing at speed. Blends rhythm, focus, and algorithmic thinking; built to feel more like a game than a test."
+          tags={[
+            "Next.js",
+            "React",
+            "Tailwind",
+            "Typing Engine",
+            "Algorithms",
+            "Figma",
+            "CI/CD",
+          ]}
+          links={[{ href: "https://speedcode.vercel.app", label: "Visit" }]}
+        />
       </div>
     </section>
   );
@@ -157,11 +155,15 @@ export default function Projects() {
 
 function ProjectCard({ title, subtitle, images = [], description, links = [], tags = [] }) {
   return (
-    <article className="space-y-3">
-      <header className="space-y-1">
-        <p className="text-xs text-white/50">{subtitle}</p>
-        <h3 className="text-sm font-semibold leading-snug">{title}</h3>
-      </header>
+    <article className="space-y-4 border-b border-white/10 [data-theme='light']:border-black/10 pb-6 last:border-0 last:pb-0 transition-colors duration-300">
+      <div className="space-y-2">
+        <p className="text-[0.75rem] font-medium text-white/40 [data-theme='light']:text-black/40 tracking-wide uppercase">
+          {subtitle}
+        </p>
+        <h3 className="text-[0.875rem] font-medium leading-[1.5] text-white [data-theme='light']:text-black transition-colors duration-300">
+          {title}
+        </h3>
+      </div>
 
       {/* Images */}
       {images.length > 0 && (
@@ -169,7 +171,7 @@ function ProjectCard({ title, subtitle, images = [], description, links = [], ta
           {images.map((src, i) => (
             <div
               key={i}
-              className="overflow-hidden rounded-xl"
+              className="overflow-hidden rounded-lg"
             >
               <Image
                 src={src}
@@ -185,14 +187,18 @@ function ProjectCard({ title, subtitle, images = [], description, links = [], ta
       )}
 
       {/* Description */}
-      <p className="text-white/80 leading-relaxed">{description}</p>
+      <p className="text-[0.875rem] font-normal leading-[1.6] text-white/90 [data-theme='light']:text-black/90 transition-colors duration-300">
+        {description}
+      </p>
 
       {/* Tags */}
       {tags.length > 0 && (
-        <ul className="grid w-full gap-2 [grid-template-columns:repeat(auto-fit,minmax(110px,1fr))]">
+        <ul className="flex flex-wrap gap-2">
           {tags.map((tag, idx) => (
-            <li key={idx} className="text-sm text-white/70 capitalize text-center">
-              {tag}
+            <li key={idx}>
+              <span className="text-[0.75rem] font-normal text-white/50 [data-theme='light']:text-black/50 transition-colors duration-300">
+                {tag}
+              </span>
             </li>
           ))}
         </ul>
@@ -207,10 +213,10 @@ function ProjectCard({ title, subtitle, images = [], description, links = [], ta
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-white underline underline-offset-4"
+              className="inline-flex items-center gap-1 text-[0.875rem] font-normal text-white [data-theme='light']:text-black underline underline-offset-4 hover:text-white/80 [data-theme='light']:hover:text-black/80 transition-colors duration-300"
             >
               {link.label}
-              <ArrowUpRightIcon className="h-4 w-4 text-white/70" />
+              <ArrowUpRightIcon className="h-3 w-3" />
             </a>
           ))}
         </div>

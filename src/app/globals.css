@@ -23,7 +23,7 @@
   body {
     background-color: #000000;
     color: #ffffff;
-    font-family: var(--font-manrope), "Manrope", system-ui, -apple-system, sans-serif;
+    font-family: var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif;
     letter-spacing: -0.01em;
     line-height: 1.5;
     min-height: 100vh;
@@ -40,11 +40,40 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: -0.01em;
     color: #ffffff;
     font-size: 0.875rem;
     line-height: 1.5;
+    transition: color 0.3s ease;
+  }
+
+  [data-theme="light"] h1,
+  [data-theme="light"] h2,
+  [data-theme="light"] h3,
+  [data-theme="light"] h4,
+  [data-theme="light"] h5,
+  [data-theme="light"] h6 {
+    color: #000000;
+  }
+
+  /* Sub headings - medium weight with monochrome color */
+  .sub-heading,
+  h3.sub-heading,
+  h4.sub-heading,
+  h5.sub-heading,
+  h6.sub-heading {
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.3s ease;
+  }
+
+  [data-theme="light"] .sub-heading,
+  [data-theme="light"] h3.sub-heading,
+  [data-theme="light"] h4.sub-heading,
+  [data-theme="light"] h5.sub-heading,
+  [data-theme="light"] h6.sub-heading {
+    color: var(--muted);
   }
 
   p, li, small, label, span, summary, button, input, textarea, a {
@@ -60,8 +89,13 @@
   }
 
   ::selection {
-    background: #ffffff14;
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
+  }
+
+  [data-theme="light"] ::selection {
+    background: #ffffff;
+    color: #000000;
   }
 }
 
@@ -257,6 +291,6 @@
 }
 
 .font-regular {
-  font-family: var(--font-manrope), "Manrope", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif;
   font-weight: 400;
 }

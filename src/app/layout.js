@@ -1,18 +1,18 @@
 // src/app/layout.js
-import { Manrope } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const manrope = Manrope({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-manrope",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
 export const metadata = {
   metadataBase: new URL("https://www.vrana.website"),
-  title: "V Ranadheer",
-  description: "Creative developer portfolio & work.",
+  title: "Ranadheer",
+  description: "Creative developer.",
 
   openGraph: {
     type: "website",
@@ -50,12 +50,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={manrope.className}>
+    <html lang="en" className={dmSans.className}>
       <head>
         <meta name="theme-color" content="#0c0c0f" />
         <meta name="apple-mobile-web-app-title" content="V Ranadheer" />
       </head>
-      <body className="font-[var(--font-manrope)] text-white">{children}</body>
+      <body className="font-[var(--font-dm-sans)] text-white">{children}</body>
     </html>
   );
 }
