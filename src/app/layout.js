@@ -1,11 +1,11 @@
 // src/app/layout.js
-import { Onest } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 
-const onest = Onest({
+const manrope = Manrope({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-onest",
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -50,12 +50,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={onest.className}>
+    <html lang="en" className={manrope.className}>
       <head>
         <meta name="theme-color" content="#0c0c0f" />
         <meta name="apple-mobile-web-app-title" content="V Ranadheer" />
       </head>
-      <body className="font-[var(--font-onest)] text-white">{children}</body>
+      <body className="font-[var(--font-manrope)] text-white">{children}</body>
     </html>
   );
 }

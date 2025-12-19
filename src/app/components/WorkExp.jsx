@@ -8,7 +8,6 @@ export default function WorkExp() {
       <div className="space-y-5 sm:space-y-6">
         <WorkItem
           company="Fluentgrid Limited"
-          duration="1 month"
           role="Full-Stack Intern"
           description="Brushed up SQL and Python, touched Java. Built a full-stack banking demo with CRUD, MySQL, and Postman tests. Learned delivery hygiene beyond code."
           tags={[
@@ -38,19 +37,19 @@ function WorkItem({ company, duration, role, description, tags = [] }) {
   return (
     <article className="space-y-3">
       <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <h3 className="text-sm font-semibold leading-snug">{company}</h3>
-        {duration && <span className="text-white/60 text-sm">{duration}</span>}
+        <h3 className="text-[0.875rem] font-normal leading-[1.5]">{company}</h3>
+        {duration && <span className="text-white/60 text-[0.875rem] font-normal leading-[1.5]">{duration}</span>}
       </header>
 
-      <p className="text-white/75">{role}</p>
+      <p className="text-[0.875rem] font-normal text-white leading-[1.5]">{role}</p>
 
-      <p className="text-white/80 leading-relaxed">{description}</p>
+      <p className="text-[0.875rem] font-normal text-white leading-[1.5]">{description}</p>
 
       {tags.length > 0 && (
         <ul className="flex flex-wrap gap-2">
           {tags.map((t, i) => (
             <li key={i}>
-              <span className="tag-chip text-xs capitalize">{t}</span>
+              <span className="tag-chip text-[0.875rem] font-normal capitalize">{t}</span>
             </li>
           ))}
         </ul>

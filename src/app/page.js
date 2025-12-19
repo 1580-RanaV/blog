@@ -2,7 +2,6 @@
 
 import React, { useMemo, useState, useCallback, useEffect } from "react";
 import dynamic from "next/dynamic";
-import ProfileIntro from "./components/ProfileIntro";
 import ProfileViewsBadge from "./components/ProfileViewsBadge";
 
 /* ---------- Lazy sections ---------- */
@@ -13,40 +12,12 @@ const Education      = dynamic(() => import("./components/Education"),      { lo
 const Certifications = dynamic(() => import("./components/Certifications"), { loading: () => <TextLoading /> });
 const Articles       = dynamic(() => import("./components/Articles"),       { loading: () => <TextLoading /> });
 const Git            = dynamic(() => import("./components/Git"),            { loading: () => <TextLoading /> });
-const Thankyou       = dynamic(() => import("./components/Thankyou"),       { loading: () => null });
-
-/* ---------- Small helper ---------- */
-function SectionSkeleton({ title }) {
-  return (
-    <div className="border-l border-white/10 pl-6 font-regular">
-      <p className="text-white">{title}</p>
-      <div className="mt-3 h-24 w-full animate-pulse rounded bg-white/5" />
-    </div>
-  );
-}
 
 function TextLoading() {
   return (
     <p className="font-regular text-white/50 animate-pulse">
       One second....
     </p>
-  );
-}
-
-/* ---------- Toolbar: single toggle (Open all / Close all) ---------- */
-function AccordionToggle({ allOpen, onToggleAll }) {
-  const label = allOpen ? "close all" : "open all";
-  return (
-    <button
-      type="button"
-      onClick={onToggleAll}
-      className="text-white/60 hover:text-white"
-      aria-pressed={allOpen}
-      aria-label={label}
-      title={label}
-    >
-      {label}
-    </button>
   );
 }
 
@@ -61,20 +32,20 @@ function AccordionSection({ id, title, isOpen, setOpen, children, delayMs = 0 })
 
   return (
     <details
-      className="group fade-seq py-1.5 sm:py-2.5"
+      className="group fade-seq"
       style={{ "--fade-delay": `${delayMs}ms` }}
       open={isOpen}
       onToggle={onToggle}
     >
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-1.5 sm:py-2.5 text-white font-semibold tracking-tight">
-        <span className="font-regular text-sm">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-2 text-white font-regular">
+        <span className="text-[0.875rem] underline underline-offset-4 font-normal">
           {title}
         </span>
-        <span className="text-white/30 text-xs">{isOpen ? "−" : "+"}</span>
+        <span className="text-white/40 text-[0.875rem] font-normal">{isOpen ? "−" : "+"}</span>
       </summary>
 
-      <div className="pb-8 sm:pb-10">
-        <div className="pl-1 sm:pl-2 space-y-3 text-white leading-relaxed">
+      <div className="pb-6 pt-2">
+        <div className="space-y-4 text-white">
           {isOpen ? children : null}
         </div>
       </div>
@@ -105,7 +76,7 @@ function ClockBadge({ delayMs = 0 }) {
       className="fade-seq"
       style={{ "--fade-delay": `${delayMs}ms` }}
     >
-      <span className="font-regular text-xs tracking-tight text-neutral-300 whitespace-nowrap">
+      <span className="text-[0.875rem] font-normal text-white whitespace-nowrap">
         {label}
       </span>
     </div>
@@ -115,28 +86,26 @@ function ClockBadge({ delayMs = 0 }) {
 export default function Page() {
   const sections = useMemo(
     () => [
-      { id: "profile",        title: "Profile" },
+      { id: "articles",       title: "Articles" },
+      { id: "git",            title: "Github contribution chart" },
       { id: "projects",       title: "Projects" },
       { id: "unfinished",     title: "Unfinished / Old Projects" },
-      { id: "certifications", title: "Certifications" },
+      { id: "certifications", title: "Certification(s)" },
       { id: "work",           title: "Work Experience" },
-      { id: "education",      title: "Education / Academics" },
-      { id: "articles",       title: "Articles" },
-      { id: "git",            title: "Git"},
+      { id: "education",      title: "Education & participations" },
     ],
     []
   );
 
   const [contentReady, setContentReady] = useState(false);
   const [openMap, setOpenMap] = useState(() => ({
-    profile: true,
+    articles: false,
+    git: false,
     projects: false,
     unfinished: false,
     certifications: false,
     work: false,
     education: false,
-    articles: false,
-    git: false,
   }));
 
   useEffect(() => {
@@ -146,7 +115,6 @@ export default function Page() {
 
   const entryDelays = useMemo(
     () => ({
-      profile: 0,
       articles: 120,
       git: 240,
       projects: 360,
@@ -154,9 +122,8 @@ export default function Page() {
       certifications: 600,
       work: 720,
       education: 840,
-      footer: 960,
-      profileBadge: 1100,
-      clock: 1200,
+      profileBadge: 100,
+      clock: 200,
     }),
     []
   );
@@ -165,120 +132,242 @@ export default function Page() {
     setOpenMap((prev) => ({ ...prev, [id]: value }));
   }, []);
 
-  const allOpen = useMemo(
-    () => sections.every((s) => openMap[s.id]),
-    [sections, openMap]
-  );
-
-  const toggleAll = useCallback(() => {
-    const next = !allOpen;
-    setOpenMap(Object.fromEntries(sections.map((s) => [s.id, next])));
-  }, [allOpen, sections]);
-
   if (!contentReady) {
-    return <main className="min-h-screen bg-[#050505]" />;
+    return <main className="min-h-screen bg-black" />;
   }
 
+  const year = new Date().getFullYear();
+
   return (
-    <main className="relative min-h-screen font-regular text-white">
-      <div
-        className="absolute left-0 top-0 fade-seq"
-        style={{ "--fade-delay": `${entryDelays.profileBadge}ms` }}
-      >
-        <ProfileViewsBadge />
-      </div>
-      <div className="absolute right-0 top-0">
-        <ClockBadge delayMs={entryDelays.clock} />
-      </div>
-      <div className="mx-auto max-w-3xl px-5 sm:px-7 py-16 sm:py-20 space-y-8">
-        <div className="flex items-center justify-end text-xs text-white/60">
-          <AccordionToggle allOpen={allOpen} onToggleAll={toggleAll} />
+    <main className="relative min-h-screen font-regular text-white bg-black">
+      {/* Desktop Layout */}
+      <div className="hidden md:block md:min-h-screen md:px-6 lg:px-8 xl:px-12 md:py-8 lg:py-12">
+        <div className="md:grid md:grid-cols-12 md:gap-12 lg:gap-16 xl:gap-20 md:h-[calc(100vh-4rem)] lg:h-[calc(100vh-6rem)]">
+          {/* Left Top: Name and Title */}
+          <div className="md:col-span-3 lg:col-span-3 xl:col-span-2 md:flex md:flex-col">
+            <div className="fade-seq" style={{ "--fade-delay": "0ms" }}>
+              <h1 className="text-[0.875rem] font-normal mb-1 leading-[1.5]">V Ranadheer</h1>
+              <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Product Designer</p>
+            </div>
+          </div>
+
+          {/* Middle: Content */}
+          <div className="md:col-span-5 lg:col-span-5 xl:col-span-6 md:flex md:flex-col md:justify-start md:max-w-2xl">
+            <div className="fade-seq space-y-4" style={{ "--fade-delay": "100ms" }}>
+              <p className="text-[0.875rem] font-normal leading-[1.5]">
+                A hands-on builder who designs with restraint and ships with intention. I build products, interfaces, and systems that sit between design and engineering. I like things that are minimal, intentional, and fast; whether it is a frontend flow or a visual identity. I treat code like a design tool; it shapes experience, not just function. I love designing and building what I create.
+              </p>
+              <nav className="flex gap-4 mt-4">
+                <a
+                  href="https://www.linkedin.com/in/vrana11/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[0.875rem] font-normal underline underline-offset-4"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://github.com/1580-RanaV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[0.875rem] font-normal underline underline-offset-4"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://www.instagram.com/byvrana/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[0.875rem] font-normal underline underline-offset-4"
+                >
+                  Instagram
+                </a>
+              </nav>
+            </div>
+          </div>
+
+          {/* Right: Accordions - Scrollable */}
+          <div className="md:col-span-4 lg:col-span-4 xl:col-span-4 md:space-y-0 md:overflow-y-auto md:max-h-full md:pr-2 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+            {sections.map((section, idx) => (
+              <AccordionSection
+                key={section.id}
+                id={section.id}
+                title={section.title}
+                isOpen={openMap[section.id]}
+                setOpen={setOpen}
+                delayMs={entryDelays[section.id]}
+              >
+                {section.id === "articles" && <Articles />}
+                {section.id === "git" && <Git />}
+                {section.id === "projects" && <Projects />}
+                {section.id === "unfinished" && <Unfinished />}
+                {section.id === "certifications" && <Certifications />}
+                {section.id === "work" && <WorkExp />}
+                {section.id === "education" && <Education />}
+              </AccordionSection>
+            ))}
+          </div>
         </div>
 
-        <div className="space-y-4 sm:space-y-5">
-          <AccordionSection
-            id="profile"
-            title="Profile"
-            isOpen={openMap.profile}
-            setOpen={setOpen}
-            delayMs={entryDelays.profile}
-          >
-            <ProfileIntro />
-          </AccordionSection>
+        {/* Bottom Left: Views Badge, Location and Time */}
+        <div className="md:absolute md:bottom-6 lg:bottom-8 xl:bottom-12 md:left-6 lg:left-8 xl:left-12 md:flex md:flex-col md:gap-1">
+          <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.profileBadge}ms` }}>
+            <ProfileViewsBadge />
+          </div>
+          <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
+            <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Andhra Pradesh, India</p>
+            <ClockBadge delayMs={entryDelays.clock} />
+          </div>
+        </div>
+      </div>
 
-          <AccordionSection
-            id="articles"
-            title="Articles"
-            isOpen={openMap.articles}
-            setOpen={setOpen}
-            delayMs={entryDelays.articles}
-          >
-            <Articles />
-          </AccordionSection>
+      {/* Tablet Layout */}
+      <div className="hidden sm:block md:hidden px-6 py-12 space-y-10">
+        {/* Tablet: Name and Title */}
+        <div className="fade-seq" style={{ "--fade-delay": "0ms" }}>
+          <h1 className="text-[0.875rem] font-normal mb-1 leading-[1.5]">V Ranadheer</h1>
+          <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Product Designer</p>
+        </div>
 
-          <AccordionSection
-            id="git"
-            title="Github contribution chart"
-            isOpen={openMap.git}
-            setOpen={setOpen}
-            delayMs={entryDelays.git}
-          >
-            <Git />
-          </AccordionSection>
+        {/* Tablet: Content */}
+        <div className="fade-seq space-y-4 max-w-2xl" style={{ "--fade-delay": "100ms" }}>
+          <p className="text-[0.875rem] font-normal leading-[1.5]">
+            A hands-on builder who designs with restraint and ships with intention. I build products, interfaces, and systems that sit between design and engineering. I like things that are minimal, intentional, and fast; whether it is a frontend flow or a visual identity. I treat code like a design tool; it shapes experience, not just function. I love designing and building what I create.
+          </p>
+          <nav className="flex gap-4 mt-4">
+            <a
+              href="https://www.linkedin.com/in/vrana11/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[0.875rem] font-normal underline underline-offset-4"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/1580-RanaV"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[0.875rem] font-normal underline underline-offset-4"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://www.instagram.com/byvrana/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[0.875rem] font-normal underline underline-offset-4"
+            >
+              Instagram
+            </a>
+          </nav>
+        </div>
 
-          <AccordionSection
-            id="projects"
-            title="Projects"
-            isOpen={openMap.projects}
-            setOpen={setOpen}
-            delayMs={entryDelays.projects}
-          >
-            <Projects />
-          </AccordionSection>
+        {/* Tablet: Accordions */}
+        <div className="space-y-0">
+          {sections.map((section) => (
+            <AccordionSection
+              key={section.id}
+              id={section.id}
+              title={section.title}
+              isOpen={openMap[section.id]}
+              setOpen={setOpen}
+              delayMs={entryDelays[section.id]}
+            >
+              {section.id === "articles" && <Articles />}
+              {section.id === "git" && <Git />}
+              {section.id === "projects" && <Projects />}
+              {section.id === "unfinished" && <Unfinished />}
+              {section.id === "certifications" && <Certifications />}
+              {section.id === "work" && <WorkExp />}
+              {section.id === "education" && <Education />}
+            </AccordionSection>
+          ))}
+        </div>
 
-          {/* ✅ New Accordion section below Projects */}
-          <AccordionSection
-            id="unfinished"
-            title="Unfinished / Old Projects"
-            isOpen={openMap.unfinished}
-            setOpen={setOpen}
-            delayMs={entryDelays.unfinished}
-          >
-            <Unfinished />
-          </AccordionSection>
+        {/* Tablet: Bottom elements */}
+        <div className="flex flex-col gap-1 mt-10">
+          <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.profileBadge}ms` }}>
+            <ProfileViewsBadge />
+          </div>
+          <div className="fade-seq flex flex-col gap-1" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
+            <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Andhra Pradesh, India</p>
+            <ClockBadge delayMs={entryDelays.clock} />
+          </div>
+        </div>
+      </div>
 
-          <AccordionSection
-            id="certifications"
-            title="Certification(s)"
-            isOpen={openMap.certifications}
-            setOpen={setOpen}
-            delayMs={entryDelays.certifications}
-          >
-            <Certifications />
-          </AccordionSection>
+      {/* Mobile Layout */}
+      <div className="sm:hidden px-5 py-12 space-y-8">
+        {/* Mobile: Name and Title */}
+        <div className="fade-seq" style={{ "--fade-delay": "0ms" }}>
+          <h1 className="text-[0.875rem] font-normal mb-1 leading-[1.5]">V Ranadheer</h1>
+          <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Product Designer</p>
+        </div>
 
-          <AccordionSection
-            id="work"
-            title="Work Experience"
-            isOpen={openMap.work}
-            setOpen={setOpen}
-            delayMs={entryDelays.work}
-          >
-            <WorkExp />
-          </AccordionSection>
+        {/* Mobile: Content */}
+        <div className="fade-seq space-y-4" style={{ "--fade-delay": "100ms" }}>
+          <p className="text-[0.875rem] font-normal leading-[1.5]">
+            A hands-on builder who designs with restraint and ships with intention. I build products, interfaces, and systems that sit between design and engineering. I like things that are minimal, intentional, and fast; whether it is a frontend flow or a visual identity. I treat code like a design tool; it shapes experience, not just function. I love designing and building what I create.
+          </p>
+          <nav className="flex gap-4 mt-4">
+            <a
+              href="https://www.linkedin.com/in/vrana11/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[0.875rem] font-normal underline underline-offset-4"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/1580-RanaV"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[0.875rem] font-normal underline underline-offset-4"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://www.instagram.com/byvrana/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[0.875rem] font-normal underline underline-offset-4"
+            >
+              Instagram
+            </a>
+          </nav>
+        </div>
 
-          <AccordionSection
-            id="education"
-            title="Education & participations"
-            isOpen={openMap.education}
-            setOpen={setOpen}
-            delayMs={entryDelays.education}
-          >
-            <Education />
-          </AccordionSection>
+        {/* Mobile: Accordions */}
+        <div className="space-y-0">
+          {sections.map((section) => (
+            <AccordionSection
+              key={section.id}
+              id={section.id}
+              title={section.title}
+              isOpen={openMap[section.id]}
+              setOpen={setOpen}
+              delayMs={entryDelays[section.id]}
+            >
+              {section.id === "articles" && <Articles />}
+              {section.id === "git" && <Git />}
+              {section.id === "projects" && <Projects />}
+              {section.id === "unfinished" && <Unfinished />}
+              {section.id === "certifications" && <Certifications />}
+              {section.id === "work" && <WorkExp />}
+              {section.id === "education" && <Education />}
+            </AccordionSection>
+          ))}
+        </div>
 
-          {/* Not an accordion; renders separately */}
-          <Thankyou delayMs={entryDelays.footer} />
+        {/* Mobile: Bottom elements */}
+        <div className="flex flex-col gap-1 mt-8">
+          <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.profileBadge}ms` }}>
+            <ProfileViewsBadge />
+          </div>
+          <div className="fade-seq flex flex-col gap-1" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
+            <p className="text-[0.875rem] font-normal text-white leading-[1.5]">Andhra Pradesh, India</p>
+            <ClockBadge delayMs={entryDelays.clock} />
+          </div>
         </div>
       </div>
     </main>

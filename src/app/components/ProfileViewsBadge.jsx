@@ -60,8 +60,8 @@ export default function ProfileViewsBadge() {
     error || count === null ? error || "…" : count.toLocaleString("en-US");
 
   return (
-    <div className="inline-flex flex-col text-white text-sm">
-      <span className="text-white/70">Views ( {displayValue} )</span>
+    <div className="inline-flex flex-col text-white">
+      <span className="text-[0.875rem] font-normal text-white leading-[1.5]">Views ( {displayValue} )</span>
     </div>
   );
 }
