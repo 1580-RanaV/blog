@@ -181,7 +181,7 @@ export default function Page() {
                 A hands-on builder who designs with restraint and ships with intention. I build products, interfaces, and systems that sit between design and engineering. I like things that are minimal, intentional, and fast; whether it is a frontend flow or a visual identity. I treat code like a design tool; it shapes experience, not just function. I love designing and building what I create.
               </p>
               <p>
-                Passionate about basketball, apparel designing, music and minimalistic designs.
+                Interested in basketball, apparel designing and music.
               </p>
               <div className="mt-4">
                 <Image
@@ -257,6 +257,17 @@ export default function Page() {
             <ClockBadge delayMs={entryDelays.clock} />
           </div>
         </div>
+        {/* Bottom Right: Image */}
+        <div className="md:absolute md:bottom-6 lg:bottom-8 xl:bottom-12 md:right-6 lg:right-8 xl:right-12 fade-seq" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
+          <Image
+            src="/r.png"
+            alt=""
+            width={50}
+            height={50}
+            className="w-[50px] h-[50px]"
+            unoptimized
+          />
+        </div>
       </div>
 
       {/* Tablet Layout */}
@@ -283,7 +294,7 @@ export default function Page() {
             A hands-on builder who designs with restraint and ships with intention. I build products, interfaces, and systems that sit between design and engineering. I like things that are minimal, intentional, and fast; whether it is a frontend flow or a visual identity. I treat code like a design tool; it shapes experience, not just function. I love designing and building what I create.
           </p>
           <p>
-                Passionate about basketball, apparel designing, music and minimalistic designs.
+                Interested in basketball, apparel designing and music.
               </p>
           <div className="mt-4">
             <Image
@@ -357,6 +368,17 @@ export default function Page() {
             <ClockBadge delayMs={entryDelays.clock} />
           </div>
         </div>
+        {/* Tablet: Bottom Right Image */}
+        <div className="flex justify-end mt-10 fade-seq" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
+          <Image
+            src="/r.png"
+            alt=""
+            width={50}
+            height={50}
+            className="w-[50px] h-[50px]"
+            unoptimized
+          />
+        </div>
       </div>
 
       {/* Mobile Layout */}
@@ -383,7 +405,7 @@ export default function Page() {
             A hands-on builder who designs with restraint and ships with intention. I build products, interfaces, and systems that sit between design and engineering. I like things that are minimal, intentional, and fast; whether it is a frontend flow or a visual identity. I treat code like a design tool; it shapes experience, not just function. I love designing and building what I create.
           </p>
           <p>
-                Passionate about basketball, apparel designing, music and minimalistic designs.
+                Interested in basketball, apparel designing and music.
               </p>
           <div className="mt-4">
             <Image
@@ -455,6 +477,16 @@ export default function Page() {
           </div>
           <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
             <ClockBadge delayMs={entryDelays.clock} />
+          </div>
+          <div className="fade-seq" style={{ "--fade-delay": `${entryDelays.clock}ms` }}>
+            <Image
+              src="/r.png"
+              alt=""
+              width={50}
+              height={50}
+              className="w-[50px] h-[50px]"
+              unoptimized
+            />
           </div>
         </div>
       </div>
