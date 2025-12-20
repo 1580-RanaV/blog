@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState, useCallback, useEffect } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import ProfileViewsBadge from "./components/ProfileViewsBadge";
 
 /* ---------- Lazy sections ---------- */
@@ -179,6 +180,19 @@ export default function Page() {
               <p className="text-[0.875rem] font-normal leading-[1.5]">
                 A hands-on builder who designs with restraint and ships with intention. I build products, interfaces, and systems that sit between design and engineering. I like things that are minimal, intentional, and fast; whether it is a frontend flow or a visual identity. I treat code like a design tool; it shapes experience, not just function. I love designing and building what I create.
               </p>
+              <p>
+                Passionate about basketball, apparel designing, music and minimalistic designs.
+              </p>
+              <div className="mt-4">
+                <Image
+                  src="/30-new.png"
+                  alt=""
+                  width={500}
+                  height={500}
+                  className="w-full h-auto"
+                  unoptimized
+                />
+              </div>
               <nav className="flex gap-4 mt-4">
                 <a
                   href="https://www.linkedin.com/in/vrana11/"
@@ -268,6 +282,19 @@ export default function Page() {
           <p className="text-[0.875rem] font-normal leading-[1.5]">
             A hands-on builder who designs with restraint and ships with intention. I build products, interfaces, and systems that sit between design and engineering. I like things that are minimal, intentional, and fast; whether it is a frontend flow or a visual identity. I treat code like a design tool; it shapes experience, not just function. I love designing and building what I create.
           </p>
+          <p>
+                Passionate about basketball, apparel designing, music and minimalistic designs.
+              </p>
+          <div className="mt-4">
+            <Image
+              src="/30-new.png"
+              alt=""
+              width={500}
+              height={500}
+              className="w-full h-auto"
+              unoptimized
+            />
+          </div>
           <nav className="flex gap-4 mt-4">
             <a
               href="https://www.linkedin.com/in/vrana11/"
@@ -355,6 +382,19 @@ export default function Page() {
           <p className="text-[0.875rem] font-normal leading-[1.5]">
             A hands-on builder who designs with restraint and ships with intention. I build products, interfaces, and systems that sit between design and engineering. I like things that are minimal, intentional, and fast; whether it is a frontend flow or a visual identity. I treat code like a design tool; it shapes experience, not just function. I love designing and building what I create.
           </p>
+          <p>
+                Passionate about basketball, apparel designing, music and minimalistic designs.
+              </p>
+          <div className="mt-4">
+            <Image
+              src="/30-new.png"
+              alt=""
+              width={500}
+              height={500}
+              className="w-full h-auto"
+              unoptimized
+            />
+          </div>
           <nav className="flex gap-4 mt-4">
             <a
               href="https://www.linkedin.com/in/vrana11/"

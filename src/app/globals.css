@@ -181,51 +181,9 @@
   animation-delay: var(--fade-delay, 0ms);
 }
 
-@keyframes marquee-slide {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.marquee-shell {
-  position: relative;
-  overflow: hidden;
-  border: none;
-  background: transparent;
-  border-radius: 999px;
-}
-
-.marquee-shell::after,
-.marquee-shell::before {
-  position: absolute;
-  top: 0;
-  width: 60px;
-  height: 100%;
-  pointer-events: none;
-  content: "";
-}
-
-.marquee-shell::before {
-  left: 0;
-  background: linear-gradient(90deg, var(--bg), transparent);
-}
-
-.marquee-shell::after {
-  right: 0;
-  background: linear-gradient(270deg, var(--bg), transparent);
-}
-
-.marquee-track {
-  display: flex;
-  gap: 1.5rem;
-  padding: 0.5rem 0.75rem;
-  min-width: max-content;
-  animation: marquee-slide 20s linear infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .fade-up,
-  .fade-seq,
-  .marquee-track {
+  .fade-seq {
     animation: none;
     opacity: 1;
     filter: none;

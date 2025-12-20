@@ -429,13 +429,7 @@ export default function Git() {
                                 className="relative block h-4 w-4 rounded-[3px]"
                                 style={{ backgroundColor: background }}
                                 title={label}
-                              >
-                                {day?.isToday && (
-                                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
-                                  </span>
-                                )}
-                              </span>
+                              />
                             );
                           })}
                         </div>
@@ -445,10 +439,6 @@ export default function Git() {
                 </div>
               </div>
             </div>
-
-            <p className="mt-6 text-white/70">
-              Updated from GitHub, current through today. Bright dot indicates today.
-            </p>
           </>
         )}
       </div>
