@@ -34,18 +34,20 @@ export default function ProfileViewsBadge() {
         setError("");
         const response = await fetch(ENDPOINT, { cache: "no-store" });
 
-        if (!response.ok) {
-          throw new Error(`Profile counter request failed (${response.status})`);
-        }
-
+        // Handle both 200 and 500 responses gracefully
         const payload = await response.json();
         if (!active) return;
 
-        setCount(typeof payload?.count === "number" ? payload.count : null);
+        // If count is null (not configured or error), show ellipsis
+        if (typeof payload?.count === "number") {
+          setCount(payload.count);
+        } else {
+          setCount(null);
+        }
       } catch (err) {
         if (!active) return;
-        console.warn("Profile views badge failed:", err);
-        setError("—");
+        // Silently fail - don't show error to user
+        setCount(null);
       }
     }
 

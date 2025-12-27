@@ -1,12 +1,29 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 
 export default function Projects() {
   return (
     <section className="w-full font-regular text-white [data-theme='light']:text-black space-y-8 transition-colors duration-300">
       <div className="space-y-8">
+
+      <ProjectCard
+          title="SnipAsker"
+          subtitle="Inline AI assistant for instant context-aware answers"
+          images={["/snipasker-wall.png"]}
+          description="SnipAsker is a lightweight Chrome extension that lets users highlight any text on a webpage and get instant AI answers inline - without opening new tabs or scrolling away. Designed for speed and focus, it delivers quick explanations, summaries, and clarity exactly where you’re reading."
+          tags={[
+            "Next.js",
+            "React",
+            "Tailwind",
+            "API",
+            "Chrome Extension",
+            "Vercel",
+          ]}
+          links={[{ href: "https://snipasker.vercel.app", label: "SnipAsker" }]}
+        />
+
+
         <ProjectCard
           title="HelmetGuard: Real-Time Helmet Detection"
           subtitle="Final engineering year capstone"
@@ -175,11 +192,12 @@ function ProjectCard({ title, subtitle, images = [], description, links = [], ta
             >
               <Image
                 src={src}
-                alt={title}
+                alt={`${title} project screenshot`}
                 width={1200}
                 height={800}
                 className="w-full h-auto object-cover"
                 priority={i === 0}
+                loading={i === 0 ? "eager" : "lazy"}
               />
             </div>
           ))}

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 
 export default function Education() {
@@ -157,7 +156,7 @@ function LogoBox({ src, alt, rounded = "md" }) {
       className={`inline-flex h-11 w-11 shrink-0 items-center justify-center ${radiusClass} overflow-hidden bg-white/5 [data-theme='light']:bg-black/5 transition-colors duration-300`}
       aria-hidden
     >
-      <Image src={src} alt={alt} width={24} height={24} className="object-contain" />
+      <Image src={src} alt={alt} width={24} height={24} className="object-contain" loading="lazy" />
     </div>
   );
 }

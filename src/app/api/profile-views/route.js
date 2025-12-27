@@ -6,13 +6,19 @@ const ROW_ID = 1;
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error("Missing Supabase environment variables.");
+// Create supabase client only if env vars are available
+let supabase = null;
+if (supabaseUrl && supabaseAnonKey) {
+  try {
+    supabase = createClient(supabaseUrl, supabaseAnonKey, {
+      auth: { persistSession: false },
+    });
+  } catch (err) {
+    if (process.env.NODE_ENV === "development") {
+      console.warn("Failed to initialize Supabase client:", err);
+    }
+  }
 }
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: { persistSession: false },
-});
 
 async function withTimeout(promise, timeoutMs = 10000) {
   return Promise.race([
@@ -47,6 +53,17 @@ async function withRetry(fn, maxRetries = 2) {
 }
 
 export async function GET() {
+  // Return a fallback response if Supabase is not configured
+  if (!supabase) {
+    if (process.env.NODE_ENV === "development") {
+      console.warn("Supabase not configured. Profile views tracking disabled.");
+    }
+    return Response.json(
+      { count: null, error: "Profile views tracking not configured" },
+      { status: 200, headers: { "cache-control": "no-store" } }
+    );
+  }
+
   try {
     const result = await withRetry(async () => {
       const { data, error, status } = await supabase
@@ -89,9 +106,10 @@ export async function GET() {
       });
     }
     
+    // Return 200 with null count instead of 500 to prevent breaking the UI
     return Response.json(
-      { error: "Unable to update profile views", count: null },
-      { status: 500, headers: { "cache-control": "no-store" } }
+      { count: null, error: "Unable to update profile views" },
+      { status: 200, headers: { "cache-control": "no-store" } }
     );
   }
 }

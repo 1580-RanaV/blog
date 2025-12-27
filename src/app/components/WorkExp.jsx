@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 export default function WorkExp() {
   return (
     <section className="w-full font-regular text-white [data-theme='light']:text-black space-y-8 transition-colors duration-300">

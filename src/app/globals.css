@@ -248,7 +248,37 @@
   }
 }
 
+/* ---------- Git Component Scrollbar ---------- */
+.scrollbar-visible::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollbar-visible::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+}
+
+.scrollbar-visible::-webkit-scrollbar-thumb {
+  background: #52555f;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.scrollbar-visible::-webkit-scrollbar-thumb:hover {
+  background: #7a7d87;
+}
+
 .font-regular {
   font-family: var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif;
   font-weight: 400;
+}
+
+/* ---------- Git Component Animations ---------- */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
 }

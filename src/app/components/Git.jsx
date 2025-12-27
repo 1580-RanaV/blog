@@ -143,10 +143,10 @@ function LoadingSkeleton() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-2">
-          <div className="h-8 w-48 animate-pulse rounded-lg bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%]" style={{ animation: 'shimmer 2s infinite' }} />
-          <div className="h-4 w-32 animate-pulse rounded bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%]" style={{ animation: 'shimmer 2s infinite', animationDelay: '0.2s' }} />
+          <div className="h-8 w-48 animate-pulse rounded-lg bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%] animate-shimmer" style={{ animationDelay: '0s' }} />
+          <div className="h-4 w-32 animate-pulse rounded bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%] animate-shimmer" style={{ animationDelay: '0.2s' }} />
         </div>
-        <div className="h-9 w-28 animate-pulse rounded-full bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%]" style={{ animation: 'shimmer 2s infinite', animationDelay: '0.4s' }} />
+        <div className="h-9 w-28 animate-pulse rounded-full bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%] animate-shimmer" style={{ animationDelay: '0.4s' }} />
       </div>
 
       <div className="overflow-x-auto">
@@ -186,12 +186,6 @@ function LoadingSkeleton() {
 
       <div className="h-3 w-64 animate-pulse rounded bg-neutral-800" style={{ animationDelay: '300ms' }} />
 
-      <style jsx>{`
-        @keyframes shimmer {
-          0% { background-position: 200% 0; }
-          100% { background-position: -200% 0; }
-        }
-      `}</style>
     </div>
   );
 }
@@ -256,7 +250,9 @@ export default function Git() {
         setCached({ contributions, total: totalCount, start, end });
       } catch (err) {
         if (!cancelled) {
-          console.warn("GitHub contributions fetch failed:", err);
+          if (process.env.NODE_ENV === "development") {
+            console.warn("GitHub contributions fetch failed:", err);
+          }
           setError(
             "Could not load the latest contribution data. Please try again later."
           );
@@ -443,26 +439,6 @@ export default function Git() {
         )}
       </div>
 
-      <style jsx>{`
-        .scrollbar-visible::-webkit-scrollbar {
-          height: 8px;
-        }
-        
-        .scrollbar-visible::-webkit-scrollbar-track {
-          background: rgba(255,255,255,0.04);
-          border-radius: 4px;
-        }
-        
-        .scrollbar-visible::-webkit-scrollbar-thumb {
-          background: #52555f;
-          border-radius: 4px;
-          transition: background 0.2s;
-        }
-        
-        .scrollbar-visible::-webkit-scrollbar-thumb:hover {
-          background: #7a7d87;
-        }
-      `}</style>
     </section>
   );
 }

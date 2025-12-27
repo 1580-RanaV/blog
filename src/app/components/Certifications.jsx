@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 export default function Certifications() {
   return (
     <section className="space-y-6 font-regular text-white [data-theme='light']:text-black transition-colors duration-300">
