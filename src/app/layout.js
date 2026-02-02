@@ -1,11 +1,11 @@
 // src/app/layout.js
-import { DM_Sans } from "next/font/google";
+import { Onest } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const onest = Onest({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-dm-sans",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-onest",
   display: "swap",
   preload: true,
   fallback: ["system-ui", "-apple-system", "sans-serif"],
@@ -66,7 +66,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={dmSans.className}>
+    <html lang="en" className={onest.className}>
       <head>
         <meta name="theme-color" content="#ffffff" />
         <meta name="apple-mobile-web-app-title" content="V Ranadheer" />
@@ -76,7 +76,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://github-contributions-api.jogruber.de" />
       </head>
-      <body className="font-[var(--font-dm-sans)] text-black bg-white">{children}</body>
+      <body className="font-[var(--font-onest)] text-black bg-white">{children}</body>
     </html>
   );
 }

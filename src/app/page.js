@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState, useCallback, useEffect } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import ProfileViewsBadge from "./components/ProfileViewsBadge";
 import { BIO, SOCIAL_LINKS } from "./constants";
 
@@ -148,12 +149,12 @@ export default function Page() {
         </header>
 
         {/* Hero Tagline */}
-        <section className="text-center mb-16 sm:mb-20">
+                <section className="text-center mb-16 sm:mb-20">
           <p 
-            className="text-[1.5rem] sm:text-[1.75rem] md:text-[2rem] font-normal leading-[1.4] text-black fade-seq"
+            className="text-[1.25rem] sm:text-[1.375rem] md:text-[1.5rem] font-normal leading-[1.5] text-black fade-seq"
             style={{ "--fade-delay": "100ms" }}
           >
-            I build products, interfaces, and systems that sit between design and engineering. I like things that are minimal, intentional, and fast.
+            I work between design and engineering, building products and interfaces that are simple, intentional, and <i>fast</i>.
           </p>
         </section>
 
@@ -201,6 +202,15 @@ export default function Page() {
             ))}
           </div>
           <ProfileViewsBadge />
+          <div className="mt-8">
+            <Image
+              src="/r-logo.png"
+              alt="Logo"
+              width={48}
+              height={48}
+              className="opacity-100"
+            />
+          </div>
         </footer>
 
       </div>
