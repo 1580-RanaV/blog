@@ -4,60 +4,51 @@ export default function Unfinished() {
   const projects = [
     {
       title: "Zing: 10-Minute Food Delivery",
-      tech: "Next.js, Tailwind CSS",
-      description:
-        "Redesigned a Shark Tank–backed startup's website. Made it responsive and added consistent styling for a cleaner, more polished look.",
+      description: "Redesigned a Shark Tank–backed startup's website. Made it responsive with consistent styling.",
+      tech: "Next.js · Tailwind CSS",
     },
     {
       title: "CreditLedger",
-      tech: "Web3, Next.js, Tailwind CSS",
-      description:
-        "Built an app where users could lend extra money as low-interest loans. Paused when the product complexity outgrew the initial scope.",
+      description: "App for lending extra money as low-interest loans. Paused when complexity outgrew scope.",
+      tech: "Web3 · Next.js",
     },
     {
       title: "Timetabler",
-      tech: "Next.js, Tailwind CSS, Supabase",
-      description:
-        "A web app for schools to generate timetables automatically with constraints, plus PNG exports for each teacher. Paused when PDF generation became a time sink.",
+      description: "Auto-generate school timetables with constraints and PNG exports. Paused on PDF generation.",
+      tech: "Next.js · Supabase",
     },
     {
       title: "Poor Man's Spotify",
-      tech: "Next.js, Tailwind CSS, YouTube API, Spotify API",
-      description:
-        "Fetched liked songs from Spotify, mapped them to YouTube, and built playlists automatically to dodge premium limits. Dropped due to API rate-limit pain.",
+      description: "Fetch liked songs from Spotify, map to YouTube, build playlists. Dropped due to API rate limits.",
+      tech: "YouTube API · Spotify API",
     },
     {
       title: "Capsules",
-      tech: "Next.js, Tailwind CSS, Supabase",
-      description:
-        "Untraceable, timed chat rooms with file sharing up to 100MB. All in-memory; capsules self-destructed after 30 minutes.",
+      description: "Untraceable, timed chat rooms with 100MB file sharing. Self-destruct after 30 minutes.",
+      tech: "Next.js · Supabase",
     },
     {
       title: "YT Payola",
-      tech: "Next.js, Tailwind CSS, YouTube API",
-      description:
-        "Input a YouTube URL to see hidden stats like view graphs and engagement, built to spot botted views.",
+      description: "Input YouTube URL to see hidden stats and spot botted views.",
+      tech: "YouTube API · Next.js",
     },
   ];
 
   return (
-    <section className="space-y-6">
-      {projects.map((project, index) => (
-        <article
-          key={index}
-          className="space-y-2 border-b border-black/10 pb-6 last:border-0 last:pb-0"
-        >
+    <div className="space-y-5">
+      {projects.map((project, idx) => (
+        <div key={idx} className="group">
           <h3 className="text-[0.9375rem] font-medium text-black">
             {project.title}
           </h3>
-          <p className="text-xs text-black/40">
-            {project.tech}
-          </p>
-          <p className="text-[0.875rem] leading-relaxed text-black/70">
+          <p className="mt-1.5 text-[0.875rem] leading-relaxed text-black/60">
             {project.description}
           </p>
-        </article>
+          <p className="mt-1.5 text-xs text-black/35">
+            {project.tech}
+          </p>
+        </div>
       ))}
-    </section>
+    </div>
   );
 }
