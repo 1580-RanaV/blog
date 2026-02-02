@@ -65,7 +65,7 @@ export default function Education() {
               {edu.degree}, {edu.year}
             </p>
             {edu.details && (
-              <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-black/40">
+              <p className="mt-1.5 text-[0.875rem] leading-relaxed text-black/40">
                 {edu.details}
               </p>
             )}
@@ -78,13 +78,13 @@ export default function Education() {
         <h4 className="text-xs font-medium text-black/40 uppercase tracking-wide mb-4">
           Participations
         </h4>
-        <div className="space-y-4">
+        <div className="space-y-5">
           {participations.map((item, idx) => (
             <div key={idx}>
-              <h3 className="text-[0.875rem] font-medium text-black">
+              <h3 className="text-[0.9375rem] font-medium text-black">
                 {item.title}
               </h3>
-              <p className="mt-1 text-[0.8125rem] leading-relaxed text-black/50">
+              <p className="mt-1.5 text-[0.875rem] leading-relaxed text-black/60">
                 {item.description}
               </p>
             </div>
@@ -97,16 +97,16 @@ export default function Education() {
         <h4 className="text-xs font-medium text-black/40 uppercase tracking-wide mb-4">
           Club Activities
         </h4>
-        <div className="space-y-4">
+        <div className="space-y-5">
           {clubs.map((club, idx) => (
             <div key={idx}>
-              <h3 className="text-[0.875rem] font-medium text-black">
+              <h3 className="text-[0.9375rem] font-medium text-black">
                 {club.role}
               </h3>
               <p className="mt-0.5 text-xs text-black/40">
                 {club.org}
               </p>
-              <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-black/50">
+              <p className="mt-1.5 text-[0.875rem] leading-relaxed text-black/60">
                 {club.description}
               </p>
               {club.link && (
