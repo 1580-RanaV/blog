@@ -1,42 +1,17 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 
-// Helper function to capitalize sentences properly
 function capitalizeText(text) {
   if (!text) return "";
-  
-  // Split by sentences (period, exclamation, question mark)
   return text
     .split(/([.!?]+\s*)/)
-    .map((sentence, i) => {
+    .map((sentence) => {
       const trimmed = sentence.trim();
       if (!trimmed) return sentence;
-      
-      // Capitalize first letter
       return trimmed[0].toUpperCase() + trimmed.slice(1).toLowerCase();
     })
     .join("");
-}
-
-// Helper to capitalize titles properly
-function capitalizeTitle(text) {
-  if (!text) return "";
-  
-  // Capitalize first letter of each word, but keep some words lowercase
-  const smallWords = ['a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'if', 'in', 'of', 'on', 'or', 'the', 'to', 'with'];
-  
-  return text
-    .split(' ')
-    .map((word, index) => {
-      const lower = word.toLowerCase();
-      // Always capitalize first word, or if word is not in small words list
-      if (index === 0 || !smallWords.includes(lower)) {
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-      }
-      return lower;
-    })
-    .join(' ');
 }
 
 export default function Articles() {
@@ -152,8 +127,8 @@ So the next time you see a circle animation in one of those apps while waiting f
   };
 
   return (
-    <section className="font-regular text-white [data-theme='light']:text-black space-y-8 transition-colors duration-300">
-      <div className="space-y-8">
+    <section className="space-y-6">
+      <div className="space-y-6">
         {articles.map((article, index) => {
           const isOpen = openIndex === index;
           const paragraphs = formatParagraphs(article.description);
@@ -162,23 +137,21 @@ So the next time you see a circle animation in one of those apps while waiting f
           return (
             <article
               key={index}
-              className="space-y-4 border-b border-white/10 [data-theme='light']:border-black/10 pb-6 last:border-0 last:pb-0 transition-colors duration-300"
+              className="space-y-3 border-b border-black/10 pb-6 last:border-0 last:pb-0"
             >
               <div className="flex items-start justify-between gap-4">
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center gap-3">
-                    <span className="text-[0.75rem] font-medium text-white/40 [data-theme='light']:text-black/40 tracking-wider">
-                      {article.number}
-                    </span>
-                  </div>
-                  <h3 className="text-[0.875rem] font-medium leading-[1.5] text-white [data-theme='light']:text-black transition-colors duration-300">
+                <div className="flex-1 space-y-1">
+                  <span className="text-xs font-medium text-black/40 tracking-wider">
+                    {article.number}
+                  </span>
+                  <h3 className="text-[0.9375rem] font-medium text-black leading-snug">
                     {article.title}
                   </h3>
                 </div>
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="text-[0.75rem] font-normal text-white/60 [data-theme='light']:text-black/60 underline underline-offset-4 hover:text-white [data-theme='light']:hover:text-black transition-colors duration-300 flex-shrink-0"
+                  className="text-xs font-medium text-black/50 hover:text-black transition-colors flex-shrink-0 pt-1"
                   aria-expanded={isOpen}
                 >
                   {isOpen ? "Hide" : "Read"}
@@ -187,7 +160,7 @@ So the next time you see a circle animation in one of those apps while waiting f
 
               <div className="space-y-3">
                 {!isOpen ? (
-                  <p className="text-[0.875rem] font-normal leading-[1.6] text-white/80 [data-theme='light']:text-black/80 transition-colors duration-300">
+                  <p className="text-[0.875rem] leading-relaxed text-black/60">
                     {capitalizeText(preview)}
                   </p>
                 ) : (
@@ -195,7 +168,7 @@ So the next time you see a circle animation in one of those apps while waiting f
                     {paragraphs.map((para, i) => (
                       <p
                         key={i}
-                        className="text-[0.875rem] font-normal leading-[1.6] text-white/90 [data-theme='light']:text-black/90 transition-colors duration-300"
+                        className="text-[0.875rem] leading-relaxed text-black/70"
                       >
                         {para}
                       </p>

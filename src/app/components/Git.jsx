@@ -19,8 +19,8 @@ const FULL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
 });
 
-const COLOR_EMPTY = "#0d0d0d";
-const COLOR_ACTIVE_BASE = "rgba(255, 255, 255, VAR_ALPHA)";
+const COLOR_EMPTY = "#f0f0f0";
+const COLOR_ACTIVE_BASE = "rgba(0, 0, 0, VAR_ALPHA)";
 const TODAY_KEY = new Date().toISOString().slice(0, 10);
 
 const FALLBACK_WEEKS = Array.from({ length: 16 }, (_, weekIdx) => ({
@@ -48,7 +48,7 @@ function formatFullDate(value) {
 function getCellColor(level, count) {
   if (!count || level <= 0) return COLOR_EMPTY;
   const normalized = Math.min(Math.max(level, 1), 4);
-  const alpha = 0.45 + normalized * 0.12;
+  const alpha = 0.15 + normalized * 0.18;
   return COLOR_ACTIVE_BASE.replace("VAR_ALPHA", alpha.toFixed(2));
 }
 
@@ -60,7 +60,6 @@ function getCached() {
     const parsed = JSON.parse(raw);
     if (!parsed?.ts || !parsed?.data) return null;
     const age = Date.now() - parsed.ts;
-    // 6 hours cache
     if (age > 6 * 60 * 60 * 1000) return null;
     return parsed.data;
   } catch {
@@ -140,13 +139,13 @@ function buildWeeks(contributions) {
 
 function LoadingSkeleton() {
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <div className="space-y-4">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-2">
-          <div className="h-8 w-48 animate-pulse rounded-lg bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%] animate-shimmer" style={{ animationDelay: '0s' }} />
-          <div className="h-4 w-32 animate-pulse rounded bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%] animate-shimmer" style={{ animationDelay: '0.2s' }} />
+          <div className="h-6 w-40 animate-pulse rounded bg-black/10" />
+          <div className="h-4 w-28 animate-pulse rounded bg-black/5" />
         </div>
-        <div className="h-9 w-28 animate-pulse rounded-full bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 bg-[length:200%_100%] animate-shimmer" style={{ animationDelay: '0.4s' }} />
+        <div className="h-8 w-24 animate-pulse rounded bg-black/5" />
       </div>
 
       <div className="overflow-x-auto">
@@ -157,11 +156,8 @@ function LoadingSkeleton() {
                 {Array.from({ length: 7 }, (_, dayIdx) => (
                   <span
                     key={dayIdx}
-                    className="h-4 w-4 animate-pulse rounded-sm bg-gradient-to-br from-neutral-800 via-neutral-700 to-neutral-800"
-                    style={{
-                      animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                      animationDelay: `${(weekIdx * 7 + dayIdx) * 10}ms`
-                    }}
+                    className="h-3 w-3 animate-pulse rounded-sm bg-black/5"
+                    style={{ animationDelay: `${(weekIdx * 7 + dayIdx) * 5}ms` }}
                   />
                 ))}
               </div>
@@ -169,23 +165,6 @@ function LoadingSkeleton() {
           </div>
         </div>
       </div>
-
-      <div className="flex items-center gap-3">
-        <div className="h-3 w-8 animate-pulse rounded bg-neutral-800" />
-        <div className="flex items-center gap-[3px]">
-          {Array.from({ length: 2 }, (_, idx) => (
-            <span
-              key={idx}
-              className="h-3 w-3 animate-pulse rounded-sm bg-neutral-800"
-              style={{ animationDelay: `${idx * 100}ms` }}
-            />
-          ))}
-        </div>
-        <div className="h-3 w-8 animate-pulse rounded bg-neutral-800" style={{ animationDelay: '200ms' }} />
-      </div>
-
-      <div className="h-3 w-64 animate-pulse rounded bg-neutral-800" style={{ animationDelay: '300ms' }} />
-
     </div>
   );
 }
@@ -196,7 +175,6 @@ export default function Git() {
   const [range, setRange] = useState({ start: null, end: null });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [showScrollHint, setShowScrollHint] = useState(true);
   const scrollContainerRef = useRef(null);
 
   useEffect(() => {
@@ -253,9 +231,7 @@ export default function Git() {
           if (process.env.NODE_ENV === "development") {
             console.warn("GitHub contributions fetch failed:", err);
           }
-          setError(
-            "Could not load the latest contribution data. Please try again later."
-          );
+          setError("Could not load contribution data.");
         }
       } finally {
         if (!cancelled) {
@@ -269,57 +245,6 @@ export default function Git() {
     return () => {
       cancelled = true;
     };
-  }, []);
-
-  // Smooth scroll animation on mount
-  useEffect(() => {
-    if (!loading && scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const scrollDistance = 200; // pixels to scroll
-      const duration = 1500; // milliseconds
-      const startTime = Date.now();
-
-      const animateScroll = () => {
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Ease-in-out function
-        const easeInOut = progress < 0.5
-          ? 2 * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-        
-        container.scrollLeft = scrollDistance * easeInOut;
-
-        if (progress < 1) {
-          requestAnimationFrame(animateScroll);
-        } else {
-          // After animation, scroll back to start smoothly
-          setTimeout(() => {
-            container.scrollTo({ left: 0, behavior: 'smooth' });
-          }, 500);
-        }
-      };
-
-      // Start animation after a brief delay
-      const timeoutId = setTimeout(() => {
-        animateScroll();
-      }, 300);
-
-      return () => clearTimeout(timeoutId);
-    }
-  }, [loading]);
-
-  // Hide scroll hint after user scrolls
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const handleScroll = () => {
-      setShowScrollHint(false);
-    };
-
-    container.addEventListener('scroll', handleScroll);
-    return () => container.removeEventListener('scroll', handleScroll);
   }, []);
 
   const rangeLabel = useMemo(() => {
@@ -337,100 +262,71 @@ export default function Git() {
     typeof total === "number" ? total.toLocaleString("en-US") : "--";
 
   return (
-    <section
-      aria-labelledby="github-activity-heading"
-      className="w-full font-regular text-white"
-    >
-      <div className="p-0 space-y-4">
+    <section aria-labelledby="github-activity-heading" className="w-full">
+      <div className="space-y-4">
         {loading ? (
           <LoadingSkeleton />
         ) : (
           <>
-            <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <header className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h2
-                  id="github-activity-heading"
-                  className="leading-tight text-white font-semibold"
-                >
+                <h2 id="github-activity-heading" className="text-[0.9375rem] font-semibold text-black">
                   {`${formattedTotal} contributions`}
                 </h2>
-                <p className="text-white/60">{rangeLabel}</p>
+                <p className="text-xs text-black/50">{rangeLabel}</p>
               </div>
 
               <a
                 href={PROFILE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex rounded-full items-center justify-center px-4 py-2 text-white transition-colors bg-transparent underline underline-offset-4"
+                className="text-[0.875rem] font-medium text-black underline underline-offset-4 decoration-black/30 hover:decoration-black transition-colors"
               >
-                View profile
+                View profile ↗
               </a>
             </header>
 
-            <div className="mt-6">
+            <div>
               {error && (
-                <div className="mb-4 rounded-lg px-3 py-2 text-white/80">
+                <div className="mb-3 text-sm text-black/60">
                   {error}{" "}
                   <a
                     href={CONTRIBUTIONS_PAGE}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline underline-offset-2 text-white"
+                    className="underline underline-offset-2"
                   >
                     Open on GitHub
                   </a>
                 </div>
               )}
 
-              <div className="relative">
-                {/* Scroll hint */}
-                {showScrollHint && (
-                  <div className="absolute -top-5 right-0 flex items-center gap-2 text-xs text-white/50 animate-pulse">
-                    <span></span>
-                  </div>
-                )}
+              <div
+                ref={scrollContainerRef}
+                className="overflow-x-auto scrollbar-visible"
+              >
+                <div className="min-w-[640px] pb-2">
+                  <div className="flex gap-[2px]" aria-label="Contribution heatmap">
+                    {weeks.map((week) => (
+                      <div key={week.key} className="flex flex-col gap-[2px]" aria-hidden="true">
+                        {week.days.map((day, idx) => {
+                          const count = Math.max(0, day?.count ?? 0);
+                          const background = day?.color ?? COLOR_EMPTY;
+                          const label = day?.date
+                            ? `${count} contribution${count === 1 ? "" : "s"} on ${formatFullDate(day.date)}`
+                            : "No data";
 
-                {/* Scrollable container with visible scrollbar */}
-                <div 
-                  ref={scrollContainerRef}
-                  className="overflow-x-auto scrollbar-visible"
-                  style={{
-                    scrollbarWidth: 'thin',
-                    scrollbarColor: '#1f1f24 #0b0b0f'
-                  }}
-                >
-                  <div className="min-w-[640px] pb-2">
-                    <div
-                      className="flex gap-[3px]"
-                      aria-label="Contribution heatmap"
-                    >
-                      {weeks.map((week) => (
-                        <div
-                          key={week.key}
-                          className="flex flex-col gap-[3px]"
-                          aria-hidden="true"
-                        >
-                          {week.days.map((day, idx) => {
-                            const count = Math.max(0, day?.count ?? 0);
-                            const background = day?.color ?? COLOR_EMPTY;
-                            const label = day?.date
-                              ? `${count} contribution${
-                                  count === 1 ? "" : "s"
-                                } on ${formatFullDate(day.date)}`
-                              : "No data";
-
-                            return (
-                              <span
-                                key={day?.id ?? `${week.key}-${idx}`}
-                                className="relative block h-4 w-4 rounded-[3px]"
-                                style={{ backgroundColor: background }}
-                                title={label}
-                              />
-                            );
-                          })}
-                        </div>
-                      ))}
-                    </div>
+                          return (
+                            <span
+                              key={day?.id ?? `${week.key}-${idx}`}
+                              className="block h-3 w-3 rounded-[2px]"
+                              style={{ backgroundColor: background }}
+                              title={label}
+                            />
+                          );
+                        })}
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -438,7 +334,6 @@ export default function Git() {
           </>
         )}
       </div>
-
     </section>
   );
 }

@@ -2,33 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---------- Root theme ---------- */
+/* ---------- Root theme (Light Mode) ---------- */
 @layer base {
   :root {
-    --bg: #050505;
-    --panel: #0a0a0a;
-    --panel-strong: #0f0f0f;
-    --line: #1a1a1a;
-    --muted: #9b9b9b;
-    --muted-2: #c3c3c3;
-    --glow: #ffffff0d;
-    color-scheme: dark;
+    --bg: #ffffff;
+    --text: #000000;
+    --text-muted: #666666;
+    --text-subtle: #999999;
+    --border: #e5e5e5;
+    --border-light: #f0f0f0;
+    color-scheme: light;
   }
 
   html {
     scroll-behavior: smooth;
-    background: #000000;
+    background: #ffffff;
   }
 
   body {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
     font-family: var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif;
     letter-spacing: -0.01em;
-    line-height: 1.5;
+    line-height: 1.6;
     min-height: 100vh;
     text-rendering: optimizeLegibility;
     font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body, button, input, textarea, select {
@@ -36,238 +37,113 @@
   }
 
   * {
-    border-color: var(--line);
+    border-color: var(--border);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
-    letter-spacing: -0.01em;
-    color: #ffffff;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    transition: color 0.3s ease;
-  }
-
-  [data-theme="light"] h1,
-  [data-theme="light"] h2,
-  [data-theme="light"] h3,
-  [data-theme="light"] h4,
-  [data-theme="light"] h5,
-  [data-theme="light"] h6 {
+    letter-spacing: -0.02em;
     color: #000000;
-  }
-
-  /* Sub headings - medium weight with monochrome color */
-  .sub-heading,
-  h3.sub-heading,
-  h4.sub-heading,
-  h5.sub-heading,
-  h6.sub-heading {
-    font-weight: 500;
-    color: var(--muted);
-    transition: color 0.3s ease;
-  }
-
-  [data-theme="light"] .sub-heading,
-  [data-theme="light"] h3.sub-heading,
-  [data-theme="light"] h4.sub-heading,
-  [data-theme="light"] h5.sub-heading,
-  [data-theme="light"] h6.sub-heading {
-    color: var(--muted);
+    line-height: 1.4;
   }
 
   p, li, small, label, span, summary, button, input, textarea, a {
-    color: #ffffff;
-    font-size: 0.875rem;
+    color: #000000;
+    font-size: 0.9375rem;
     font-weight: 400;
-    line-height: 1.5;
-  }
-
-  small,
-  .muted {
-    color: var(--muted);
+    line-height: 1.6;
   }
 
   ::selection {
-    background: #ffffff;
-    color: #000000;
-  }
-
-  [data-theme="light"] ::selection {
-    background: #ffffff;
-    color: #000000;
+    background: #000000;
+    color: #ffffff;
   }
 }
 
 /* ---------- Links ---------- */
 @layer base {
   a {
-    color: #ffffff;
+    color: #000000;
     text-decoration: none;
+    transition: opacity 0.2s ease;
   }
 
   a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
+    opacity: 0.6;
   }
 
   summary { list-style: none; }
   details summary::-webkit-details-marker { display: none; }
 }
 
-/* ---------- Controls ---------- */
-@layer base {
-  button,
-  input,
-  textarea {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    color: #ffffff;
-  }
-
-  button {
-    border-radius: 999px;
-    padding: 0.65rem 1rem;
-    font-weight: 600;
-    transition: background-color 0.2s ease, transform 0.12s ease, border-color 0.2s ease;
-  }
-
-  button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  button:not(:disabled):hover {
-    background: var(--panel-strong);
-    border-color: #2c2c2c;
-  }
-
-  button:not(:disabled):active {
-    transform: translateY(1px);
-  }
-
-  textarea,
-  input {
-    border-radius: 14px;
-    padding: 0.7rem 0.9rem;
-  }
-
-  textarea::placeholder,
-  input::placeholder {
-    color: var(--muted);
-  }
-}
-
 /* ---------- Motion ---------- */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.fade-up {
-  animation: fadeUp 0.6s ease-out both;
-}
 
-@keyframes fadeFocus {
-  0%   { opacity: 0; filter: brightness(1) blur(20px); }
-  10%  { opacity: 1; filter: brightness(2) blur(10px); }
-  100% { opacity: 1; filter: brightness(1) blur(0); }
+.fade-in {
+  animation: fadeIn 0.5s ease-out both;
 }
 
 .fade-seq {
   opacity: 0;
-  filter: brightness(1) blur(20px);
-  animation: fadeFocus 0.9s ease forwards;
+  transform: translateY(8px);
+  animation: fadeIn 0.6s ease-out forwards;
   animation-delay: var(--fade-delay, 0ms);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fade-up,
+  .fade-in,
   .fade-seq {
     animation: none;
     opacity: 1;
-    filter: none;
+    transform: none;
   }
 }
 
-/* ---------- Components ---------- */
-.surface {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.soft-surface {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-}
-
-.divider {
-  height: 1px;
-  background: transparent;
-}
-
-.dot {
-  height: 4px;
-  width: 4px;
-  border-radius: 999px;
-  background: #ffffff;
-  opacity: 0.7;
-}
-
-.tag-chip {
-  border: none;
-  padding: 0;
-  background: transparent;
-  color: #ffffff;
-  font-weight: 500;
-}
-
-/* ---------- Scrollbar ---------- */
+/* ---------- Scrollbar (minimal) ---------- */
 @layer base {
   * {
     scrollbar-width: thin;
-    scrollbar-color: #1c1c1c #0a0a0a;
+    scrollbar-color: #d4d4d4 transparent;
   }
   *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
   *::-webkit-scrollbar-track {
-    background: #0a0a0a;
+    background: transparent;
   }
   *::-webkit-scrollbar-thumb {
-    background: #1c1c1c;
+    background: #d4d4d4;
     border-radius: 999px;
-    border: 2px solid #0a0a0a;
   }
   *::-webkit-scrollbar-thumb:hover {
-    background: #2c2c2c;
+    background: #a3a3a3;
   }
 }
 
 /* ---------- Git Component Scrollbar ---------- */
 .scrollbar-visible::-webkit-scrollbar {
-  height: 8px;
+  height: 6px;
 }
 
 .scrollbar-visible::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.04);
+  background: #f5f5f5;
   border-radius: 4px;
 }
 
 .scrollbar-visible::-webkit-scrollbar-thumb {
-  background: #52555f;
+  background: #d4d4d4;
   border-radius: 4px;
-  transition: background 0.2s;
 }
 
 .scrollbar-visible::-webkit-scrollbar-thumb:hover {
-  background: #7a7d87;
+  background: #a3a3a3;
 }
 
+/* ---------- Typography helpers ---------- */
 .font-regular {
   font-family: var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif;
   font-weight: 400;
@@ -281,4 +157,24 @@
 
 .animate-shimmer {
   animation: shimmer 2s infinite;
+}
+
+/* ---------- Accordion styles ---------- */
+.accordion-content {
+  overflow: hidden;
+}
+
+details[open] .accordion-content {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 2000px;
+  }
 }

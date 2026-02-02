@@ -41,19 +41,19 @@ export default function Unfinished() {
   ];
 
   return (
-    <section className="space-y-6 font-regular text-white [data-theme='light']:text-black transition-colors duration-300">
+    <section className="space-y-6">
       {projects.map((project, index) => (
         <article
           key={index}
-          className="space-y-3 border-b border-white/10 [data-theme='light']:border-black/10 pb-6 last:border-0 last:pb-0 transition-colors duration-300"
+          className="space-y-2 border-b border-black/10 pb-6 last:border-0 last:pb-0"
         >
-          <h3 className="text-[0.875rem] font-medium leading-[1.5] text-white [data-theme='light']:text-black transition-colors duration-300">
+          <h3 className="text-[0.9375rem] font-medium text-black">
             {project.title}
           </h3>
-          <p className="text-[0.75rem] font-normal text-white/50 [data-theme='light']:text-black/50 transition-colors duration-300">
+          <p className="text-xs text-black/40">
             {project.tech}
           </p>
-          <p className="text-[0.875rem] font-normal leading-[1.6] text-white/90 [data-theme='light']:text-black/90 transition-colors duration-300">
+          <p className="text-[0.875rem] leading-relaxed text-black/70">
             {project.description}
           </p>
         </article>

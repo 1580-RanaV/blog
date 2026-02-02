@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Education() {
   return (
-    <section className="w-full font-regular text-white [data-theme='light']:text-black space-y-8 transition-colors duration-300">
+    <section className="w-full space-y-6">
       <div className="space-y-6">
         <EduItem
           title="Gandhi Institute of Technology and Management (GITAM) University"
@@ -15,82 +15,80 @@ export default function Education() {
         <EduItem
           title="Sri Chaitanya Junior College"
           line1="MPC (Math, Physics, Chemistry), 2021"
-          badges={[{ label: "Percentage: 92.7%" }]}
+          badges={[{ label: "92.7%" }]}
         />
         <EduItem
           title="Delhi Public School"
           line1="Secondary Education, 2019"
-          badges={[{ label: "Percentage: 86.66%" }]}
+          badges={[{ label: "86.66%" }]}
         />
       </div>
 
-      <div className="border-t border-white/10 [data-theme='light']:border-black/10 pt-6 transition-colors duration-300" />
+      <div className="border-t border-black/10 pt-6" />
 
-      <div className="space-y-6">
-        <h3 className="text-[0.875rem] font-medium text-white [data-theme='light']:text-black transition-colors duration-300">
+      <div className="space-y-4">
+        <h3 className="text-[0.875rem] font-medium text-black">
           Participations & Achievements
         </h3>
-        <ParticipationItem
-          title="Providence Ideathon 2024"
-          description="Health-focused problem statement on Unstop; advanced to second round."
-        />
-        <ParticipationItem
-          title="Catalog Hackathon"
-          description="Reached final round; hiring-style challenge across prompt engineering and problem solving, based on an MIT cryptography paper."
-        />
-        <ParticipationItem
-          title="IIM Rohtak Logo Competition"
-          description="Consolation in the IIM Rohtak logo design competition on Unstop."
-        />
+        <div className="space-y-4">
+          <ParticipationItem
+            title="Providence Ideathon 2024"
+            description="Health-focused problem statement on Unstop; advanced to second round."
+          />
+          <ParticipationItem
+            title="Catalog Hackathon"
+            description="Reached final round; hiring-style challenge across prompt engineering and problem solving, based on an MIT cryptography paper."
+          />
+          <ParticipationItem
+            title="IIM Rohtak Logo Competition"
+            description="Consolation in the IIM Rohtak logo design competition on Unstop."
+          />
+        </div>
       </div>
 
-      <div className="border-t border-white/10 [data-theme='light']:border-black/10 pt-6 transition-colors duration-300" />
+      <div className="border-t border-black/10 pt-6" />
 
-      <div className="space-y-6">
-        <h3 className="text-[0.875rem] font-medium text-white [data-theme='light']:text-black transition-colors duration-300">
+      <div className="space-y-4">
+        <h3 className="text-[0.875rem] font-medium text-black">
           University Club Activities
         </h3>
         <ClubItem
-          icon={{ src: "/google.svg", alt: "GDSC", rounded: "full" }}
+          icon={{ src: "/google.svg", alt: "GDSC" }}
           title="Lead Graphic Designer"
           org="Google Developer Student Clubs (GDSC)"
           description="Led design across university events with 1,000+ participants; created visual systems and event collateral using Figma and Photoshop."
-          link={{ href: "https://drive.google.com/file/d/1OXx-0RkdmgxBVE_1o3NNhmpA595O1DaF/view?usp=sharing", label: "Certificate of recognition" }}
+          link={{ href: "https://drive.google.com/file/d/1OXx-0RkdmgxBVE_1o3NNhmpA595O1DaF/view?usp=sharing", label: "Certificate" }}
         />
       </div>
     </section>
   );
 }
 
-/* ---------- Subcomponents ---------- */
-
 function EduItem({ title, line1, line2, badges = [] }) {
   return (
-    <article className="space-y-3 border-b border-white/10 [data-theme='light']:border-black/10 pb-6 last:border-0 last:pb-0 transition-colors duration-300">
-      <h4 className="text-[0.875rem] font-medium leading-[1.5] text-white [data-theme='light']:text-black transition-colors duration-300">
+    <article className="space-y-2 border-b border-black/10 pb-6 last:border-0 last:pb-0">
+      <h4 className="text-[0.9375rem] font-medium text-black">
         {title}
       </h4>
       {line1 && (
-        <p className="text-[0.875rem] font-normal text-white/90 [data-theme='light']:text-black/90 transition-colors duration-300">
+        <p className="text-[0.875rem] text-black/70">
           {line1}
         </p>
       )}
       {line2 && (
-        <p className="text-[0.875rem] font-normal leading-[1.6] text-white/80 [data-theme='light']:text-black/80 transition-colors duration-300">
+        <p className="text-[0.875rem] leading-relaxed text-black/60">
           {line2}
         </p>
       )}
 
       {badges.length > 0 && (
-        <ul className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           {badges.map((b, i) => (
-            <li key={i}>
-              <span className="text-[0.75rem] font-normal text-white/50 [data-theme='light']:text-black/50 transition-colors duration-300">
-                {b.label}
-              </span>
-            </li>
+            <span key={i} className="text-xs font-medium text-black/50">
+              {b.label}
+            </span>
           ))}
-        </ul>
+        </div>
       )}
     </article>
   );
@@ -98,12 +96,12 @@ function EduItem({ title, line1, line2, badges = [] }) {
 
 function ParticipationItem({ title, description }) {
   return (
-    <article className="space-y-3 border-b border-white/10 [data-theme='light']:border-black/10 pb-6 last:border-0 last:pb-0 transition-colors duration-300">
-      <h4 className="text-[0.875rem] font-medium leading-[1.5] text-white [data-theme='light']:text-black transition-colors duration-300">
+    <article className="space-y-1">
+      <h4 className="text-[0.875rem] font-medium text-black">
         {title}
       </h4>
       {description && (
-        <p className="text-[0.875rem] font-normal leading-[1.6] text-white/90 [data-theme='light']:text-black/90 transition-colors duration-300">
+        <p className="text-[0.875rem] leading-relaxed text-black/60">
           {description}
         </p>
       )}
@@ -113,15 +111,17 @@ function ParticipationItem({ title, description }) {
 
 function ClubItem({ icon, title, org, description, link }) {
   return (
-    <article className="space-y-4 border-b border-white/10 [data-theme='light']:border-black/10 pb-6 last:border-0 last:pb-0 transition-colors duration-300">
-      <div className="flex gap-4">
-        <LogoBox {...icon} />
-        <div className="space-y-1 min-w-0 flex-1">
-          <h4 className="text-[0.875rem] font-medium leading-[1.5] text-white [data-theme='light']:text-black transition-colors duration-300">
+    <article className="space-y-3">
+      <div className="flex gap-3 items-start">
+        <div className="w-10 h-10 rounded-full overflow-hidden bg-black/5 flex items-center justify-center flex-shrink-0">
+          <Image src={icon.src} alt={icon.alt} width={20} height={20} className="object-contain" loading="lazy" />
+        </div>
+        <div className="space-y-0.5 min-w-0 flex-1">
+          <h4 className="text-[0.875rem] font-medium text-black">
             {title}
           </h4>
           {org && (
-            <p className="text-[0.75rem] font-normal text-white/60 [data-theme='light']:text-black/60 transition-colors duration-300">
+            <p className="text-xs text-black/50">
               {org}
             </p>
           )}
@@ -129,7 +129,7 @@ function ClubItem({ icon, title, org, description, link }) {
       </div>
 
       {description && (
-        <p className="text-[0.875rem] font-normal leading-[1.6] text-white/90 [data-theme='light']:text-black/90 transition-colors duration-300">
+        <p className="text-[0.875rem] leading-relaxed text-black/60">
           {description}
         </p>
       )}
@@ -139,38 +139,11 @@ function ClubItem({ icon, title, org, description, link }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-[0.875rem] font-normal text-white [data-theme='light']:text-black underline underline-offset-4 hover:text-white/80 [data-theme='light']:hover:text-black/80 transition-colors duration-300"
+          className="text-[0.875rem] font-medium text-black underline underline-offset-4 decoration-black/30 hover:decoration-black transition-colors"
         >
-          {link.label ?? "View"}
-          <ArrowUpRightIcon className="h-3 w-3" />
+          {link.label ?? "View"} ↗
         </a>
       )}
     </article>
-  );
-}
-
-function LogoBox({ src, alt, rounded = "md" }) {
-  const radiusClass = rounded === "full" ? "rounded-full" : "rounded-md";
-  return (
-    <div
-      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center ${radiusClass} overflow-hidden bg-white/5 [data-theme='light']:bg-black/5 transition-colors duration-300`}
-      aria-hidden
-    >
-      <Image src={src} alt={alt} width={24} height={24} className="object-contain" loading="lazy" />
-    </div>
-  );
-}
-
-function ArrowUpRightIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M7 17L17 7M17 7H7M17 7V17"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }

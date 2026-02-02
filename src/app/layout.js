@@ -13,14 +13,14 @@ const dmSans = DM_Sans({
 
 export const metadata = {
   metadataBase: new URL("https://www.vrana.website"),
-  title: "V Ranadheer · Product Designer",
-  description: "A hands-on builder who designs with restraint and ships with intention. Product Designer and Creative Developer.",
+  title: "V Ranadheer",
+  description: "I love creating products and experiences with great design. A hands-on builder who designs with restraint and ships with intention.",
 
   openGraph: {
     type: "website",
     url: "https://www.vrana.website",
     title: "V Ranadheer · Product Designer",
-    description: "A hands-on builder who designs with restraint and ships with intention. Product Designer and Creative Developer.",
+    description: "I love creating products and experiences with great design. A hands-on builder who designs with restraint and ships with intention.",
     siteName: "vrana.website",
     locale: "en_US",
     images: [
@@ -36,7 +36,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "V Ranadheer · Product Designer",
-    description: "A hands-on builder who designs with restraint and ships with intention. Product Designer and Creative Developer.",
+    description: "I love creating products and experiences with great design. A hands-on builder who designs with restraint and ships with intention.",
     images: ["/my-view.jpg"],
     creator: "@byvrana",
   },
@@ -68,7 +68,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={dmSans.className}>
       <head>
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
         <meta name="apple-mobile-web-app-title" content="V Ranadheer" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="canonical" href="https://www.vrana.website" />
@@ -76,7 +76,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://github-contributions-api.jogruber.de" />
       </head>
-      <body className="font-[var(--font-dm-sans)] text-white">{children}</body>
+      <body className="font-[var(--font-dm-sans)] text-black bg-white">{children}</body>
     </html>
   );
 }

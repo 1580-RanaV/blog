@@ -2,21 +2,13 @@
 
 export default function WorkExp() {
   return (
-    <section className="w-full font-regular text-white [data-theme='light']:text-black space-y-8 transition-colors duration-300">
-      <div className="space-y-8">
+    <section className="w-full space-y-6">
+      <div className="space-y-6">
         <WorkItem
           company="Fluentgrid Limited"
           role="Full-Stack Intern"
           description="Brushed up SQL and Python, touched Java. Built a full-stack banking demo with CRUD, MySQL, and Postman tests. Learned delivery hygiene beyond code."
-          tags={[
-            "SQL",
-            "Python",
-            "Java",
-            "Spring Boot",
-            "MySQL",
-            "Postman",
-            "Full-Stack",
-          ]}
+          tags={["SQL", "Python", "Java", "Spring Boot", "MySQL", "Postman"]}
         />
 
         <WorkItem
@@ -33,37 +25,35 @@ export default function WorkExp() {
 
 function WorkItem({ company, duration, role, description, tags = [] }) {
   return (
-    <article className="space-y-4 border-b border-white/10 [data-theme='light']:border-black/10 pb-6 last:border-0 last:pb-0 transition-colors duration-300">
-      <div className="space-y-2">
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h3 className="text-[0.875rem] font-medium leading-[1.5] text-white [data-theme='light']:text-black transition-colors duration-300">
+    <article className="space-y-3 border-b border-black/10 pb-6 last:border-0 last:pb-0">
+      <div className="space-y-1">
+        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+          <h3 className="text-[0.9375rem] font-medium text-black">
             {company}
           </h3>
           {duration && (
-            <span className="text-[0.75rem] font-normal text-white/50 [data-theme='light']:text-black/50 transition-colors duration-300">
+            <span className="text-xs text-black/40">
               {duration}
             </span>
           )}
         </div>
-        <p className="text-[0.75rem] font-medium text-white/60 [data-theme='light']:text-black/60 transition-colors duration-300 uppercase tracking-wide">
+        <p className="text-xs font-medium text-black/50 uppercase tracking-wide">
           {role}
         </p>
       </div>
 
-      <p className="text-[0.875rem] font-normal leading-[1.6] text-white/90 [data-theme='light']:text-black/90 transition-colors duration-300">
+      <p className="text-[0.875rem] leading-relaxed text-black/70">
         {description}
       </p>
 
       {tags.length > 0 && (
-        <ul className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-x-2 gap-y-1">
           {tags.map((t, i) => (
-            <li key={i}>
-              <span className="text-[0.75rem] font-normal text-white/50 [data-theme='light']:text-black/50 transition-colors duration-300">
-                {t}
-              </span>
-            </li>
+            <span key={i} className="text-xs text-black/40">
+              {t}{i < tags.length - 1 ? " ·" : ""}
+            </span>
           ))}
-        </ul>
+        </div>
       )}
     </article>
   );
