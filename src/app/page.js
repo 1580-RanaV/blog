@@ -149,12 +149,12 @@ export default function Page() {
         </header>
 
         {/* Hero Tagline */}
-                <section className="text-center mb-16 sm:mb-20">
+        <section className="text-center mb-16 sm:mb-20">
           <p 
-            className="text-[1.25rem] sm:text-[1.375rem] md:text-[1.5rem] font-normal leading-[1.5] text-black fade-seq"
+            className="text-[1.25rem] sm:text-[1.375rem] md:text-[1.5rem] font-medium leading-[1.5] text-black fade-seq"
             style={{ "--fade-delay": "100ms" }}
           >
-            I work between design and engineering, building products and interfaces that are simple, intentional, and <i>fast</i>.
+            I work between design and engineering, building products and interfaces that are simple, intentional, and <em>fast</em>.
           </p>
         </section>
 
