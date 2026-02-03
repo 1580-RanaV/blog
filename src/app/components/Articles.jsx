@@ -59,37 +59,43 @@ Next time you see that circle animation while waiting for a driver, it's functio
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {articles.map((article, idx) => {
         const isOpen = openIndex === idx;
+        const contentId = `article-content-${idx}`;
         
         return (
-          <div key={idx} className="group">
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex-1">
-                <span className="text-xs text-black/30 font-medium">
-                  {article.number}
-                </span>
-                <h3 className="mt-1 text-[0.9375rem] font-medium text-black leading-snug">
-                  {article.title}
-                </h3>
+          <div
+            key={idx}
+            className="group"
+          >
+            <button
+              type="button"
+              onClick={() => setOpenIndex(isOpen ? null : idx)}
+              aria-expanded={isOpen}
+              aria-controls={contentId}
+              className="w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex-1">
+                  <span className="text-[0.6875rem] tracking-[0.18em] text-black/35">
+                    {article.number}
+                  </span>
+                  <h3 className="mt-1 text-[1rem] font-medium text-black leading-snug">
+                    {article.title}
+                  </h3>
+                </div>
               </div>
-              <button
-                onClick={() => setOpenIndex(isOpen ? null : idx)}
-                className="text-xs text-black/40 hover:text-black transition-colors flex-shrink-0 mt-4"
-              >
-                {isOpen ? "Close" : "Read"}
-              </button>
-            </div>
-            
-            {!isOpen ? (
-              <p className="mt-1.5 text-[0.875rem] leading-relaxed text-black/50">
+
+              <p className="mt-2 text-[0.875rem] leading-relaxed text-black/55">
                 {article.preview}
               </p>
-            ) : (
-              <div className="mt-3 space-y-3">
-                {article.content.split('\n\n').map((para, i) => (
-                  <p key={i} className="text-[0.875rem] leading-[1.7] text-black/60">
+            </button>
+
+            {isOpen && (
+              <div id={contentId} className="space-y-3">
+                {article.content.split("\n\n").map((para, i) => (
+                  <p key={i} className="text-[0.875rem] leading-[1.7] text-black/65">
                     {para}
                   </p>
                 ))}
