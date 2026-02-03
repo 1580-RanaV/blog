@@ -3,6 +3,23 @@
 export default function Projects() {
   const projects = [
     {
+      title: "its2016",
+      description: "Built a web radio station for anyone who still carries a little bit of 2016 with them ad-free, always on, and country-wise synchronized so everyone in the same country hears the same song at the same time.",
+      tech: "Next.js · Serverless · API",
+      link: { href: "https://its2016.today", label: "Visit" },
+    },
+    {
+      title: "Paper Helper",
+      description: "Designed and developed an accessible tool that allows elderly and non-technical educators to create academic question papers using a simple, voice- and text-based interface. So that they don't take the headache of the formats.",
+      tech: "Next.js · Document Generation and Sharing · Voice typing",
+      link: { href: "https://paperhelper.vercel.app/", label: "Visit" },
+    },
+    {
+      title: "VCF",
+      description: "A city community forum, in the works.",
+      tech: "Next.js",
+    },
+    {
       title: "SnipAsker",
       description: "A lightweight Chrome extension that lets users highlight any text on a webpage and get instant AI answers inline. Designed for speed and focus.",
       tech: "Next.js · React · Chrome Extension",
@@ -18,7 +35,7 @@ export default function Projects() {
       title: "RabbitHole",
       description: "Client-side YouTube history analyzer. Performs ETL locally, maps behavior, and visualizes binge patterns. No servers, only playful analytics.",
       tech: "Next.js · IndexedDB · Web Workers",
-      link: { href: "https://myjobsy.vercel.app", label: "Coming Soon" },
+      link: { href: "https://myjobsy.vercel.app", label: "Not publshed" },
     },
     {
       title: "Jobsy",

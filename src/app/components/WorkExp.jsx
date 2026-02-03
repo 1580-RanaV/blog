@@ -3,6 +3,12 @@
 export default function WorkExp() {
   const experiences = [
     {
+      company: "Freelance",
+      role: "Full-Stack",
+      description: "Built apps and websites for few clients, paid and un-paid; for a short duration.",
+      tech: "Next.js · TailwindCSS · Supabase · Python Scripts · API · CI/CD · Client Facing ",
+    },
+    {
       company: "Fluentgrid Limited",
       role: "Full-Stack Intern",
       description: "Brushed up SQL and Python, touched Java. Built a full-stack banking demo with CRUD, MySQL, and Postman tests. Learned delivery hygiene beyond code.",

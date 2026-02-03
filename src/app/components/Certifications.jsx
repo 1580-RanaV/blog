@@ -4,7 +4,7 @@ export default function Certifications() {
   const certifications = [
     {
       year: "2025",
-      title: "Oracle Cloud Infrastructure — AI Foundations Associate",
+      title: "Oracle Cloud Infrastructure - AI Foundations Associate",
       description: "Strengthened AI and ML fundamentals in cloud systems. Covered Generative AI, Oracle 23ai Vector Databases, Vision, Speech, and NLP services.",
       link: { href: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=DAF34BC44A7A3DC84A8F107B518A0C2558515ACEF827D948059534C4CEF373D2", label: "View certificate" },
     },

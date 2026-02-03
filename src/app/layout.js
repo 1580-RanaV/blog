@@ -1,15 +1,5 @@
 // src/app/layout.js
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
-  display: "swap",
-  preload: true,
-  fallback: ["system-ui", "-apple-system", "sans-serif"],
-});
 
 export const metadata = {
   metadataBase: new URL("https://www.vrana.website"),
@@ -19,7 +9,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "https://www.vrana.website",
-    title: "V Ranadheer · Product Designer",
+    title: "V Ranadheer",
     description: "I love creating products and experiences with great design. A hands-on builder who designs with restraint and ships with intention.",
     siteName: "vrana.website",
     locale: "en_US",
@@ -66,17 +56,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en">
       <head>
         <meta name="theme-color" content="#ffffff" />
         <meta name="apple-mobile-web-app-title" content="V Ranadheer" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="canonical" href="https://www.vrana.website" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://github-contributions-api.jogruber.de" />
       </head>
-      <body className="font-[var(--font-inter)] text-black bg-white">{children}</body>
+      <body className="text-black bg-white">{children}</body>
     </html>
   );
 }

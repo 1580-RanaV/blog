@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------- Local Fonts ---------- */
+@font-face {
+  font-family: 'TT Hoves Pro';
+  src: url('/fonts/TT Hoves Pro Trial Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Hoves Pro';
+  src: url('/fonts/TT Hoves Pro Trial Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---------- Root theme (Light Mode) ---------- */
 @layer base {
   :root {
@@ -11,6 +28,7 @@
     --text-subtle: #999999;
     --border: #e5e5e5;
     --border-light: #f0f0f0;
+    --font-sans: 'TT Hoves Pro', system-ui, -apple-system, sans-serif;
     color-scheme: light;
   }
 
@@ -22,7 +40,7 @@
   body {
     background-color: #ffffff;
     color: #000000;
-    font-family: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+    font-family: var(--font-sans);
     letter-spacing: -0.01em;
     line-height: 1.6;
     min-height: 100vh;
@@ -38,9 +56,11 @@
 
   * {
     border-color: var(--border);
+    font-family: var(--font-sans);
   }
 
   h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
     font-weight: 500;
     letter-spacing: -0.02em;
     color: #000000;
@@ -48,6 +68,7 @@
   }
 
   p, li, small, label, span, summary, button, input, textarea, a {
+    font-family: var(--font-sans);
     color: #000000;
     font-size: 0.9375rem;
     font-weight: 400;
@@ -145,8 +166,13 @@
 
 /* ---------- Typography helpers ---------- */
 .font-regular {
-  font-family: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-weight: 400;
+}
+
+.font-medium {
+  font-family: var(--font-sans);
+  font-weight: 500;
 }
 
 /* ---------- Git Component Animations ---------- */

@@ -6,7 +6,7 @@ export default function Education() {
       institution: "GITAM University",
       degree: "B.Tech, Computer Science & Engineering",
       year: "2025",
-      details: "Web apps, SQL/NoSQL, software methodologies, agile/scrum, OS, DBMS, OOP.",
+      details: "Web Development, SQL/NoSQL, Software Methodologies, Agile/Scrum, OS, DBMS, OOP.",
       score: "CGPA: 8.61",
     },
     {
@@ -42,7 +42,7 @@ export default function Education() {
     {
       role: "Lead Graphic Designer",
       org: "Google Developer Student Clubs",
-      description: "Led design across university events with 1,000+ participants. Created visual systems using Figma and Photoshop.",
+      description: "Led design across university events with 1,000+ participants. Created visual systems using Figma and Photoshop for Google club.",
       link: { href: "https://drive.google.com/file/d/1OXx-0RkdmgxBVE_1o3NNhmpA595O1DaF/view?usp=sharing", label: "Certificate" },
     },
   ];

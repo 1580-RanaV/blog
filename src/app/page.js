@@ -87,13 +87,13 @@ function AccordionSection({ id, title, isOpen, setOpen, children, delayMs = 0 })
 export default function Page() {
   const sections = useMemo(
     () => [
-      { id: "projects",       title: "Projects" },
-      { id: "articles",       title: "Articles" },
-      { id: "work",           title: "Work Experience" },
-      { id: "education",      title: "Education" },
-      { id: "certifications", title: "Certifications" },
-      { id: "unfinished",     title: "Unfinished Projects" },
-      { id: "git",            title: "GitHub Activity" },
+    { id: "projects",       title: "Things I’ve Built" },
+    { id: "articles",       title: "Tech Writing" },
+    { id: "work",           title: "Where I’ve Worked" },
+    { id: "education",      title: "Education & Extras" },
+    { id: "certifications", title: "Certifications" },
+    { id: "unfinished",     title: "Old & Unfinished Projects" },
+    { id: "git",            title: "GitHub" }
     ],
     []
   );
